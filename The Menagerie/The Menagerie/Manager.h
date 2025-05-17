@@ -1,8 +1,9 @@
 #ifndef MANAGER_H
 #define MANAGER_H
 
-#include "AlienManager.h"
 #include <stdio.h>
+#include "AlienManager.h"
+#include "Visuals.h"
 
 void app_start();
 void menu();

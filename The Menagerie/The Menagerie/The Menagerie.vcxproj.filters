@@ -31,6 +31,9 @@
       <Filter>Source Files\Alien</Filter>
     </ClCompile>
     <ClCompile Include="AlienData.c">
+      <Filter>Source Files\Alien</Filter>
+    </ClCompile>
+    <ClCompile Include="Visuals.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -46,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="AlienData.h">
       <Filter>Header Files\Alien</Filter>
+    </ClInclude>
+    <ClInclude Include="Visuals.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

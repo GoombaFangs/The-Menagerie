@@ -13,5 +13,39 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Alien">
+      <UniqueIdentifier>{a9adb0f2-c073-477b-89f6-c4cc883771bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Alien">
+      <UniqueIdentifier>{d7874a28-4c7d-41a2-b90a-1be36f44067c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AlienManager.c">
+      <Filter>Source Files\Alien</Filter>
+    </ClCompile>
+    <ClCompile Include="AlienData.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Alien.h">
+      <Filter>Header Files\Alien</Filter>
+    </ClInclude>
+    <ClInclude Include="AlienManager.h">
+      <Filter>Header Files\Alien</Filter>
+    </ClInclude>
+    <ClInclude Include="AlienData.h">
+      <Filter>Header Files\Alien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

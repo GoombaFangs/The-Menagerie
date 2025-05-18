@@ -3,20 +3,23 @@
 int on_start()
 {
     clear_console();
-    printg(0.035, "  Press an Up or Down arrow and Enter to confirm :\n");
-    hold_seconds(0.2);
+    printg(0.015, "  Press an Up or Down arrow and Enter to confirm :\n");
+    hold_seconds(0.015);
     printf("                                                                                                         \n");
     printf("                 _________                                                                               \n");
     printf("                |  Map    |                                                                              \n");
     printf("                 ---------                                                                               \n");
+    hold_seconds(0.015);
     printf("                                                                                                         \n");
     printf("                                                                                                         \n");
     printf("                   Zoo                                                                                   \n");
     printf("                                                                                                         \n");
+    hold_seconds(0.015);
     printf("                                                                                                         \n");
     printf("                                                                                                         \n");
     printf("                   Inventory                                                                             \n");
     printf("                                                                                                         \n");
+    hold_seconds(0.015);
     printf("                                                                                                         \n");
     printf("                                                                                                         \n");
     printf("                   Exit                                                                                  \n");

@@ -30,7 +30,11 @@ int menu()
             switch (keyboard_input)
             {
             case 72://Up arrow
-                if (default_option == 3)
+                if (default_option == 4)
+                {
+                    default_option = on_inventory();
+                }
+                else if (default_option == 3)
                 {
                     default_option = on_zoo();
                 }
@@ -48,29 +52,35 @@ int menu()
                 {
                     default_option = on_inventory();
                 }
+				else if (default_option == 3)
+				{
+					default_option = on_exit();
+				}
                 break;
             }
         }
-        else if (keyboard_input == 13)
-        {
-            switch (default_option)
-            {
-            case 1://Play
-                clear_console();
-                return 1;
-                break;
-
-            case 2://LeaderBoard
-                clear_console();
-                return 2;
-                break;
-
-            case 3://Exit
-                clear_console();
-                return 3;
-
-            }
-        }
+		else if (keyboard_input == 13)// Enter
+		{
+			switch (default_option)
+			{
+			case 1://Map
+				clear_console();
+				return 0;
+				break;
+			case 2://Zoo
+				clear_console();
+				return 1;
+				break;
+			case 3://Inventory
+				clear_console();
+				return 2;
+				break;
+			case 4://Exit
+				clear_console();
+				return 3;
+				break;
+			}
+		}
     }
 }
 

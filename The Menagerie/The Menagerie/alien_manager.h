@@ -1,12 +1,12 @@
-#ifndef ALIENMANAGER_H
-#define ALIENMANAGER_H
+#ifndef ALIEN_MANAGER_H
+#define ALIEN_MANAGER_H
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "Alien.h"
-#include "AlienDataBase.h"
+#include "alien.h"
+#include "alien_data_base.h"
 
 Alien* generate_aliens(int count);
 

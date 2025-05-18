@@ -1,31 +1,30 @@
-#include "AlienDataBase.h"
+#include "alien_data_base.h"
 
 const char* species_list[] = 
 {
-    "Flying",
-    "Aquatic",
-    "Crawler",
-    "Quadruped",
-    "Glowing",
-    "Camouflaged",
-    "Rocky",
-    "Gas-Based"
+    "flying",
+    "aquatic",
+    "crawler",
+    "glowing",
+    "camouflaged",
+    "rocky",
+    "gas_based"
 };
 
 const char* size_list[] = 
 {
-    "Small",
-    "Medium",
-    "Large",
-    "Huge"
+    "small",
+    "medium",
+    "large",
+    "huge"
 };
 
 const char* diet_list[] = 
 {
-    "Fruits",
-    "Meat",
-    "Plants",
-    "Minerals"
+    "fruits",
+    "meat",
+    "plants",
+    "minerals"
 };
 
 const int num_species = sizeof(species_list) / sizeof(species_list[0]);

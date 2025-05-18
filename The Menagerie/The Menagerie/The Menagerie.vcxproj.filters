@@ -19,6 +19,12 @@
     <Filter Include="Source Files\Alien">
       <UniqueIdentifier>{d7874a28-4c7d-41a2-b90a-1be36f44067c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Alien\Species">
+      <UniqueIdentifier>{1e79a9b0-582e-4685-8eab-07d8533263a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Alien\Species">
+      <UniqueIdentifier>{f1f5139c-ff5b-46ef-a4d8-1f91196ba5be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.c">
@@ -27,49 +33,73 @@
     <ClCompile Include="Manager.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AlienManager.c">
+    <ClCompile Include="alien_manager.c">
       <Filter>Source Files\Alien</Filter>
     </ClCompile>
-    <ClCompile Include="AlienDataBase.c">
+    <ClCompile Include="alien_data_base.c">
       <Filter>Source Files\Alien</Filter>
     </ClCompile>
-    <ClCompile Include="AlienVisuals.c">
+    <ClCompile Include="alien_visuals.c">
       <Filter>Source Files\Alien</Filter>
     </ClCompile>
-    <ClCompile Include="Flying.c">
-      <Filter>Source Files\Alien</Filter>
+    <ClCompile Include="flying.c">
+      <Filter>Source Files\Alien\Species</Filter>
     </ClCompile>
-    <ClCompile Include="Aquatic.c">
-      <Filter>Source Files\Alien</Filter>
+    <ClCompile Include="glowing.c">
+      <Filter>Source Files\Alien\Species</Filter>
     </ClCompile>
-    <ClCompile Include="Crawler.c">
-      <Filter>Source Files\Alien</Filter>
+    <ClCompile Include="crawler.c">
+      <Filter>Source Files\Alien\Species</Filter>
+    </ClCompile>
+    <ClCompile Include="aquatic.c">
+      <Filter>Source Files\Alien\Species</Filter>
+    </ClCompile>
+    <ClCompile Include="camouflaged.c">
+      <Filter>Source Files\Alien\Species</Filter>
+    </ClCompile>
+    <ClCompile Include="rocky.c">
+      <Filter>Source Files\Alien\Species</Filter>
+    </ClCompile>
+    <ClCompile Include="gas_based.c">
+      <Filter>Source Files\Alien\Species</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Alien.h">
+    <ClInclude Include="alien.h">
       <Filter>Header Files\Alien</Filter>
     </ClInclude>
-    <ClInclude Include="AlienManager.h">
+    <ClInclude Include="alien_manager.h">
       <Filter>Header Files\Alien</Filter>
     </ClInclude>
-    <ClInclude Include="AlienDataBase.h">
+    <ClInclude Include="alien_data_base.h">
       <Filter>Header Files\Alien</Filter>
     </ClInclude>
-    <ClInclude Include="AlienVisuals.h">
+    <ClInclude Include="alien_visuals.h">
       <Filter>Header Files\Alien</Filter>
     </ClInclude>
-    <ClInclude Include="Flying.h">
-      <Filter>Header Files\Alien</Filter>
+    <ClInclude Include="aquatic.h">
+      <Filter>Header Files\Alien\Species</Filter>
     </ClInclude>
-    <ClInclude Include="Aquatic.h">
-      <Filter>Header Files\Alien</Filter>
+    <ClInclude Include="crawler.h">
+      <Filter>Header Files\Alien\Species</Filter>
     </ClInclude>
-    <ClInclude Include="Crawler.h">
-      <Filter>Header Files\Alien</Filter>
+    <ClInclude Include="camouflaged.h">
+      <Filter>Header Files\Alien\Species</Filter>
+    </ClInclude>
+    <ClInclude Include="flying.h">
+      <Filter>Header Files\Alien\Species</Filter>
+    </ClInclude>
+    <ClInclude Include="glowing.h">
+      <Filter>Header Files\Alien\Species</Filter>
+    </ClInclude>
+    <ClInclude Include="rocky.h">
+      <Filter>Header Files\Alien\Species</Filter>
+    </ClInclude>
+    <ClInclude Include="gas_based.h">
+      <Filter>Header Files\Alien\Species</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

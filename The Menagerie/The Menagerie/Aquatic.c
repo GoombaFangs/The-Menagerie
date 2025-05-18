@@ -1,4 +1,4 @@
-#include "Aquatic.h"
+#include "aquatic.h"
 
 void print_aquatic(int variant)
 {

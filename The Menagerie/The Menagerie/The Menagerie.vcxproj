@@ -127,24 +127,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AlienDataBase.c" />
-    <ClCompile Include="AlienManager.c" />
-    <ClCompile Include="Aquatic.c" />
-    <ClCompile Include="Crawler.c" />
-    <ClCompile Include="Flying.c" />
+    <ClCompile Include="alien_data_base.c" />
+    <ClCompile Include="alien_manager.c" />
+    <ClCompile Include="aquatic.c" />
+    <ClCompile Include="camouflaged.c" />
+    <ClCompile Include="crawler.c" />
+    <ClCompile Include="flying.c" />
+    <ClCompile Include="gas_based.c" />
+    <ClCompile Include="glowing.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="Manager.c" />
-    <ClCompile Include="AlienVisuals.c" />
+    <ClCompile Include="alien_visuals.c" />
+    <ClCompile Include="rocky.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Alien.h" />
-    <ClInclude Include="AlienDataBase.h" />
-    <ClInclude Include="AlienManager.h" />
-    <ClInclude Include="Aquatic.h" />
-    <ClInclude Include="Crawler.h" />
-    <ClInclude Include="Flying.h" />
+    <ClInclude Include="alien.h" />
+    <ClInclude Include="alien_data_base.h" />
+    <ClInclude Include="alien_manager.h" />
+    <ClInclude Include="aquatic.h" />
+    <ClInclude Include="camouflaged.h" />
+    <ClInclude Include="crawler.h" />
+    <ClInclude Include="flying.h" />
+    <ClInclude Include="gas_based.h" />
+    <ClInclude Include="glowing.h" />
     <ClInclude Include="Manager.h" />
-    <ClInclude Include="AlienVisuals.h" />
+    <ClInclude Include="alien_visuals.h" />
+    <ClInclude Include="rocky.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -138,6 +138,7 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="manager.c" />
     <ClCompile Include="alien_visuals.c" />
+    <ClCompile Include="print_menu.c" />
     <ClCompile Include="rocky.c" />
     <ClCompile Include="time.c" />
     <ClCompile Include="visuals.c" />
@@ -154,7 +155,9 @@
     <ClInclude Include="glowing.h" />
     <ClInclude Include="manager.h" />
     <ClInclude Include="alien_visuals.h" />
+    <ClInclude Include="print_menu.h" />
     <ClInclude Include="rocky.h" />
+    <ClInclude Include="alien_species.h" />
     <ClInclude Include="time.h" />
     <ClInclude Include="visuals.h" />
   </ItemGroup>

@@ -7,6 +7,7 @@
 #include <time.h>
 #include "alien.h"
 #include "alien_data_base.h"
+#include "alien_manager.h"
 #include "flying.h"
 #include "aquatic.h"
 #include "crawler.h"
@@ -14,7 +15,6 @@
 #include "camouflaged.h"
 #include "rocky.h"
 #include "gas_based.h"
-
 
 void print_alien_art(const Alien* alien, int index);
 void print_species_art(const char* species);

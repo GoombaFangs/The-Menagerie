@@ -1,10 +1,6 @@
 #ifndef ALIEN_H
 #define ALIEN_H
 
-#include "alien_data_base.h"
-#include "alien_manager.h"
-#include "alien_visuals.h"
-
 typedef struct
 {
     char species[20];

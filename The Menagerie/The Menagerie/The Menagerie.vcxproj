@@ -127,18 +127,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AlienData.c" />
+    <ClCompile Include="AlienDataBase.c" />
     <ClCompile Include="AlienManager.c" />
+    <ClCompile Include="Flying.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="Manager.c" />
-    <ClCompile Include="Visuals.c" />
+    <ClCompile Include="AlienVisuals.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Alien.h" />
-    <ClInclude Include="AlienData.h" />
+    <ClInclude Include="AlienDataBase.h" />
     <ClInclude Include="AlienManager.h" />
+    <ClInclude Include="Flying.h" />
     <ClInclude Include="Manager.h" />
-    <ClInclude Include="Visuals.h" />
+    <ClInclude Include="AlienVisuals.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

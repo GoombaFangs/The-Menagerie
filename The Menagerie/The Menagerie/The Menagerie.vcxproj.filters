@@ -30,11 +30,14 @@
     <ClCompile Include="AlienManager.c">
       <Filter>Source Files\Alien</Filter>
     </ClCompile>
-    <ClCompile Include="AlienData.c">
+    <ClCompile Include="AlienDataBase.c">
       <Filter>Source Files\Alien</Filter>
     </ClCompile>
-    <ClCompile Include="Visuals.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="AlienVisuals.c">
+      <Filter>Source Files\Alien</Filter>
+    </ClCompile>
+    <ClCompile Include="Flying.c">
+      <Filter>Source Files\Alien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -47,11 +50,14 @@
     <ClInclude Include="AlienManager.h">
       <Filter>Header Files\Alien</Filter>
     </ClInclude>
-    <ClInclude Include="AlienData.h">
+    <ClInclude Include="AlienDataBase.h">
       <Filter>Header Files\Alien</Filter>
     </ClInclude>
-    <ClInclude Include="Visuals.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="AlienVisuals.h">
+      <Filter>Header Files\Alien</Filter>
+    </ClInclude>
+    <ClInclude Include="Flying.h">
+      <Filter>Header Files\Alien</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

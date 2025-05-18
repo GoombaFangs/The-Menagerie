@@ -6,7 +6,7 @@
 #include <string.h>
 #include <time.h>
 #include "Alien.h"
-#include "AlienData.h"
+#include "AlienDataBase.h"
 
 Alien* generate_aliens(int count);
 

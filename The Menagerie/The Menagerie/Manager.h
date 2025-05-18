@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include "AlienManager.h"
-#include "Visuals.h"
+#include "AlienVisuals.h"
 
 void app_start();
 void menu();

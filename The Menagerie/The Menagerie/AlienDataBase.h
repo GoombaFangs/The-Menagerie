@@ -1,5 +1,5 @@
-#ifndef ALIEN_DATA_H
-#define ALIEN_DATA_H
+#ifndef ALIEN_DATA_BASE_H
+#define ALIEN_DATA_BASE_H
 
 extern const char* species_list[];
 extern const char* size_list[];

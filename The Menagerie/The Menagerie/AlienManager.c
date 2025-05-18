@@ -21,7 +21,7 @@ Alien* generate_aliens(int count)
         aliens[i].age = rand() % 100 + 1;
         strcpy_s(aliens[i].size, sizeof(aliens[i].size), size_list[rand() % num_sizes]);
         strcpy_s(aliens[i].diet, sizeof(aliens[i].diet), diet_list[rand() % num_diets]);
-        aliens[i].nickname[0] = '\0';  // ניקוי התחלה של השם
+        aliens[i].nickname[0] = '\0';
     }
 
     return aliens;

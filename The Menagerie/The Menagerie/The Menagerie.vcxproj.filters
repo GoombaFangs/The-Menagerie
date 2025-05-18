@@ -13,24 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Alien">
-      <UniqueIdentifier>{a9adb0f2-c073-477b-89f6-c4cc883771bd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Alien">
       <UniqueIdentifier>{d7874a28-4c7d-41a2-b90a-1be36f44067c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Alien\Species">
       <UniqueIdentifier>{1e79a9b0-582e-4685-8eab-07d8533263a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Alien">
+      <UniqueIdentifier>{a9adb0f2-c073-477b-89f6-c4cc883771bd}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files\Alien\Species">
       <UniqueIdentifier>{f1f5139c-ff5b-46ef-a4d8-1f91196ba5be}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.c">
+    <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Manager.c">
+    <ClCompile Include="manager.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="alien_manager.c">
@@ -63,9 +63,15 @@
     <ClCompile Include="gas_based.c">
       <Filter>Source Files\Alien\Species</Filter>
     </ClCompile>
+    <ClCompile Include="visuals.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="time.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Manager.h">
+    <ClInclude Include="manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="alien.h">
@@ -100,6 +106,12 @@
     </ClInclude>
     <ClInclude Include="gas_based.h">
       <Filter>Header Files\Alien\Species</Filter>
+    </ClInclude>
+    <ClInclude Include="visuals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="time.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

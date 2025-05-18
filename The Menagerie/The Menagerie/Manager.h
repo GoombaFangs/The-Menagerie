@@ -2,8 +2,7 @@
 #define MANAGER_H
 
 #include <stdio.h>
-#include "alien_manager.h"
-#include "alien_visuals.h"
+#include "alien.h"
 
 void app_start();
 void menu();

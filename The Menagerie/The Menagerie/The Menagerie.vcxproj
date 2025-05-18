@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="AlienDataBase.c" />
     <ClCompile Include="AlienManager.c" />
+    <ClCompile Include="Aquatic.c" />
     <ClCompile Include="Flying.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="Manager.c" />
@@ -138,6 +139,7 @@
     <ClInclude Include="Alien.h" />
     <ClInclude Include="AlienDataBase.h" />
     <ClInclude Include="AlienManager.h" />
+    <ClInclude Include="Aquatic.h" />
     <ClInclude Include="Flying.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="AlienVisuals.h" />

@@ -16,13 +16,10 @@ void print_species_art(const char* species)
         print_flying(variant);
            
     }
-    else if (strcmp(species, "Aquatic") == 0) {
-        printf(
-            "     ~~~~~~\n"
-            "   ~ ( o ) ~\n"
-            "  ~  \\___/  ~\n"
-            "     ~~~~~~\n"
-        );
+    else if (strcmp(species, "Aquatic") == 0)
+    {
+        int variant = rand() % 10;
+        print_aquatic(variant);
     }
     else if (strcmp(species, "Crawler") == 0) {
         printf(

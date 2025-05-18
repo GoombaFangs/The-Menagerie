@@ -39,6 +39,9 @@
     <ClCompile Include="Flying.c">
       <Filter>Source Files\Alien</Filter>
     </ClCompile>
+    <ClCompile Include="Aquatic.c">
+      <Filter>Source Files\Alien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Manager.h">
@@ -57,6 +60,9 @@
       <Filter>Header Files\Alien</Filter>
     </ClInclude>
     <ClInclude Include="Flying.h">
+      <Filter>Header Files\Alien</Filter>
+    </ClInclude>
+    <ClInclude Include="Aquatic.h">
       <Filter>Header Files\Alien</Filter>
     </ClInclude>
   </ItemGroup>

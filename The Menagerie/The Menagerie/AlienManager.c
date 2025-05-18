@@ -16,7 +16,8 @@ Alien* generate_aliens(int count)
 
     for (int i = 0; i < count; i++)
     {
-        strcpy_s(aliens[i].species, sizeof(aliens[i].species), species_list[rand() % num_species]);
+        strcpy_s(aliens[i].species, sizeof(aliens[i].species), "Flying");
+        //strcpy_s(aliens[i].species, sizeof(aliens[i].species), species_list[rand() % num_species]);
         aliens[i].sex = (rand() % 2 == 0) ? 'M' : 'F';
         aliens[i].age = rand() % 100 + 1;
         strcpy_s(aliens[i].size, sizeof(aliens[i].size), size_list[rand() % num_sizes]);

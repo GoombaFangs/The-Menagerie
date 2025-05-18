@@ -1,7 +1,7 @@
 #include "Visuals.h"
 
 
-void print_alien_art_only(const Alien* alien, int index, const char* species)
+void print_alien_art_only(const Alien* alien, int index)
 {
     printf(" Alien %d \n", index + 1);
     print_species_art(alien->species);
@@ -10,13 +10,11 @@ void print_alien_art_only(const Alien* alien, int index, const char* species)
 
 void print_species_art(const char* species) 
 {
-    if (strcmp(species, "Flying") == 0) {
-        printf(
-            "     __|__\n"
-            " --=( o o )=-\n"
-            "     \\_v_/\n"
-            "      / \\\n"
-        );
+    if (strcmp(species, "Flying") == 0) 
+    {
+        int variant = rand() % 4;
+        print_flying_ascii_variant(variant);
+           
     }
     else if (strcmp(species, "Aquatic") == 0) {
         printf(
@@ -84,6 +82,51 @@ void print_species_art(const char* species)
             "   \\________/\n"
         );
     }
+}
+
+void print_flying_ascii_variant(int variant)
+{
+    switch (variant)
+    {
+    case 0:
+        printf(
+            "     __|__\n"
+            " --=( o o )=-\n"
+            "     \\_v_/\n"
+            "      / \\\n"
+        );
+        break;
+
+	case 1:
+        printf(
+            "     __|__\n"
+            " --=( o o )=--\n"
+            "     \\___/\n"
+            "      / \\\n"
+        );
+		break;
+
+	case 2:
+        printf(
+            "     _____\n"
+            "    /     \\\n"
+            "   |  o o  |\n"
+            "    \\__^__/\n"
+            "     / | \\\n"
+            "    *  |  *\n"
+        );
+		break;
+	case 3:
+        printf(
+            "     \\ | /\n"
+            "     (o_o)\n"
+            "    <(   )>\n"
+            "     /   \\\n"
+        );
+		break;
+
+    }
+
 }
 
 void print_alien(const Alien* alien, int index) 

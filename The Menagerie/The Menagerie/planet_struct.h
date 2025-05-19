@@ -6,6 +6,6 @@ typedef struct
     double distance;
     char terrain[20];
     int hasLife;
-} Planet;
+} planet;
 
 #endif

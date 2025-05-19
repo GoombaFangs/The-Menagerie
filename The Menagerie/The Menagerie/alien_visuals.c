@@ -21,40 +21,67 @@ void print_alien_card(const Alien* alien, int index)
 
 void print_species_art(const char* species) 
 {
-	int variant = 0;
     if (strcmp(species, "flying") == 0) 
     {
-        variant = rand() % 10;
+		static int variant = 0;
+        if (variant == 0) 
+        {
+            variant = rand() % 10;
+        }
         print_flying(variant);    
     }
     else if (strcmp(species, "aquatic") == 0)
     {
-        variant = rand() % 10;
+        static int variant = 0;
+        if (variant == 0)
+        {
+            variant = rand() % 10;
+        }
         print_aquatic(variant);
     }
     else if (strcmp(species, "crawler") == 0) 
     {
-        variant = rand() % 10;
+        static int variant = 0;
+        if (variant == 0)
+        {
+            variant = rand() % 10;
+        }
         print_crawler(variant);
     }
     else if (strcmp(species, "glowing") == 0) 
     {
-        variant = rand() % 1;
+        static int variant = 0;
+        if (variant == 0)
+        {
+            variant = rand() % 1;
+        }
 		print_glowing(variant);
     }
     else if (strcmp(species, "camouflaged") == 0) 
     {
-        variant = rand() % 2;
+        static int variant = 0;
+        if (variant == 0)
+        {
+            variant = rand() % 2;
+        }
         print_camouflaged(variant);
     }
     else if (strcmp(species, "rocky") == 0)
     {
-        variant = rand() % 1;
+        static int variant = 0;
+        if (variant == 0)
+        {
+            variant = rand() % 1;
+        }
         print_rocky(variant);
     }
     else if (strcmp(species, "gas_based") == 0) 
     {
-        variant = rand() % 1;
+        static int variant = 0;
+        if (variant == 0)
+        {
+            variant = rand() % 1;
+        }
         print_gas_based(variant);
     }
     else {

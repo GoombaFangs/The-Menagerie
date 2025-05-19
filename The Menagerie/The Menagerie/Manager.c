@@ -66,19 +66,15 @@ void get_aliens(alien* aliens , int count)
             {
 			case 1://card1
                 reset_console();
-                return 0;
                 break;
 			case 2://card2
                 reset_console();
-                return 1;
                 break;
 			case 3://card3
                 reset_console();
-                return 2;
                 break;
 			case 4://card4
                 reset_console();
-                return 3;
                 break;
             }
         }
@@ -119,8 +115,27 @@ void get_aliens(alien* aliens , int count)
 
 int open_map()
 {
-    int selected = input(terrain_list, num_terrain);
-	scroll_to_line(0);
+    int num_planets = 4; 
+    planet* planets = generate_planet(num_planets);
+
+    const char** terrain_ptrs = malloc(num_planets * sizeof(char*));
+    if (!terrain_ptrs)
+    {
+        printf("Memory allocation failed!\n");
+        free(planets);
+        return -1;
+    }
+
+    for (int i = 0; i < num_planets; i++)
+    {
+        terrain_ptrs[i] = planets[i].terrain;
+    }
+
+    int selected = input(terrain_ptrs, num_planets);
+
+    scroll_to_line(0);
+    free(terrain_ptrs);
+    free(planets);
     return selected;
 }
 

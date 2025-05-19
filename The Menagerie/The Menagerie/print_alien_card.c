@@ -2,7 +2,10 @@
 
 int on_card_start(const Alien* alien, int index)
 {
-	print_alien_art(&alien, index);
+	for (int i = 0; i < index; i++)
+	{
+		print_alien_art(&alien[i], i);
+	}
 	return 1;
 }
 

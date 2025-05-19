@@ -3,9 +3,8 @@
 void get_aliens(int count)
 {
     Alien* aliens = generate_aliens(count);
-    print_alien_card(&aliens[0], 0);
     int keyboard_input;
-    int default_option = on_card_start();
+    int default_option = on_card_start(aliens, count);
     while (1)
     {
         keyboard_input = _getch();
@@ -18,29 +17,29 @@ void get_aliens(int count)
             case 72://Up arrow
                 if (default_option == 4)
                 {
-                    default_option = on_card3();
+                    default_option = on_card3(&aliens, count);
                 }
                 else if (default_option == 3)
                 {
-                    default_option = on_card2();
+                    default_option = on_card2(&aliens, count);
                 }
                 else if (default_option == 2)
                 {
-                    default_option = on_card1();
+                    default_option = on_card1(&aliens, count);
                 }
                 break;
             case 80://Down arrow
                 if (default_option == 1)
                 {
-                    default_option = on_card2();
+                    default_option = on_card2(&aliens, count);
                 }
                 else if (default_option == 2)
                 {
-                    default_option = on_card3();
+                    default_option = on_card3(&aliens, count);
                 }
                 else if (default_option == 3)
                 {
-                    default_option = on_card4();
+                    default_option = on_card4(&aliens, count);
                 }
                 break;
             }

@@ -81,9 +81,6 @@
     <ClCompile Include="core_visuals.c">
       <Filter>Source Files\Visuals</Filter>
     </ClCompile>
-    <ClCompile Include="print_menu.c">
-      <Filter>Source Files\Visuals</Filter>
-    </ClCompile>
     <ClCompile Include="print_alien_card.c">
       <Filter>Source Files\Visuals</Filter>
     </ClCompile>
@@ -162,9 +159,6 @@
       <Filter>Header Files\Visuals</Filter>
     </ClInclude>
     <ClInclude Include="print_alien_card.h">
-      <Filter>Header Files\Visuals</Filter>
-    </ClInclude>
-    <ClInclude Include="print_menu.h">
       <Filter>Header Files\Visuals</Filter>
     </ClInclude>
     <ClInclude Include="visuals.h">

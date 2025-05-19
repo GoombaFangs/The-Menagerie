@@ -1,18 +1,47 @@
 #include "input_keyboard.h"
 
+#define FRAME_WIDTH 13
+
 void print_options_menu(int selected, const char* menu_list[], int amount)
 {
-	clear_console();
-	printf("\n");
-	for (int i = 0; i < amount; i++)
-	{
-		printf("\n");
-		if (i == selected)
-			printf("              > %s\n", menu_list[i]);
-		else
-			printf("                %s\n", menu_list[i]);
-		printf("\n");
-	}
+    clear_console();
+
+    printf("    Press Up or Down arrow and Enter to confirm:\n\n\n");
+
+    for (int i = 0; i < amount; i++)
+    {
+        const char* text = menu_list[i];
+        int len = strlen(text);
+        int padding_total = FRAME_WIDTH - len;
+
+        int padding_left = padding_total / 2;
+        int padding_right = padding_total - padding_left;
+
+        if (i == selected)
+        {
+            printf("             ");
+            for (int j = 0; j < FRAME_WIDTH + 2; j++) printf("-");
+            printf("\n");
+
+            printf("            |");
+            for (int j = 0; j < padding_left; j++) printf(" ");
+            printf(" %s ", text);
+            for (int j = 0; j < padding_right; j++) printf(" ");
+            printf("|\n");
+
+            printf("             ");
+            for (int j = 0; j < FRAME_WIDTH + 2; j++) printf("-");
+            printf("\n");
+        }
+        else
+        {
+            printf("\n");
+            printf("                %s\n", text);
+            printf("\n");
+        }
+
+        printf("\n");
+    }
 }
 
 int input(const char* menu_list[], int amount)

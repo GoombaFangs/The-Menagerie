@@ -143,7 +143,6 @@
     <ClCompile Include="planet_data_base.c" />
     <ClCompile Include="planet_manager.c" />
     <ClCompile Include="print_alien_card.c" />
-    <ClCompile Include="print_menu.c" />
     <ClCompile Include="rocky.c" />
     <ClCompile Include="time.c" />
     <ClCompile Include="core_visuals.c" />
@@ -168,7 +167,6 @@
     <ClInclude Include="planet_manager.h" />
     <ClInclude Include="planet_struct.h" />
     <ClInclude Include="print_alien_card.h" />
-    <ClInclude Include="print_menu.h" />
     <ClInclude Include="rocky.h" />
     <ClInclude Include="species.h" />
     <ClInclude Include="time.h" />

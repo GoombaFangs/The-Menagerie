@@ -2,10 +2,11 @@
 
 const char* menu_list[] =
 {
-    "Map",
-    "Zoo",
+    "   Map   ",
+    "   Zoo   ",
     "Inventory",
-    "Exit"
+    "  Exit   ",
+    "  Doag   "
 };
 
 const int menu_num = sizeof(menu_list) / sizeof(menu_list[0]);

@@ -3,7 +3,8 @@
 
 #include <stdio.h>
 #include <time.h>
+#include <conio.h>
 
-void hold_seconds(double second);
+int hold_seconds(double second);
 
 #endif

@@ -5,9 +5,13 @@
 #include "alien_visuals.h"
 
 int on_card_start(const Alien* alien, int index);
-int on_card1(const Alien* alien, int index);
-int on_card2(const Alien* alien, int index);
-int on_card3(const Alien* alien, int index);
-int on_card4(const Alien* alien, int index);
+int card1(const Alien* alien, int index);
+int card2(const Alien* alien, int index);
+int card3(const Alien* alien, int index);
+int card4(const Alien* alien, int index);
+void card1_details(const Alien* alien, int index);
+void on_card2_details(const Alien* alien, int index);
+void on_card3_details(const Alien* alien, int index);
+void on_card4_details(const Alien* alien, int index);
 
 #endif 

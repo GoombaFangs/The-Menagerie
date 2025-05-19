@@ -2,10 +2,19 @@
 
 void get_aliens(Alien* aliens , int count)
 {
+    
     int keyboard_input;
     int default_option = on_card_start(aliens, count);
-	int lines_to_scroll = 10;
     scroll_to_top();
+    if (hold_seconds(1))
+    {
+        if (default_option == 1)
+        {
+            clear_console();
+            card1_details(aliens, count);
+            scroll_to_top();
+        }
+    }
     while (1)
     {
         keyboard_input = _getch();
@@ -19,36 +28,36 @@ void get_aliens(Alien* aliens , int count)
                 if (default_option == 4)
                 {
                     clear_console();
-                    default_option = on_card3(aliens, count);
+                    default_option = card3(aliens, count);
                 }
                 else if (default_option == 3)
                 {
                     clear_console();
-                    default_option = on_card2(aliens, count);
+                    default_option = card2(aliens, count);
                 }
                 else if (default_option == 2)
                 {
                     clear_console();
-                    default_option = on_card1(aliens, count);
+                    default_option = card1(aliens, count);
                 }
                 scroll_to_top();
-                break;
+				break;
 
             case 80://Down arrow
                 if (default_option == 1)
                 {
                     clear_console();
-                    default_option = on_card2(aliens, count);
+                    default_option = card2(aliens, count);
                 }
                 else if (default_option == 2)
                 {
                     clear_console();
-                    default_option = on_card3(aliens, count);
+                    default_option = card3(aliens, count);
                 }
                 else if (default_option == 3)
                 {
                     clear_console();
-                    default_option = on_card4(aliens, count); 
+                    default_option = card4(aliens, count); 
                 }
                 scroll_to_top();
                 break;
@@ -76,8 +85,18 @@ void get_aliens(Alien* aliens , int count)
                 break;
             }
         }
+
+        if (hold_seconds(1))
+        {
+            if (default_option == 1)
+            {
+                clear_console();
+                card1_details(aliens, count);
+                scroll_to_top();
+            }
+        }
     }
-    //free(aliens);
+    free(aliens);
 }
 
 int menu()

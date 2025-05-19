@@ -8,12 +8,9 @@ void get_aliens(Alien* aliens , int count)
     scroll_to_top();
     if (hold_seconds(1))
     {
-        if (default_option == 1)
-        {
-            clear_console();
-            card1_details(aliens, count);
-            scroll_to_top();
-        }
+        clear_console();
+        card1_details(aliens, count);
+        scroll_to_top();
     }
     while (1)
     {
@@ -92,6 +89,27 @@ void get_aliens(Alien* aliens , int count)
             {
                 clear_console();
                 card1_details(aliens, count);
+                scroll_to_top();
+            }
+
+            if (default_option == 2)
+            {
+                clear_console();
+                card2_details(aliens, count);
+                scroll_to_top();
+            }
+
+            if (default_option == 3)
+            {
+                clear_console();
+                card3_details(aliens, count);
+                scroll_to_top();
+            }
+
+            if (default_option == 4)
+            {
+                clear_console();
+                card4_details(aliens, count);
                 scroll_to_top();
             }
         }

@@ -10,8 +10,8 @@ int card2(const Alien* alien, int index);
 int card3(const Alien* alien, int index);
 int card4(const Alien* alien, int index);
 void card1_details(const Alien* alien, int index);
-void on_card2_details(const Alien* alien, int index);
-void on_card3_details(const Alien* alien, int index);
-void on_card4_details(const Alien* alien, int index);
+void card2_details(const Alien* alien, int index);
+void card3_details(const Alien* alien, int index);
+void card4_details(const Alien* alien, int index);
 
 #endif 

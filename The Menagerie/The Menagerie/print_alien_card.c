@@ -37,7 +37,7 @@ int on_card1(const Alien* alien, int index)
 
 int on_card2(const Alien* alien, int index)
 {
-	for (int i = 0; i < index; i++)
+	for (int i = 1; i < index; i++)
 	{
 		if (i == 1)
 		{
@@ -54,7 +54,7 @@ int on_card2(const Alien* alien, int index)
 
 int on_card3(const Alien* alien, int index)
 {
-	for (int i = 0; i < index; i++)
+	for (int i = 2; i < index; i++)
 	{
 		if (i == 2)
 		{
@@ -71,7 +71,7 @@ int on_card3(const Alien* alien, int index)
 
 int on_card4(const Alien* alien, int index)
 {
-	for (int i = 0; i < index; i++)
+	for (int i = 3; i < index; i++)
 	{
 		if (i == 3)
 		{

@@ -4,7 +4,7 @@ void get_aliens(Alien* aliens , int count)
 {
     int keyboard_input;
     int default_option = on_card_start(aliens, count);
-	int lines_to_scroll = 5;
+	int lines_to_scroll = 10;
     scroll_to_top();
     while (1)
     {
@@ -18,42 +18,39 @@ void get_aliens(Alien* aliens , int count)
             case 72://Up arrow
                 if (default_option == 4)
                 {
-					clear_console();
-                    scroll_to_up(lines_to_scroll);
+                    clear_console();
                     default_option = on_card3(aliens, count);
                 }
                 else if (default_option == 3)
                 {
                     clear_console();
-                    scroll_to_up(lines_to_scroll);
                     default_option = on_card2(aliens, count);
                 }
                 else if (default_option == 2)
                 {
                     clear_console();
                     default_option = on_card1(aliens, count);
-                    scroll_to_top();
                 }
+                scroll_to_top();
                 break;
+
             case 80://Down arrow
                 if (default_option == 1)
                 {
                     clear_console();
-                    scroll_to_down(lines_to_scroll);
                     default_option = on_card2(aliens, count);
                 }
                 else if (default_option == 2)
                 {
                     clear_console();
-                    scroll_to_down(lines_to_scroll);
                     default_option = on_card3(aliens, count);
                 }
                 else if (default_option == 3)
                 {
                     clear_console();
-                    scroll_to_down(lines_to_scroll);
-                    default_option = on_card4(aliens, count);
+                    default_option = on_card4(aliens, count); 
                 }
+                scroll_to_top();
                 break;
             }
         }

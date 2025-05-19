@@ -11,8 +11,6 @@
 
 void clear_console();
 void printg(double duration, const char* format, ...);
-COORD  scroll_to_top();
-void scroll_to_up(int rows);
-void scroll_to_down(int rows);
+void  scroll_to_top();
 
 #endif

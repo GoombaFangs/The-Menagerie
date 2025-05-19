@@ -5,6 +5,6 @@
 #include "menu_option.h"
 
 void print_options_menu(int selected, const char* menu_list[], int amount);
-int input(const char* menu_list[], int amount);
+int input(int style, const char* menu_list[], int amount);
 
 #endif 

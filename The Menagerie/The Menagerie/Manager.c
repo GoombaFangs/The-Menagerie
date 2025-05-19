@@ -2,9 +2,9 @@
 
 void get_aliens(alien* aliens , int count)
 {
+    double duration = 0.2;
     int keyboard_input;
     int default_option = on_card_start(aliens, count);
-	double duration = 0.2;
     scroll_to_line(0);
     if (hold_seconds(duration))
     {
@@ -131,7 +131,7 @@ int open_map()
         terrain_ptrs[i] = planets[i].terrain;
     }
 
-    int selected = input(terrain_ptrs, num_planets);
+    int selected = input(1, terrain_ptrs, num_planets);
 
     scroll_to_line(0);
     free(terrain_ptrs);
@@ -141,7 +141,7 @@ int open_map()
 
 int menu()
 {
-    int selected = input(menu_list, menu_num);
+    int selected = input(1, menu_list, menu_num);
 	return selected;    
 }
 

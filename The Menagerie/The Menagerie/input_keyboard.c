@@ -2,7 +2,7 @@
 
 #define FRAME_WIDTH 13
 
-void print_options_menu(int selected, const char* menu_list[], int amount)
+void print_style_1(int selected, const char* menu_list[], int amount)
 {
     reset_console();
     printf("    Press Up or Down arrow and Enter to confirm:\n\n\n");
@@ -54,11 +54,16 @@ void print_options_menu(int selected, const char* menu_list[], int amount)
 	}  
 }
 
-int input(const char* menu_list[], int amount)
+int input(int style, const char* menu_list[], int amount)
 {
     int default_option = 0;
 
-    print_options_menu(default_option, menu_list, amount);
+    switch(style)
+    {
+	case 1: 
+        print_style_1(default_option, menu_list, amount);
+		break;
+    }
 
     while (1)
     {
@@ -88,6 +93,12 @@ int input(const char* menu_list[], int amount)
             reset_console();
             return default_option;
         }
-        print_options_menu(default_option, menu_list, amount); 
+
+        switch (style)
+        {
+        case 1:
+            print_style_1(default_option, menu_list, amount);
+            break;
+        }
     }
 }

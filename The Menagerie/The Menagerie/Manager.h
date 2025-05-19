@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 #include "input_keyboard.h"
+#include "menu_option.h"
 #include "alien.h"
 #include "visuals.h"
 #include "planet.h"

@@ -120,6 +120,7 @@ void get_aliens(alien* aliens , int count)
 int menu()
 {
     int selected = input(menu_list, 4);
+	return selected;    
 }
 
 void app_start()

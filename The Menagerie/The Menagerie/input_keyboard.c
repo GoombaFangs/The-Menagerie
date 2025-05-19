@@ -27,7 +27,6 @@ int input(const char* menu_list[], int amount)
         if (keyboard_input == 0 || keyboard_input == 224)
         {
             keyboard_input = _getch();
-
             switch (keyboard_input)
             {
             case 72: // Up
@@ -39,13 +38,13 @@ int input(const char* menu_list[], int amount)
                 if (default_option < amount - 1)
                     default_option++;
                 break;
-
-            case 13: // Enter
-                clear_console();
-                return default_option;
             }
-
-            print_options_menu(default_option, menu_list, amount);
         }
+        else if (keyboard_input == 13) // Enter
+        {
+            clear_console();
+            return default_option;
+        }
+            print_options_menu(default_option, menu_list, amount);
     }
 }

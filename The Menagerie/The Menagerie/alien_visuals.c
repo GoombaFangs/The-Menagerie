@@ -3,9 +3,8 @@
 
 void print_alien_art(const Alien* alien, int index)
 {
-    printf(" Alien %d \n", index + 1);
     print_species_art(alien->species);
-    printf("species: %s\n\n", alien->species);
+    printf("\n\n\n\n                   %s\n", alien->species);
 }
 
 void print_alien_card(const Alien* alien, int index)

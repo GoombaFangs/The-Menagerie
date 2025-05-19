@@ -2,9 +2,18 @@
 
 int on_card_start(const Alien* alien, int index)
 {
+	
 	for (int i = 0; i < index; i++)
 	{
+		if (i == 0)
+		{
+			printf("+--------- Alien %d ---------+\n\n\n\n", i + 1);
+		}		
 		print_alien_art(&alien[i], i);
+		if(i == 0)
+		{
+			printf("+----------------------------+\n\n\n\n");
+		}	
 	}
 	return 1;
 }

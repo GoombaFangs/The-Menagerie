@@ -135,6 +135,7 @@
     <ClCompile Include="flying.c" />
     <ClCompile Include="gas_based.c" />
     <ClCompile Include="glowing.c" />
+    <ClCompile Include="keyboard_input.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="manager.c" />
     <ClCompile Include="alien_visuals.c" />

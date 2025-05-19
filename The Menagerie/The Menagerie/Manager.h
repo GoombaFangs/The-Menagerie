@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 
+#include "input_keyboard.h"
 #include "alien.h"
 #include "visuals.h"
 

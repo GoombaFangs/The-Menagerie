@@ -25,6 +25,18 @@
     <Filter Include="Header Files\Alien\Species">
       <UniqueIdentifier>{f1f5139c-ff5b-46ef-a4d8-1f91196ba5be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Planet">
+      <UniqueIdentifier>{33589a8d-bb0d-4b35-aaee-275dc43d351c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Visuals">
+      <UniqueIdentifier>{70105aef-0bdc-4c9f-9bab-a573e659fccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Visuals">
+      <UniqueIdentifier>{438b106a-9e5f-46bf-8dbf-9d5c7f418478}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Planet">
+      <UniqueIdentifier>{434368aa-fdef-4c5f-b7e3-18b7b319bff9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -63,16 +75,28 @@
     <ClCompile Include="gas_based.c">
       <Filter>Source Files\Alien\Species</Filter>
     </ClCompile>
-    <ClCompile Include="visuals.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="time.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="core_visuals.c">
+      <Filter>Source Files\Visuals</Filter>
+    </ClCompile>
     <ClCompile Include="print_menu.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Visuals</Filter>
     </ClCompile>
     <ClCompile Include="print_alien_card.c">
+      <Filter>Source Files\Visuals</Filter>
+    </ClCompile>
+    <ClCompile Include="planet_data_base.c">
+      <Filter>Source Files\Planet</Filter>
+    </ClCompile>
+    <ClCompile Include="planet_manager.c">
+      <Filter>Source Files\Planet</Filter>
+    </ClCompile>
+    <ClCompile Include="input_keyboard.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu_option.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,19 +137,43 @@
     <ClInclude Include="gas_based.h">
       <Filter>Header Files\Alien\Species</Filter>
     </ClInclude>
-    <ClInclude Include="visuals.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="time.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="print_menu.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="planet.h">
+      <Filter>Header Files\Planet</Filter>
     </ClInclude>
-    <ClInclude Include="alien_species.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="planet_data_base.h">
+      <Filter>Header Files\Planet</Filter>
+    </ClInclude>
+    <ClInclude Include="planet_manager.h">
+      <Filter>Header Files\Planet</Filter>
+    </ClInclude>
+    <ClInclude Include="planet_struct.h">
+      <Filter>Header Files\Planet</Filter>
+    </ClInclude>
+    <ClInclude Include="species.h">
+      <Filter>Header Files\Alien\Species</Filter>
+    </ClInclude>
+    <ClInclude Include="alien_struct.h">
+      <Filter>Header Files\Alien</Filter>
+    </ClInclude>
+    <ClInclude Include="core_visuals.h">
+      <Filter>Header Files\Visuals</Filter>
     </ClInclude>
     <ClInclude Include="print_alien_card.h">
+      <Filter>Header Files\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="print_menu.h">
+      <Filter>Header Files\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="visuals.h">
+      <Filter>Header Files\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="input_keyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="menu_option.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -119,70 +119,7 @@ void get_aliens(alien* aliens , int count)
 
 int menu()
 {
-    int keyboard_input;
-    int default_option = on_start();
-    while (1)
-    {
-        keyboard_input = _getch();
-        if (keyboard_input == 0 || keyboard_input == 224)
-        {
-            keyboard_input = _getch();
-
-            switch (keyboard_input)
-            {
-            case 72://Up arrow
-                if (default_option == 4)
-                {
-                    default_option = on_inventory();
-                }
-                else if (default_option == 3)
-                {
-                    default_option = on_zoo();
-                }
-                else if (default_option == 2)
-                {
-                    default_option = on_map();
-                }
-                break;
-            case 80://Down arrow
-                if (default_option == 1)
-                {
-                    default_option = on_zoo();
-                }
-                else if (default_option == 2)
-                {
-                    default_option = on_inventory();
-                }
-				else if (default_option == 3)
-				{
-					default_option = on_exit();
-				}
-                break;
-            }
-        }
-		else if (keyboard_input == 13)// Enter
-		{
-			switch (default_option)
-			{
-			case 1://Map
-				clear_console();
-				return 0;
-				break;
-			case 2://Zoo
-				clear_console();
-				return 1;
-				break;
-			case 3://Inventory
-				clear_console();
-				return 2;
-				break;
-			case 4://Exit
-				clear_console();
-				return 3;
-				break;
-			}
-		}
-    }
+    int selected = input(menu_list, 4);
 }
 
 void app_start()

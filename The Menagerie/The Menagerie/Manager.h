@@ -12,6 +12,7 @@
 //visuals
 #include "visuals.h"
 #include "print_menu.h"
+#include "print_alien_card.h"
 
 void get_aliens(int count);
 int menu();

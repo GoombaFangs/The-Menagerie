@@ -69,6 +69,12 @@
     <ClCompile Include="time.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="print_menu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="print_alien_card.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="manager.h">
@@ -111,6 +117,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="time.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="print_menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="alien_species.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="print_alien_card.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

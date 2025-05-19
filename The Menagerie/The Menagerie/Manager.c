@@ -3,12 +3,71 @@
 void get_aliens(int count)
 {
     Alien* aliens = generate_aliens(count);
-    print_alien_art(aliens, count);
-
-
-    for (int i = 0; i < count; i++)
+    print_alien_art(&aliens[0], 0);
+    print_alien_card(&aliens[0], 0);
+    int keyboard_input;
+    int default_option = on_card_start();
+    while (1)
     {
-        print_alien_card(&aliens[i], i);
+        keyboard_input = _getch();
+        if (keyboard_input == 0 || keyboard_input == 224)
+        {
+            keyboard_input = _getch();
+
+            switch (keyboard_input)
+            {
+            case 72://Up arrow
+                if (default_option == 4)
+                {
+                    default_option = on_card3();
+                }
+                else if (default_option == 3)
+                {
+                    default_option = on_card2();
+                }
+                else if (default_option == 2)
+                {
+                    default_option = on_card1();
+                }
+                break;
+            case 80://Down arrow
+                if (default_option == 1)
+                {
+                    default_option = on_card2();
+                }
+                else if (default_option == 2)
+                {
+                    default_option = on_card3();
+                }
+                else if (default_option == 3)
+                {
+                    default_option = on_card4();
+                }
+                break;
+            }
+        }
+        else if (keyboard_input == 13)// Enter
+        {
+            switch (default_option)
+            {
+            case 1://Map
+                clear_console();
+                return 0;
+                break;
+            case 2://Zoo
+                clear_console();
+                return 1;
+                break;
+            case 3://Inventory
+                clear_console();
+                return 2;
+                break;
+            case 4://Exit
+                clear_console();
+                return 3;
+                break;
+            }
+        }
     }
     free(aliens);
 }
@@ -91,12 +150,11 @@ void app_start()
        switch (do_next)
        {
        case 0: //map
-		   get_aliens(5);
            //open map
            break;
 
        case 1: //zoo
-           get_aliens(5);
+           get_aliens(4);
            do_next = menu();
            break;
 

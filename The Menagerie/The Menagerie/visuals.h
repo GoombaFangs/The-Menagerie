@@ -6,9 +6,13 @@
 #include <ctype.h>
 #include <stdarg.h>
 #include <conio.h>
+#include <windows.h>
 #include "time.h"
 
 void clear_console();
 void printg(double duration, const char* format, ...);
+COORD  scroll_to_top();
+void scroll_to_up(int rows);
+void scroll_to_down(int rows);
 
 #endif

@@ -25,8 +25,7 @@ void print_species_art(const char* species)
     if (strcmp(species, "flying") == 0) 
     {
         variant = rand() % 10;
-        print_flying(variant);
-           
+        print_flying(variant);    
     }
     else if (strcmp(species, "aquatic") == 0)
     {

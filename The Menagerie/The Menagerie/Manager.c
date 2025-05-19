@@ -17,28 +17,34 @@ void get_aliens(int count)
             case 72://Up arrow
                 if (default_option == 4)
                 {
+					clear_console();
                     default_option = on_card3(&aliens, count);
                 }
                 else if (default_option == 3)
                 {
+                    clear_console();
                     default_option = on_card2(&aliens, count);
                 }
                 else if (default_option == 2)
                 {
+                    clear_console();
                     default_option = on_card1(&aliens, count);
                 }
                 break;
             case 80://Down arrow
                 if (default_option == 1)
                 {
+                    clear_console();
                     default_option = on_card2(&aliens, count);
                 }
                 else if (default_option == 2)
                 {
+                    clear_console();
                     default_option = on_card3(&aliens, count);
                 }
                 else if (default_option == 3)
                 {
+                    clear_console();
                     default_option = on_card4(&aliens, count);
                 }
                 break;

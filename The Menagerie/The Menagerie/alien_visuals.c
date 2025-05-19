@@ -7,16 +7,6 @@ void print_alien_art(const Alien* alien, int index)
     printf("\n\n\n\n                   %s\n", alien->species);
 }
 
-void print_alien_card(const Alien* alien, int index)
-{
-    printf("| Species  : %-15s |\n", alien->species);
-    printf("| Sex      : %-15c |\n", alien->sex);
-    printf("| Age      : %-15d |\n", alien->age);
-    printf("| Size     : %-15s |\n", alien->size);
-    printf("| Diet     : %-15s |\n", alien->diet);
-    printf("| Nickname : %-15s |\n", alien->nickname[0] ? alien->nickname : "(none)");
-}
-
 void print_species_art(const char* species) 
 {
     if (strcmp(species, "flying") == 0) 

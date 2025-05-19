@@ -95,11 +95,11 @@ void card1_details(const Alien* alien, int index)
 			printf("+--------- Alien %d ---------+", i + 1);
 			printf("       +----------------------------+\n");
 			printf("                                    | Species  : %-15s |\n", alien[i].species);
-			printf("                                    | Sex      : %-15c |\n", alien->sex);
-			printf("                                    | Age      : %-15d |\n", alien->age);
-			printf("                                    | Size     : %-15s |\n", alien->size);
-			printf("                                    | Diet     : %-15s |\n", alien->diet);
-			printf("                                    | Nickname : %-15s |\n", alien->nickname[0] ? alien->nickname : "(none)");
+			printf("                                    | Sex      : %-15c |\n", alien[i].sex);
+			printf("                                    | Age      : %-15d |\n", alien[i].age);
+			printf("                                    | Size     : %-15s |\n", alien[i].size);
+			printf("                                    | Diet     : %-15s |\n", alien[i].diet);
+			printf("                                    | Nickname : %-15s |\n", alien[i].nickname[0] ? alien->nickname : "(none)");
 			printf("                                    +----------------------------+\n");
 		}
 		print_alien_art(&alien[i], i);
@@ -119,11 +119,11 @@ void card2_details(const Alien* alien, int index)
 			printf("+--------- Alien %d ---------+", i + 1);
 			printf("       +----------------------------+\n");
 			printf("                                    | Species  : %-15s |\n", alien[i].species);
-			printf("                                    | Sex      : %-15c |\n", alien->sex);
-			printf("                                    | Age      : %-15d |\n", alien->age);
-			printf("                                    | Size     : %-15s |\n", alien->size);
-			printf("                                    | Diet     : %-15s |\n", alien->diet);
-			printf("                                    | Nickname : %-15s |\n", alien->nickname[0] ? alien->nickname : "(none)");
+			printf("                                    | Sex      : %-15c |\n", alien[i].sex);
+			printf("                                    | Age      : %-15d |\n", alien[i].age);
+			printf("                                    | Size     : %-15s |\n", alien[i].size);
+			printf("                                    | Diet     : %-15s |\n", alien[i].diet);
+			printf("                                    | Nickname : %-15s |\n", alien[i].nickname[0] ? alien->nickname : "(none)");
 			printf("                                    +----------------------------+\n");
 		}
 		print_alien_art(&alien[i], i);
@@ -143,11 +143,11 @@ void card3_details(const Alien* alien, int index)
 			printf("+--------- Alien %d ---------+", i + 1);
 			printf("       +----------------------------+\n");
 			printf("                                    | Species  : %-15s |\n", alien[i].species);
-			printf("                                    | Sex      : %-15c |\n", alien->sex);
-			printf("                                    | Age      : %-15d |\n", alien->age);
-			printf("                                    | Size     : %-15s |\n", alien->size);
-			printf("                                    | Diet     : %-15s |\n", alien->diet);
-			printf("                                    | Nickname : %-15s |\n", alien->nickname[0] ? alien->nickname : "(none)");
+			printf("                                    | Sex      : %-15c |\n", alien[i].sex);
+			printf("                                    | Age      : %-15d |\n", alien[i].age);
+			printf("                                    | Size     : %-15s |\n", alien[i].size);
+			printf("                                    | Diet     : %-15s |\n", alien[i].diet);
+			printf("                                    | Nickname : %-15s |\n", alien[i].nickname[0] ? alien->nickname : "(none)");
 			printf("                                    +----------------------------+\n");
 		}
 		print_alien_art(&alien[i], i);
@@ -167,11 +167,11 @@ void card4_details(const Alien* alien, int index)
 			printf("+--------- Alien %d ---------+", i + 1);
 			printf("       +----------------------------+\n");
 			printf("                                    | Species  : %-15s |\n", alien[i].species);
-			printf("                                    | Sex      : %-15c |\n", alien->sex);
-			printf("                                    | Age      : %-15d |\n", alien->age);
-			printf("                                    | Size     : %-15s |\n", alien->size);
-			printf("                                    | Diet     : %-15s |\n", alien->diet);
-			printf("                                    | Nickname : %-15s |\n", alien->nickname[0] ? alien->nickname : "(none)");
+			printf("                                    | Sex      : %-15c |\n", alien[i].sex);
+			printf("                                    | Age      : %-15d |\n", alien[i].age);
+			printf("                                    | Size     : %-15s |\n", alien[i].size);
+			printf("                                    | Diet     : %-15s |\n", alien[i].diet);
+			printf("                                    | Nickname : %-15s |\n", alien[i].nickname[0] ? alien->nickname : "(none)");
 			printf("                                    +----------------------------+\n");
 		}
 		print_alien_art(&alien[i], i);

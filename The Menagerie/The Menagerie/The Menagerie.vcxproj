@@ -157,6 +157,8 @@
     <ClInclude Include="glowing.h" />
     <ClInclude Include="manager.h" />
     <ClInclude Include="alien_visuals.h" />
+    <ClInclude Include="planet.h" />
+    <ClInclude Include="planet_struct.h" />
     <ClInclude Include="print_alien_card.h" />
     <ClInclude Include="print_menu.h" />
     <ClInclude Include="rocky.h" />

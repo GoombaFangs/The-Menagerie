@@ -4,7 +4,7 @@ void get_aliens(alien* aliens , int count)
 {
     int keyboard_input;
     int default_option = on_card_start(aliens, count);
-	double duration = 0.7;
+	double duration = 0.2;
     scroll_to_top();
     if (hold_seconds(duration))
     {

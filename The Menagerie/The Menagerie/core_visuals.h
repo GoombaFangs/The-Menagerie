@@ -9,8 +9,8 @@
 #include <windows.h>
 #include "time.h"
 
-void clear_console();
+void reset_console();
 void printg(double duration, const char* format, ...);
-void  scroll_to_top();
+void scroll_to_line(int position);
 
 #endif

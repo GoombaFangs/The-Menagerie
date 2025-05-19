@@ -1,6 +1,6 @@
 #include "core_visuals.h"
 
-void clear_console()
+void reset_console()
 {
 #ifdef _WIN32
     system("cls");
@@ -25,7 +25,7 @@ void printg(double duration, const char* format, ...)
     }
 }
 
-void scroll_to_top() 
+void scroll_to_line(int position)
 {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -36,7 +36,6 @@ void scroll_to_top()
         prev_pos = csbi.dwCursorPosition;
     }
 
-    COORD top = { 0, 0 };
+    COORD top = { 0, position };
     SetConsoleCursorPosition(hConsole, top);
-
 }

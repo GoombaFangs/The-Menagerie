@@ -4,8 +4,7 @@
 
 void print_options_menu(int selected, const char* menu_list[], int amount)
 {
-    clear_console();
-
+    reset_console();
     printf("    Press Up or Down arrow and Enter to confirm:\n\n\n");
 
     for (int i = 0; i < amount; i++)
@@ -39,8 +38,11 @@ void print_options_menu(int selected, const char* menu_list[], int amount)
             printf("                %s\n", text);
             printf("\n");
         }
-
         printf("\n");
+    }
+    if (amount > 5)
+    {
+        scroll_to_line(0);
     }
 }
 
@@ -60,20 +62,35 @@ int input(const char* menu_list[], int amount)
             {
             case 72: // Up
                 if (default_option > 0)
+                {
                     default_option--;
+                }
                 break;
 
             case 80: // Down
                 if (default_option < amount - 1)
+                {
                     default_option++;
+                }
                 break;
             }
         }
         else if (keyboard_input == 13) // Enter
         {
-            clear_console();
+            reset_console();
             return default_option;
         }
+        if (default_option > 5)
+        {
+            scroll_to_line(30);
             print_options_menu(default_option, menu_list, amount);
+        }
+		else
+		{
+			scroll_to_line(0);
+			print_options_menu(default_option, menu_list, amount);
+		}
+        
+       
     }
 }

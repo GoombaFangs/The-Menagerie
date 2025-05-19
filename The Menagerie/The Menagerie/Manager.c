@@ -5,12 +5,12 @@ void get_aliens(alien* aliens , int count)
     int keyboard_input;
     int default_option = on_card_start(aliens, count);
 	double duration = 0.2;
-    scroll_to_top();
+    scroll_to_line(0);
     if (hold_seconds(duration))
     {
-        clear_console();
+        reset_console();
         card1_details(aliens, count);
-        scroll_to_top();
+        scroll_to_line(0);
     }
     while (1)
     {
@@ -24,39 +24,39 @@ void get_aliens(alien* aliens , int count)
             case 72://Up arrow
                 if (default_option == 4)
                 {
-                    clear_console();
+                    reset_console();
                     default_option = card3(aliens, count);
                 }
                 else if (default_option == 3)
                 {
-                    clear_console();
+                    reset_console();
                     default_option = card2(aliens, count);
                 }
                 else if (default_option == 2)
                 {
-                    clear_console();
+                    reset_console();
                     default_option = card1(aliens, count);
                 }
-                scroll_to_top();
+                scroll_to_line(0);
 				break;
 
             case 80://Down arrow
                 if (default_option == 1)
                 {
-                    clear_console();
+                    reset_console();
                     default_option = card2(aliens, count);
                 }
                 else if (default_option == 2)
                 {
-                    clear_console();
+                    reset_console();
                     default_option = card3(aliens, count);
                 }
                 else if (default_option == 3)
                 {
-                    clear_console();
+                    reset_console();
                     default_option = card4(aliens, count); 
                 }
-                scroll_to_top();
+                scroll_to_line(0);
                 break;
             }
         }
@@ -65,19 +65,19 @@ void get_aliens(alien* aliens , int count)
             switch (default_option)
             {
 			case 1://card1
-                clear_console();
+                reset_console();
                 return 0;
                 break;
 			case 2://card2
-                clear_console();
+                reset_console();
                 return 1;
                 break;
 			case 3://card3
-                clear_console();
+                reset_console();
                 return 2;
                 break;
 			case 4://card4
-                clear_console();
+                reset_console();
                 return 3;
                 break;
             }
@@ -87,34 +87,41 @@ void get_aliens(alien* aliens , int count)
         {
             if (default_option == 1)
             {
-                clear_console();
+                reset_console();
                 card1_details(aliens, count);
-                scroll_to_top();
+                scroll_to_line(0);
             }
 
             if (default_option == 2)
             {
-                clear_console();
+                reset_console();
                 card2_details(aliens, count);
-                scroll_to_top();
+                scroll_to_line(0);
             }
 
             if (default_option == 3)
             {
-                clear_console();
+                reset_console();
                 card3_details(aliens, count);
-                scroll_to_top();
+                scroll_to_line(0);
             }
 
             if (default_option == 4)
             {
-                clear_console();
+                reset_console();
                 card4_details(aliens, count);
-                scroll_to_top();
+                scroll_to_line(0);
             }
         }
     }
     free(aliens);
+}
+
+int open_map()
+{
+    int selected = input(terrain_list, num_terrain);
+	scroll_to_line(0);
+    return selected;
 }
 
 int menu()
@@ -135,7 +142,7 @@ void app_start()
        switch (do_next)
        {
        case 0: //map
-           //open map
+           open_map();
            break;
 
        case 1: //zoo

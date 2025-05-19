@@ -29,13 +29,25 @@ void scroll_to_line(int position)
 {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_SCREEN_BUFFER_INFO csbi;
-    COORD prev_pos = { 0, 0 };
 
-    if (GetConsoleScreenBufferInfo(hConsole, &csbi)) 
+    if (GetConsoleScreenBufferInfo(hConsole, &csbi))
     {
-        prev_pos = csbi.dwCursorPosition;
-    }
+        SMALL_RECT window = csbi.srWindow;
+        SHORT height = window.Bottom - window.Top;
 
-    COORD top = { 0, position };
-    SetConsoleCursorPosition(hConsole, top);
+        SHORT max_top = csbi.dwSize.Y - height - 1;
+        if (position > max_top)
+            position = max_top;
+        if (position < 0)
+            position = 0;
+
+        SMALL_RECT new_window = {
+            .Left = window.Left,
+            .Top = position,
+            .Right = window.Right,
+            .Bottom = position + height
+        };
+
+        SetConsoleWindowInfo(hConsole, TRUE, &new_window);
+    }
 }

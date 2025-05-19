@@ -40,10 +40,18 @@ void print_options_menu(int selected, const char* menu_list[], int amount)
         }
         printf("\n");
     }
-    if (amount > 5)
+
+    if (amount > 6)
     {
-        scroll_to_line(0);
-    }
+		if (selected > 5)
+		{
+			scroll_to_line(17);
+		}
+		else
+		{
+			scroll_to_line(0);
+		}
+	}  
 }
 
 int input(const char* menu_list[], int amount)
@@ -80,17 +88,6 @@ int input(const char* menu_list[], int amount)
             reset_console();
             return default_option;
         }
-        if (default_option > 5)
-        {
-            scroll_to_line(30);
-            print_options_menu(default_option, menu_list, amount);
-        }
-		else
-		{
-			scroll_to_line(0);
-			print_options_menu(default_option, menu_list, amount);
-		}
-        
-       
+        print_options_menu(default_option, menu_list, amount); 
     }
 }

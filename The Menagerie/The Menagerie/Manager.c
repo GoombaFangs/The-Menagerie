@@ -3,7 +3,6 @@
 void get_aliens(int count)
 {
     Alien* aliens = generate_aliens(count);
-    print_alien_art(&aliens[0], 0);
     print_alien_card(&aliens[0], 0);
     int keyboard_input;
     int default_option = on_card_start();

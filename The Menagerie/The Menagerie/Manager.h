@@ -14,7 +14,7 @@
 #include "print_menu.h"
 #include "print_alien_card.h"
 
-void get_aliens(int count);
+void get_aliens(Alien* aliens ,int count);
 int menu();
 void app_start();
 

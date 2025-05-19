@@ -1,8 +1,7 @@
 #include "manager.h"
 
-void get_aliens(int count)
+void get_aliens(Alien* aliens , int count)
 {
-    Alien* aliens = generate_aliens(count);
     int keyboard_input;
     int default_option = on_card_start(aliens, count);
     while (1)
@@ -18,34 +17,34 @@ void get_aliens(int count)
                 if (default_option == 4)
                 {
 					clear_console();
-                    default_option = on_card3(&aliens, count);
+                    default_option = on_card3(aliens, count);
                 }
                 else if (default_option == 3)
                 {
                     clear_console();
-                    default_option = on_card2(&aliens, count);
+                    default_option = on_card2(aliens, count);
                 }
                 else if (default_option == 2)
                 {
                     clear_console();
-                    default_option = on_card1(&aliens, count);
+                    default_option = on_card1(aliens, count);
                 }
                 break;
             case 80://Down arrow
                 if (default_option == 1)
                 {
                     clear_console();
-                    default_option = on_card2(&aliens, count);
+                    default_option = on_card2(aliens, count);
                 }
                 else if (default_option == 2)
                 {
                     clear_console();
-                    default_option = on_card3(&aliens, count);
+                    default_option = on_card3(aliens, count);
                 }
                 else if (default_option == 3)
                 {
                     clear_console();
-                    default_option = on_card4(&aliens, count);
+                    default_option = on_card4(aliens, count);
                 }
                 break;
             }
@@ -54,26 +53,26 @@ void get_aliens(int count)
         {
             switch (default_option)
             {
-            case 1://Map
+			case 1://card1
                 clear_console();
                 return 0;
                 break;
-            case 2://Zoo
+			case 2://card2
                 clear_console();
                 return 1;
                 break;
-            case 3://Inventory
+			case 3://card3
                 clear_console();
                 return 2;
                 break;
-            case 4://Exit
+			case 4://card4
                 clear_console();
                 return 3;
                 break;
             }
         }
     }
-    free(aliens);
+    //free(aliens);
 }
 
 int menu()
@@ -149,6 +148,8 @@ void app_start()
    srand((unsigned int)time(NULL));
    int running = 1;
    int do_next = menu();
+   int number_of_aliens = 4;
+   Alien* aliens = generate_aliens(number_of_aliens);
    while (running == 1)
    {
        switch (do_next)
@@ -158,7 +159,8 @@ void app_start()
            break;
 
        case 1: //zoo
-           get_aliens(4);
+          
+           get_aliens(aliens, number_of_aliens);
            do_next = menu();
            break;
 

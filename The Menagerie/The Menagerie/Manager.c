@@ -2,7 +2,6 @@
 
 void get_aliens(alien* aliens , int count)
 {
-    
     int keyboard_input;
     int default_option = on_card_start(aliens, count);
 	double duration = 0.7;
@@ -202,7 +201,6 @@ void app_start()
            break;
 
        case 1: //zoo
-          
            get_aliens(aliens, number_of_aliens);
            do_next = menu();
            break;

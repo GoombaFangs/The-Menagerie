@@ -3,11 +3,8 @@
 void get_aliens(int count)
 {
     Alien* aliens = generate_aliens(count);
+    print_alien_art(aliens, count);
 
-    for (int i = 0; i < count; i++)
-    {
-        print_alien_art(&aliens[i], i);
-    }
 
     for (int i = 0; i < count; i++)
     {
@@ -99,7 +96,8 @@ void app_start()
            break;
 
        case 1: //zoo
-           //open zoo
+           get_aliens(5);
+           do_next = menu();
            break;
 
        case 2: //inventory

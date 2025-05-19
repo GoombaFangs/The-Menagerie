@@ -27,7 +27,6 @@ planet* generate_planet(int count)
 		{
 			printf("Planet %d does not have life.\n", i + 1);
 		}
-
     }
     return planets;
 }

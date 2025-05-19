@@ -1,6 +1,6 @@
 #include "manager.h"
 
-void get_aliens(Alien* aliens , int count)
+void get_aliens(alien* aliens , int count)
 {
     
     int keyboard_input;
@@ -192,7 +192,7 @@ void app_start()
    int running = 1;
    int do_next = menu();
    int number_of_aliens = 4;
-   Alien* aliens = generate_aliens(number_of_aliens);
+   alien* aliens = generate_aliens(number_of_aliens);
    while (running == 1)
    {
        switch (do_next)

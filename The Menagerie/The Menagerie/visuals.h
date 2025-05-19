@@ -1,16 +1,8 @@
-#ifndef VISUALS_H
+#ifndef VISUALS_H 
 #define VISUALS_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <stdarg.h>
-#include <conio.h>
-#include <windows.h>
-#include "time.h"
+#include "print_alien_card.h"
+#include "print_menu.h"
+#include "core_visuals.h"
 
-void clear_console();
-void printg(double duration, const char* format, ...);
-void  scroll_to_top();
-
-#endif
+#endif 

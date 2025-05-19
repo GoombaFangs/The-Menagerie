@@ -1,4 +1,4 @@
-#include "visuals.h"
+#include "core_visuals.h"
 
 void clear_console()
 {

@@ -142,10 +142,11 @@
     <ClCompile Include="print_menu.c" />
     <ClCompile Include="rocky.c" />
     <ClCompile Include="time.c" />
-    <ClCompile Include="visuals.c" />
+    <ClCompile Include="core_visuals.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alien.h" />
+    <ClInclude Include="alien_struct.h" />
     <ClInclude Include="alien_data_base.h" />
     <ClInclude Include="alien_manager.h" />
     <ClInclude Include="aquatic.h" />
@@ -159,8 +160,9 @@
     <ClInclude Include="print_alien_card.h" />
     <ClInclude Include="print_menu.h" />
     <ClInclude Include="rocky.h" />
-    <ClInclude Include="alien_species.h" />
+    <ClInclude Include="species.h" />
     <ClInclude Include="time.h" />
+    <ClInclude Include="core_visuals.h" />
     <ClInclude Include="visuals.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

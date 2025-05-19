@@ -1,7 +1,7 @@
 #include "alien_visuals.h"
 
 
-void print_alien_art(const Alien* alien, int index)
+void print_alien_art(const alien* alien, int index)
 {
     print_species_art(alien->species);
     printf("\n\n\n\n                   %s\n", alien->species);

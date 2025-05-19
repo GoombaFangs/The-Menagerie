@@ -1,14 +1,11 @@
 #ifndef ALIEN_H
 #define ALIEN_H
 
-typedef struct
-{
-    char species[20];
-    char sex; //'M' or 'F'
-    int age;
-    char size[20];
-    char diet[20];
-    char nickname[20];
-} Alien;
+#include "alien_struct.h"
+#include "alien_data_base.h"
+#include "alien_manager.h"
+#include "alien_visuals.h"
+#include "species.h"
 
 #endif
+

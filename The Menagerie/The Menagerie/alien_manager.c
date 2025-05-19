@@ -1,13 +1,13 @@
 ﻿#include "alien_manager.h"
 
-Alien* generate_aliens(int count)
+alien* generate_aliens(int count)
 {
     if (count <= 0)
     {
         return NULL;
     }
 
-    Alien* aliens = malloc(count * sizeof(Alien));
+    alien* aliens = malloc(count * sizeof(alien));
     if (aliens == NULL)
     {
         printf("Memory allocation failed!\n");

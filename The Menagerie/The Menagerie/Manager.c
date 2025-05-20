@@ -156,8 +156,12 @@ void app_start()
    {
        switch (do_next)
        {
+       case -1:
+           do_next = menu();
+		   break;
+
        case 0: //map
-           open_map();
+           do_next = open_map();
            break;
 
        case 1: //zoo

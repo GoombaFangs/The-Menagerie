@@ -93,6 +93,11 @@ int input(int style, const char* menu_list[], int amount)
             reset_console();
             return default_option;
         }
+		else if (keyboard_input == 27) // Escape
+		{
+			reset_console();
+			return -1;
+		}
 
         switch (style)
         {

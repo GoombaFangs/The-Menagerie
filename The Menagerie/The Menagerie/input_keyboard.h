@@ -4,7 +4,7 @@
 #include "visuals.h"
 #include "menu_option.h"
 
-void print_options_menu(int selected, const char* menu_list[], int amount);
+void print_style_1(int selected, const char* menu_list[], int amount);
 int input(int style, const char* menu_list[], int amount);
 
 #endif 

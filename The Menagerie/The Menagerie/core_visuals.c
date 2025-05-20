@@ -9,7 +9,7 @@ void reset_console()
 #endif
 }
 
-void printg(double duration, const char* format, ...)
+inline void printg(double duration, const char* format, ...)
 {
     va_list args;
     va_start(args, format);

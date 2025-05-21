@@ -54,7 +54,7 @@ void set_active_console(HANDLE h)
 void scroll_to_line(int position)
 {
     if (active_console == NULL)
-        active_console = GetStdHandle(STD_OUTPUT_HANDLE); // ????? ????
+        active_console = GetStdHandle(STD_OUTPUT_HANDLE);
 
     COORD pos = { 0, (SHORT)position };
     SetConsoleCursorPosition(active_console, pos);

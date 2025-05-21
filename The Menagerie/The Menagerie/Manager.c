@@ -1,6 +1,6 @@
 #include "manager.h"
 
-#define NUM_ALIENS 4
+#define NUM_ALIENS 7
 #define NUM_PLANETS 10
 
 int alien_selection_screen(char* planet_terrain , int count)

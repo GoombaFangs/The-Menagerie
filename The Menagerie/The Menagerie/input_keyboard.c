@@ -47,18 +47,18 @@ void print_style_1(int selected, const char* menu_list[], int amount)
 void print_style_2(Alien* aliens, int count, int selected)
 {
     reset_console();
-    switch (selected)
+    if (selected >= 1 && selected <= count)
     {
-    case 1: card1_details(aliens, count);
-        break;
-    case 2: card2_details(aliens, count);
-        break;
-    case 3: card3_details(aliens, count);
-        break;
-    case 4: card4_details(aliens, count);
-        break;
+        if (selected == 1)
+        {
+            alien_card(aliens, count, selected);
+			scroll_to_line(0);
+        }
+        else
+        {
+            alien_card(aliens, count, selected);
+        }  
     }
-    scroll_to_line(0);   
 }
 
 int input_menu(const char* menu_list[], int amount)
@@ -71,16 +71,20 @@ int input_menu(const char* menu_list[], int amount)
         int key = _getch();
         if (key == 0 || key == 224) key = _getch();
 
-        if (key == 72 && selected > 0)
+        if (key == 72 && selected > 0)//up
+        {
             selected--;
-        else if (key == 80 && selected < amount - 1)
+        } 
+		else if (key == 80 && selected < amount - 1)//down
+		{
             selected++;
-        else if (key == 13)
+		}
+        else if (key == 13)//enter
         {
             reset_console();
             return selected;
         }
-        else if (key == 27)
+        else if (key == 27)//escape
         {
             reset_console();
             return -1;
@@ -92,8 +96,7 @@ int input_menu(const char* menu_list[], int amount)
 
 int input_aliens(Alien* aliens, int count)
 {
-    int selected = on_card_start(aliens, count);
-    scroll_to_line(0);
+    int selected = 1;
     print_style_2(aliens, count, selected);
 
     while (1)
@@ -101,19 +104,25 @@ int input_aliens(Alien* aliens, int count)
         int key = _getch();
         if (key == 0 || key == 224) key = _getch();
 
-        if (key == 72 && selected > 1) selected--;
-        else if (key == 80 && selected < 4) selected++;
-        else if (key == 13)
+        if (key == 72 && selected > 1)//up
+        {
+            selected--;
+            print_style_2(aliens, count, selected);
+        }
+        else if (key == 80 && selected < count)//down
+        {
+            selected++;
+            print_style_2(aliens, count, selected);
+        }
+        else if (key == 13)//enter
         {
             reset_console();
             return selected;
         }
-        else if (key == 27)
+		else if (key == 27)//escape
         {
             reset_console();
             return -1;
         }
-
-        print_style_2(aliens, count, selected);
     }
 }

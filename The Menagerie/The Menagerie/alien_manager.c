@@ -27,3 +27,35 @@ Alien* generate_aliens(char* planet_terrain, int count)
 
     return aliens;
 }
+
+void alien_card(const Alien* alien, int count, int selected)
+{
+    if (count = selected)
+    {
+        printf("\n\n\n+--------- Alien %d ---------+", 1);
+        printf("       +----------------------------+\n");
+        printf("                                    | Species  : %-15s |\n", alien[1].species);
+        printf("                                    | Sex      : %-15c |\n", alien[1].sex);
+        printf("                                    | Age      : %-15d |\n", alien[1].age);
+        printf("                                    | Size     : %-15s |\n", alien[1].size);
+        printf("                                    | Diet     : %-15s |\n", alien[1].diet);
+        printf("                                    | Nickname : %-15s |\n", alien[1].nickname[0] ? alien->nickname : "(none)");
+        printf("                                    +----------------------------+\n");
+        print_alien_art(&alien[1], 1);
+        printf("+----------------------------+\n\n\n\n");
+    }
+    for (int i = 1; i < count; i++)
+    {
+        printf("+--------- Alien %d ---------+", i + 1);
+        printf("       +----------------------------+\n");
+        printf("                                    | Species  : %-15s |\n", alien[i].species);
+        printf("                                    | Sex      : %-15c |\n", alien[i].sex);
+        printf("                                    | Age      : %-15d |\n", alien[i].age);
+        printf("                                    | Size     : %-15s |\n", alien[i].size);
+        printf("                                    | Diet     : %-15s |\n", alien[i].diet);
+        printf("                                    | Nickname : %-15s |\n", alien[i].nickname[0] ? alien->nickname : "(none)");
+        printf("                                    +----------------------------+\n");
+        print_alien_art(&alien[i], i);
+        printf("+----------------------------+\n\n\n\n");
+    }
+}

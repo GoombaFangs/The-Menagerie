@@ -78,9 +78,6 @@
     <ClCompile Include="core_visuals.c">
       <Filter>Source Files\Visuals</Filter>
     </ClCompile>
-    <ClCompile Include="print_alien_card.c">
-      <Filter>Source Files\Visuals</Filter>
-    </ClCompile>
     <ClCompile Include="planet_data_base.c">
       <Filter>Source Files\Planet</Filter>
     </ClCompile>
@@ -97,9 +94,6 @@
   <ItemGroup>
     <ClInclude Include="manager.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="alien.h">
-      <Filter>Header Files\Alien</Filter>
     </ClInclude>
     <ClInclude Include="alien_manager.h">
       <Filter>Header Files\Alien</Filter>
@@ -131,9 +125,6 @@
     <ClInclude Include="gas_based.h">
       <Filter>Header Files\Alien\Species</Filter>
     </ClInclude>
-    <ClInclude Include="planet.h">
-      <Filter>Header Files\Planet</Filter>
-    </ClInclude>
     <ClInclude Include="planet_data_base.h">
       <Filter>Header Files\Planet</Filter>
     </ClInclude>
@@ -143,25 +134,28 @@
     <ClInclude Include="planet_struct.h">
       <Filter>Header Files\Planet</Filter>
     </ClInclude>
-    <ClInclude Include="species.h">
-      <Filter>Header Files\Alien\Species</Filter>
-    </ClInclude>
     <ClInclude Include="alien_struct.h">
       <Filter>Header Files\Alien</Filter>
     </ClInclude>
     <ClInclude Include="core_visuals.h">
       <Filter>Header Files\Visuals</Filter>
     </ClInclude>
-    <ClInclude Include="print_alien_card.h">
-      <Filter>Header Files\Visuals</Filter>
-    </ClInclude>
-    <ClInclude Include="visuals.h">
-      <Filter>Header Files\Visuals</Filter>
-    </ClInclude>
     <ClInclude Include="input_keyboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="menu_option.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="alien_folder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="planet_folder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="species_folder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="visuals_folder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,14 +3,16 @@
 #define NUM_ALIENS 4
 #define NUM_PLANETS 10
 
-int alien_selection_screen(Alien* aliens, int count)
+int alien_selection_screen(char* planet_terrain , int count)
 {
+    Alien* aliens = generate_aliens(NUM_ALIENS);
 
     int selected = input_aliens(aliens, count);
+
     return selected;//alien is selected
 }
 
-int map_screen()
+char* map_screen()
 {
     Planet* planets = generate_planet(NUM_PLANETS);
 
@@ -27,15 +29,15 @@ int map_screen()
         terrain_ptrs[i] = planets[i].terrain;
     }
 
-    int selected = input_menu(terrain_ptrs, NUM_PLANETS);
+    int planet_selected = input_menu(terrain_ptrs, NUM_PLANETS);
+	char* planet_terrain = travel_to_planet(planets[planet_selected].terrain);
 
     scroll_to_line(0);
     free(terrain_ptrs);
     free(planets);
 
-    return selected;
+    return planet_terrain;
 }
-
 
 int main_menu_screen()
 {
@@ -50,8 +52,6 @@ void app_start()
    int running = 1;
    int do_next = main_menu_screen();
 
-   Alien* aliens = generate_aliens(NUM_ALIENS);
-
    while (running)
    {
        switch (do_next)
@@ -61,9 +61,12 @@ void app_start()
 		   break;
 
        case 0: // Explore Planet
-           map_screen();
-           do_next = alien_selection_screen(aliens, NUM_ALIENS);
+       {
+           char* planet_terrain = map_screen();
+           printf("You have traveled to planet %s.\n", planet_terrain);
+           do_next = alien_selection_screen(planet_terrain, NUM_ALIENS);
            break;
+       }
 
        case 1: //zoo
            do_next = main_menu_screen();
@@ -88,7 +91,4 @@ void app_start()
            break;
        }
    }
-
-   free(aliens);
-   
 }

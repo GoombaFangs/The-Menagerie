@@ -8,5 +8,6 @@
 #include "planet_folder.h"
 
 Planet* generate_planet(int count);
+char* travel_to_planet(char* planet_selected);
 
 #endif

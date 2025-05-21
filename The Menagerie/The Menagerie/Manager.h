@@ -9,8 +9,8 @@
 #include "visuals_folder.h"
 #include "planet_folder.h"
 
-int alien_selection_screen(Alien* aliens, int count);
-int map_screen();
+int alien_selection_screen(char* planet_terrain ,int count);
+char* map_screen();
 int main_menu_screen();
 void app_start();
 

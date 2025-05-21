@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "alien.h"
+#include "alien_folder.h"
 
 void print_alien_art(const alien* alien, int index);
 void print_species_art(const char* species);

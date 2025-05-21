@@ -1,124 +1,20 @@
 #include "manager.h"
 
-void get_aliens(alien* aliens , int count)
+#define NUM_ALIENS 4
+#define NUM_PLANETS 10
+
+int alien_selection_screen(alien* aliens, int count)
 {
-    double duration = 0.2;
-    int keyboard_input;
-    int default_option = on_card_start(aliens, count);
-    scroll_to_line(0);
-    if (hold_seconds(duration))
-    {
-        reset_console();
-        card1_details(aliens, count);
-        scroll_to_line(0);
-    }
-    while (1)
-    {
-        keyboard_input = _getch();
-        if (keyboard_input == 0 || keyboard_input == 224)
-        {
-            keyboard_input = _getch();
 
-            switch (keyboard_input)
-            {
-            case 72://Up arrow
-                if (default_option == 4)
-                {
-                    reset_console();
-                    default_option = card3(aliens, count);
-                }
-                else if (default_option == 3)
-                {
-                    reset_console();
-                    default_option = card2(aliens, count);
-                }
-                else if (default_option == 2)
-                {
-                    reset_console();
-                    default_option = card1(aliens, count);
-                }
-                scroll_to_line(0);
-				break;
-
-            case 80://Down arrow
-                if (default_option == 1)
-                {
-                    reset_console();
-                    default_option = card2(aliens, count);
-                }
-                else if (default_option == 2)
-                {
-                    reset_console();
-                    default_option = card3(aliens, count);
-                }
-                else if (default_option == 3)
-                {
-                    reset_console();
-                    default_option = card4(aliens, count); 
-                }
-                scroll_to_line(0);
-                break;
-            }
-        }
-        else if (keyboard_input == 13)// Enter
-        {
-            switch (default_option)
-            {
-			case 1://card1
-                reset_console();
-                break;
-			case 2://card2
-                reset_console();
-                break;
-			case 3://card3
-                reset_console();
-                break;
-			case 4://card4
-                reset_console();
-                break;
-            }
-        }
-
-        if (hold_seconds(duration))
-        {
-            if (default_option == 1)
-            {
-                reset_console();
-                card1_details(aliens, count);
-                scroll_to_line(0);
-            }
-
-            if (default_option == 2)
-            {
-                reset_console();
-                card2_details(aliens, count);
-                scroll_to_line(0);
-            }
-
-            if (default_option == 3)
-            {
-                reset_console();
-                card3_details(aliens, count);
-                scroll_to_line(0);
-            }
-
-            if (default_option == 4)
-            {
-                reset_console();
-                card4_details(aliens, count);
-                scroll_to_line(0);
-            }
-        }
-    }
-    free(aliens);
+    int selected = input_aliens(aliens, count);
+    return selected;//alien is selected
 }
 
-int open_map()
+int map_screen()
 {
-    int num_planets = 4; 
-    planet* planets = generate_planet(num_planets);
+    planet* planets = generate_planet(NUM_PLANETS);
 
-    const char** terrain_ptrs = malloc(num_planets * sizeof(char*));
+    const char** terrain_ptrs = malloc(NUM_PLANETS * sizeof(char*));
     if (!terrain_ptrs)
     {
         printf("Memory allocation failed!\n");
@@ -126,59 +22,73 @@ int open_map()
         return -1;
     }
 
-    for (int i = 0; i < num_planets; i++)
+    for (int i = 0; i < NUM_PLANETS; i++)
     {
         terrain_ptrs[i] = planets[i].terrain;
     }
 
-    int selected = input(1, terrain_ptrs, num_planets);
+    int selected = input_menu(terrain_ptrs, NUM_PLANETS);
 
     scroll_to_line(0);
     free(terrain_ptrs);
     free(planets);
+
     return selected;
 }
 
-int menu()
+
+int main_menu_screen()
 {
-    int selected = input(1, menu_list, menu_num);
-	return selected;    
+    int selected = input_menu(main_menu_list, main_menu_num);
+    return selected;
 }
 
 void app_start()
 {
    srand((unsigned int)time(NULL));
+
    int running = 1;
-   int do_next = menu();
-   int number_of_aliens = 4;
-   alien* aliens = generate_aliens(number_of_aliens);
-   while (running == 1)
+   int do_next = main_menu_screen();
+
+   alien* aliens = generate_aliens(NUM_ALIENS);
+
+   while (running)
    {
        switch (do_next)
        {
-       case -1:
-           do_next = menu();
+	   case -1: // return to menu
+           do_next = main_menu_screen();
 		   break;
 
-       case 0: //map
-           do_next = open_map();
+       case 0: // Explore Planet
+           map_screen();
+           do_next = alien_selection_screen(aliens, NUM_ALIENS);
            break;
 
        case 1: //zoo
-           get_aliens(aliens, number_of_aliens);
-           do_next = menu();
+           do_next = main_menu_screen();
+		   // TODO: open zoo
            break;
 
        case 2: //inventory
-           //open inventory
+           do_next = main_menu_screen();
+           // TODO: open inventory
            break;
 
        case 3: //exit
            running = 0;
            break;
+	   case 4: //add alien to the zoo
+           do_next = main_menu_screen();
+           // TODO: add alien to zoo
+		   break;
 
        default:
+           do_next = main_menu_screen();
            break;
        }
    }
+
+   free(aliens);
+   
 }

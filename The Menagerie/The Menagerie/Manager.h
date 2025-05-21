@@ -5,13 +5,13 @@
 
 #include "input_keyboard.h"
 #include "menu_option.h"
-#include "alien.h"
-#include "visuals.h"
-#include "planet.h"
+#include "alien_folder.h"
+#include "visuals_folder.h"
+#include "planet_folder.h"
 
-int open_map();
-void get_aliens(alien* aliens ,int count);
-int menu();
+int alien_selection_screen(alien* aliens, int count);
+int map_screen();
+int main_menu_screen();
 void app_start();
 
 #endif

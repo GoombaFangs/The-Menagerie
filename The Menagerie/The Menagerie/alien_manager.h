@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "alien.h"
+#include "alien_folder.h"
 
 alien* generate_aliens(int count);
 

@@ -1,10 +1,19 @@
 #ifndef INPUT_KEYBOARD_H
 #define INPUT_KEYBOARD_H
 
-#include "visuals.h"
+#include <stdio.h>
+#include <string.h>
+#include <conio.h>
+
+#include "visuals_folder.h"
 #include "menu_option.h"
+#include "alien_folder.h"
+
+int input_menu(const char* menu_list[], int amount);
+
+int input_aliens(alien* aliens, int count);
 
 void print_style_1(int selected, const char* menu_list[], int amount);
-int input(int style, const char* menu_list[], int amount);
+void print_style_2(alien* aliens, int count, int selected);
 
-#endif 
+#endif

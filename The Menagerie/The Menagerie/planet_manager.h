@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "planet.h"
+#include "planet_folder.h"
 
 planet* generate_planet(int count);
 

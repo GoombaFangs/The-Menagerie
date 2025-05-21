@@ -12,7 +12,6 @@ void print_style_1(int selected, const char* menu_list[], int amount)
         const char* text = menu_list[i];
         int len = strlen(text);
         int padding_total = FRAME_WIDTH - len;
-
         int padding_left = padding_total / 2;
         int padding_right = padding_total - padding_left;
 
@@ -42,68 +41,80 @@ void print_style_1(int selected, const char* menu_list[], int amount)
     }
 
     if (amount > 6)
-    {
-		if (selected > 5)
-		{
-			scroll_to_line(17);
-		}
-		else
-		{
-			scroll_to_line(0);
-		}
-	}  
+        scroll_to_line(selected > 5 ? 17 : 0);
 }
 
-int input(int style, const char* menu_list[], int amount)
+void print_style_2(alien* aliens, int count, int selected)
 {
-    int default_option = 0;
-
-    switch(style)
+    reset_console();
+    switch (selected)
     {
-	case 1: 
-        print_style_1(default_option, menu_list, amount);
-		break;
+    case 1: card1_details(aliens, count);
+        break;
+    case 2: card2_details(aliens, count);
+        break;
+    case 3: card3_details(aliens, count);
+        break;
+    case 4: card4_details(aliens, count);
+        break;
     }
+    scroll_to_line(0);   
+}
+
+int input_menu(const char* menu_list[], int amount)
+{
+    int selected = 0;
+    print_style_1(selected, menu_list, amount);
 
     while (1)
     {
-        int keyboard_input = _getch();
-        if (keyboard_input == 0 || keyboard_input == 224)
-        {
-            keyboard_input = _getch();
-            switch (keyboard_input)
-            {
-            case 72: // Up
-                if (default_option > 0)
-                {
-                    default_option--;
-                }
-                break;
+        int key = _getch();
+        if (key == 0 || key == 224) key = _getch();
 
-            case 80: // Down
-                if (default_option < amount - 1)
-                {
-                    default_option++;
-                }
-                break;
-            }
-        }
-        else if (keyboard_input == 13) // Enter
+        if (key == 72 && selected > 0)
+            selected--;
+        else if (key == 80 && selected < amount - 1)
+            selected++;
+        else if (key == 13)
         {
             reset_console();
-            return default_option;
+            return selected;
         }
-		else if (keyboard_input == 27) // Escape
-		{
-			reset_console();
-			return -1;
-		}
-
-        switch (style)
+        else if (key == 27)
         {
-        case 1:
-            print_style_1(default_option, menu_list, amount);
-            break;
+            reset_console();
+            return -1;
         }
+
+        print_style_1(selected, menu_list, amount);
+    }
+}
+
+int input_aliens(alien* aliens, int count)
+{
+    double duration = 0.2;
+    int selected = on_card_start(aliens, count);
+    scroll_to_line(0);
+    print_style_2(aliens, count, selected);
+
+    while (1)
+    {
+        int key = _getch();
+        if (key == 0 || key == 224) key = _getch();
+
+        if (key == 72 && selected > 1) selected--;
+        else if (key == 80 && selected < 4) selected++;
+        else if (key == 13)
+        {
+            reset_console();
+            return selected;
+        }
+        else if (key == 27)
+        {
+            reset_console();
+            return -1;
+        }
+
+        print_style_2(aliens, count, selected);
     }
 }

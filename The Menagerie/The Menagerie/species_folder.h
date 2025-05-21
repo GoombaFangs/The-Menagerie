@@ -1,5 +1,5 @@
-#ifndef SPECIES_H
-#define SPECIES_H
+#ifndef SPECIES_FOLDER_H
+#define SPECIES_FOLDER_H
 
 #include <stdio.h>
 #include "aquatic.h"

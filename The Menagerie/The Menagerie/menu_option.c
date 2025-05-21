@@ -1,11 +1,11 @@
 #include "menu_option.h"
 
-const char* menu_list[] =
+const char* main_menu_list[] =
 {
     "   Map   ",
     "   Zoo   ",
-    //"Inventory",
+    "Inventory",
     "  Exit   ",
 };
 
-const int menu_num = sizeof(menu_list) / sizeof(menu_list[0]);
+const int main_menu_num = sizeof(main_menu_list) / sizeof(main_menu_list[0]);

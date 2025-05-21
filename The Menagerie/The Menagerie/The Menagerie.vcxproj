@@ -147,7 +147,7 @@
     <ClCompile Include="core_visuals.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="alien.h" />
+    <ClInclude Include="alien_folder.h" />
     <ClInclude Include="alien_struct.h" />
     <ClInclude Include="alien_data_base.h" />
     <ClInclude Include="alien_manager.h" />
@@ -161,15 +161,15 @@
     <ClInclude Include="manager.h" />
     <ClInclude Include="alien_visuals.h" />
     <ClInclude Include="menu_option.h" />
-    <ClInclude Include="planet.h" />
+    <ClInclude Include="planet_folder.h" />
     <ClInclude Include="planet_data_base.h" />
     <ClInclude Include="planet_manager.h" />
     <ClInclude Include="planet_struct.h" />
     <ClInclude Include="print_alien_card.h" />
     <ClInclude Include="rocky.h" />
-    <ClInclude Include="species.h" />
+    <ClInclude Include="species_folder.h" />
     <ClInclude Include="core_visuals.h" />
-    <ClInclude Include="visuals.h" />
+    <ClInclude Include="visuals_folder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

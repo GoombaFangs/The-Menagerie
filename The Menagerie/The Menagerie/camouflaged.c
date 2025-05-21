@@ -22,5 +22,14 @@ void print_camouflaged(int variant)
 			"  (          ))))))))\n"
 		);
 		break;
+
+	case 2:
+		printf(
+			"   (\\__/)\n"
+			"   ( •.• )>\n"
+			"  /|  |\\ \n"
+			" //   \\\\\n"
+		);
+		break;
 	}
 }

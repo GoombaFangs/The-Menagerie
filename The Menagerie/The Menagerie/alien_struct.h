@@ -9,6 +9,7 @@ typedef struct
     char size[20];
     char diet[20];
     char nickname[20];
+    int art_variant;
 } Alien;
 
 #endif

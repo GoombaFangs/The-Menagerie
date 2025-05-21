@@ -16,12 +16,12 @@ Alien* generate_aliens(char* planet_terrain, int count)
 
     for (int i = 0; i < count; i++)
     {
-        //strcpy_s(aliens[i].species, sizeof(aliens[i].species), "gas_based");
         strcpy_s(aliens[i].species, sizeof(aliens[i].species), species_list[rand() % num_species]);
         aliens[i].sex = (rand() % 2 == 0) ? 'M' : 'F';
         aliens[i].age = rand() % 100 + 1;
         strcpy_s(aliens[i].size, sizeof(aliens[i].size), size_list[rand() % num_sizes]);
         strcpy_s(aliens[i].diet, sizeof(aliens[i].diet), diet_list[rand() % num_diets]);
+		aliens[i].art_variant = rand() % 10;
         aliens[i].nickname[0] = '\0';
     }
 

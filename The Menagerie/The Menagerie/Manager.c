@@ -65,7 +65,7 @@ void app_start()
        {
            char* planet_terrain = map_screen();
            printf("You have traveled to planet %s.\n", planet_terrain);
-		   hold_seconds(2);
+		   hold_seconds(1.5);
            selected_alien = alien_selection_screen(planet_terrain, NUM_ALIENS);
            do_next = -1;
            break;

@@ -4,7 +4,7 @@
 void print_alien_art(const Alien* alien, int index)
 {
     print_species_art(alien->species);
-    printf("\n\n\n\n                   %s\n", alien->species);
+    printf("\n\n\n");
 }
 
 void print_species_art(const char* species)

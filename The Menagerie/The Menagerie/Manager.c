@@ -1,15 +1,15 @@
 #include "manager.h"
 
-#define NUM_ALIENS 7
-#define NUM_PLANETS 10
+#define NUM_ALIENS 5
+#define NUM_PLANETS 8
 
-int alien_selection_screen(char* planet_terrain , int count)
+Alien alien_selection_screen(char* planet_terrain , int count)
 {
     Alien* aliens = generate_aliens(planet_terrain ,NUM_ALIENS);
 
     int selected = input_aliens(aliens, count);
 
-    return selected;//alien is selected
+    return aliens[selected];
 }
 
 char* map_screen()
@@ -29,8 +29,8 @@ char* map_screen()
         terrain_ptrs[i] = planets[i].terrain;
     }
 
-    int planet_selected = input_menu(terrain_ptrs, NUM_PLANETS);
-	char* planet_terrain = travel_to_planet(planets[planet_selected].terrain);
+    int selected_planet = input_menu(terrain_ptrs, NUM_PLANETS);
+	char* planet_terrain = travel_to_planet(planets[selected_planet].terrain);
 
     scroll_to_line(0);
     free(terrain_ptrs);
@@ -51,6 +51,7 @@ void app_start()
 
    int running = 1;
    int do_next = main_menu_screen();
+   Alien selected_alien = { 0 };
 
    while (running)
    {
@@ -64,17 +65,18 @@ void app_start()
        {
            char* planet_terrain = map_screen();
            printf("You have traveled to planet %s.\n", planet_terrain);
-           do_next = alien_selection_screen(planet_terrain, NUM_ALIENS);
+           selected_alien = alien_selection_screen(planet_terrain, NUM_ALIENS);
+           do_next = -1;
            break;
        }
 
        case 1: //zoo
-           do_next = main_menu_screen();
+           do_next = -1;
 		   // TODO: open zoo
            break;
 
        case 2: //inventory
-           do_next = main_menu_screen();
+           do_next = -1;
            // TODO: open inventory
            break;
 
@@ -82,12 +84,12 @@ void app_start()
            running = 0;
            break;
 	   case 4: //add alien to the zoo
-           do_next = main_menu_screen();
+           do_next = -1;
            // TODO: add alien to zoo
 		   break;
 
        default:
-           do_next = main_menu_screen();
+           do_next = -1;
            break;
        }
    }

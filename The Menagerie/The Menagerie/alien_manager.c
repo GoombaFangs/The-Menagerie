@@ -32,8 +32,8 @@ void alien_card(const Alien* alien, int count, int selected)
 {
     if (count = selected)
     {
-        printf("\n\n\n+--------- Alien %d ---------+", 1);
-        printf("       +----------------------------+\n");
+        printf("\n\n\n\n\n\n\n+--------- Alien %d ---------+", 1);
+        printf("\n                                    +----------------------------+\n");
         printf("                                    | Species  : %-15s |\n", alien[1].species);
         printf("                                    | Sex      : %-15c |\n", alien[1].sex);
         printf("                                    | Age      : %-15d |\n", alien[1].age);
@@ -47,7 +47,7 @@ void alien_card(const Alien* alien, int count, int selected)
     for (int i = 1; i < count; i++)
     {
         printf("+--------- Alien %d ---------+", i + 1);
-        printf("       +----------------------------+\n");
+        printf("\n                                    +----------------------------+\n");
         printf("                                    | Species  : %-15s |\n", alien[i].species);
         printf("                                    | Sex      : %-15c |\n", alien[i].sex);
         printf("                                    | Age      : %-15d |\n", alien[i].age);

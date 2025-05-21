@@ -6,6 +6,7 @@
 #include <string.h>
 #include <time.h>
 #include "alien_folder.h"
+#include "visuals_folder.h"
 
 Alien* generate_aliens(char* planet_terrain, int count);
 void alien_card(const Alien* alien, int count, int selected);

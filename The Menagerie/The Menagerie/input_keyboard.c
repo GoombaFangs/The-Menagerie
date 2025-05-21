@@ -46,18 +46,13 @@ void print_style_1(int selected, const char* menu_list[], int amount)
 
 void print_style_2(Alien* aliens, int count, int selected)
 {
-    reset_console();
     if (selected >= 1 && selected <= count)
     {
+        alien_card(aliens, count, selected);
         if (selected == 1)
         {
-            alien_card(aliens, count, selected);
 			scroll_to_line(0);
         }
-        else
-        {
-            alien_card(aliens, count, selected);
-        }  
     }
 }
 

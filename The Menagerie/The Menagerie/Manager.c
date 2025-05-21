@@ -1,6 +1,6 @@
 #include "manager.h"
 
-#define NUM_ALIENS 5
+#define NUM_ALIENS 8
 #define NUM_PLANETS 8
 
 Alien alien_selection_screen(char* planet_terrain , int count)
@@ -65,6 +65,7 @@ void app_start()
        {
            char* planet_terrain = map_screen();
            printf("You have traveled to planet %s.\n", planet_terrain);
+		   hold_seconds(2);
            selected_alien = alien_selection_screen(planet_terrain, NUM_ALIENS);
            do_next = -1;
            break;

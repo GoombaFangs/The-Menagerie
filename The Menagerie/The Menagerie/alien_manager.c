@@ -1,6 +1,6 @@
 ﻿#include "alien_manager.h"
 
-Alien* generate_aliens(int count)
+Alien* generate_aliens(char* planet_terrain, int count)
 {
     if (count <= 0)
     {

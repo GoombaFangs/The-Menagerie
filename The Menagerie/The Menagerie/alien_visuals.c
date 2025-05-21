@@ -7,7 +7,7 @@ void print_alien_art(const Alien* alien, int index)
     printf("\n\n\n\n                   %s\n", alien->species);
 }
 
-void print_species_art(const char* species) 
+void print_species_art(const char* species)
 {
     if (strcmp(species, "flying") == 0) 
     {

@@ -92,7 +92,6 @@ int input_menu(const char* menu_list[], int amount)
 
 int input_aliens(Alien* aliens, int count)
 {
-    double duration = 0.2;
     int selected = on_card_start(aliens, count);
     scroll_to_line(0);
     print_style_2(aliens, count, selected);

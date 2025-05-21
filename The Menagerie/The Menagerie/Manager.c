@@ -5,7 +5,7 @@
 
 int alien_selection_screen(char* planet_terrain , int count)
 {
-    Alien* aliens = generate_aliens(NUM_ALIENS);
+    Alien* aliens = generate_aliens(planet_terrain ,NUM_ALIENS);
 
     int selected = input_aliens(aliens, count);
 

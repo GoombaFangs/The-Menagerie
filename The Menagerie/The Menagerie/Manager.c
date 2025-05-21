@@ -3,7 +3,7 @@
 #define NUM_ALIENS 4
 #define NUM_PLANETS 10
 
-int alien_selection_screen(alien* aliens, int count)
+int alien_selection_screen(Alien* aliens, int count)
 {
 
     int selected = input_aliens(aliens, count);
@@ -12,7 +12,7 @@ int alien_selection_screen(alien* aliens, int count)
 
 int map_screen()
 {
-    planet* planets = generate_planet(NUM_PLANETS);
+    Planet* planets = generate_planet(NUM_PLANETS);
 
     const char** terrain_ptrs = malloc(NUM_PLANETS * sizeof(char*));
     if (!terrain_ptrs)
@@ -50,7 +50,7 @@ void app_start()
    int running = 1;
    int do_next = main_menu_screen();
 
-   alien* aliens = generate_aliens(NUM_ALIENS);
+   Alien* aliens = generate_aliens(NUM_ALIENS);
 
    while (running)
    {

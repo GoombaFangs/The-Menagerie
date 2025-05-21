@@ -7,6 +7,6 @@
 #include <time.h>
 #include "planet_folder.h"
 
-planet* generate_planet(int count);
+Planet* generate_planet(int count);
 
 #endif

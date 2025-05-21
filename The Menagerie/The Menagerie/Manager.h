@@ -9,7 +9,7 @@
 #include "visuals_folder.h"
 #include "planet_folder.h"
 
-int alien_selection_screen(alien* aliens, int count);
+int alien_selection_screen(Alien* aliens, int count);
 int map_screen();
 int main_menu_screen();
 void app_start();

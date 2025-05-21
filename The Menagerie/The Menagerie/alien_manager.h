@@ -7,6 +7,6 @@
 #include <time.h>
 #include "alien_folder.h"
 
-alien* generate_aliens(int count);
+Alien* generate_aliens(int count);
 
 #endif

@@ -1,13 +1,13 @@
 #include "planet_manager.h"
 
-planet* generate_planet(int count)
+Planet* generate_planet(int count)
 {
     if (count <= 0)
     {
         return NULL;
     }
 
-    planet* planets = malloc(count * sizeof(planet));
+    Planet* planets = malloc(count * sizeof(Planet));
     if (planets == NULL)
     {
         printf("Memory allocation failed!\n");

@@ -44,7 +44,7 @@ void print_style_1(int selected, const char* menu_list[], int amount)
         scroll_to_line(selected > 5 ? 17 : 0);
 }
 
-void print_style_2(alien* aliens, int count, int selected)
+void print_style_2(Alien* aliens, int count, int selected)
 {
     reset_console();
     switch (selected)
@@ -90,7 +90,7 @@ int input_menu(const char* menu_list[], int amount)
     }
 }
 
-int input_aliens(alien* aliens, int count)
+int input_aliens(Alien* aliens, int count)
 {
     double duration = 0.2;
     int selected = on_card_start(aliens, count);

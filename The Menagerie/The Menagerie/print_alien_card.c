@@ -1,6 +1,6 @@
 #include "print_alien_card.h"
 
-int on_card_start(const alien* alien, int index)
+int on_card_start(const Alien* alien, int index)
 {
 	
 	for (int i = 0; i < index; i++)
@@ -18,7 +18,7 @@ int on_card_start(const alien* alien, int index)
 	return 1;
 }
 
-int card1(const alien* alien, int index)
+int card1(const Alien* alien, int index)
 {
 	for (int i = 0; i < index; i++)
 	{
@@ -35,7 +35,7 @@ int card1(const alien* alien, int index)
 	return 1;
 }
 
-int card2(const alien* alien, int index)
+int card2(const Alien* alien, int index)
 {
 	for (int i = 1; i < index; i++)
 	{
@@ -52,7 +52,7 @@ int card2(const alien* alien, int index)
 	return 2;
 }
 
-int card3(const alien* alien, int index)
+int card3(const Alien* alien, int index)
 {
 	for (int i = 2; i < index; i++)
 	{
@@ -69,7 +69,7 @@ int card3(const alien* alien, int index)
 	return 3;
 }
 
-int card4(const alien* alien, int index)
+int card4(const Alien* alien, int index)
 {
 	for (int i = 3; i < index; i++)
 	{
@@ -86,7 +86,7 @@ int card4(const alien* alien, int index)
 	return 4;
 }
 
-void card1_details(const alien* alien, int index)
+void card1_details(const Alien* alien, int index)
 {
 	for (int i = 0; i < index; i++)
 	{
@@ -110,7 +110,7 @@ void card1_details(const alien* alien, int index)
 	}
 }
 
-void card2_details(const alien* alien, int index)
+void card2_details(const Alien* alien, int index)
 {
 	for (int i = 1; i < index; i++)
 	{
@@ -134,7 +134,7 @@ void card2_details(const alien* alien, int index)
 	}
 }
 
-void card3_details(const alien* alien, int index)
+void card3_details(const Alien* alien, int index)
 {
 	for (int i = 2; i < index; i++)
 	{
@@ -158,7 +158,7 @@ void card3_details(const alien* alien, int index)
 	}
 }
 
-void card4_details(const alien* alien, int index)
+void card4_details(const Alien* alien, int index)
 {
 	for (int i = 3; i < index; i++)
 	{

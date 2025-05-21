@@ -11,9 +11,9 @@
 
 int input_menu(const char* menu_list[], int amount);
 
-int input_aliens(alien* aliens, int count);
+int input_aliens(Alien* aliens, int count);
 
 void print_style_1(int selected, const char* menu_list[], int amount);
-void print_style_2(alien* aliens, int count, int selected);
+void print_style_2(Alien* aliens, int count, int selected);
 
 #endif

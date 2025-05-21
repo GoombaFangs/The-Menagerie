@@ -21,19 +21,11 @@ int hold_seconds(double second)
 
 void reset_console()
 {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_SCREEN_BUFFER_INFO csbi;
-    DWORD written;
-
-    if (GetConsoleScreenBufferInfo(hConsole, &csbi))
-    {
-        DWORD size = csbi.dwSize.X * csbi.dwSize.Y;
-        COORD top_left = { 0, 0 };
-
-        FillConsoleOutputCharacter(hConsole, ' ', size, top_left, &written);
-        FillConsoleOutputAttribute(hConsole, csbi.wAttributes, size, top_left, &written);
-        SetConsoleCursorPosition(hConsole, top_left);
-    }
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
 }
 
 void printg(double duration, const char* format, ...)
@@ -52,29 +44,18 @@ void printg(double duration, const char* format, ...)
     }
 }
 
+static HANDLE active_console = NULL;
+
+void set_active_console(HANDLE h)
+{
+    active_console = h;
+}
+
 void scroll_to_line(int position)
 {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    if (active_console == NULL)
+        active_console = GetStdHandle(STD_OUTPUT_HANDLE); // ????? ????
 
-    if (GetConsoleScreenBufferInfo(hConsole, &csbi))
-    {
-        SMALL_RECT window = csbi.srWindow;
-        SHORT height = window.Bottom - window.Top;
-
-        SHORT max_top = csbi.dwSize.Y - height - 1;
-        if (position > max_top)
-            position = max_top;
-        if (position < 0)
-            position = 0;
-
-        SMALL_RECT new_window = {
-            .Left = window.Left,
-            .Top = position,
-            .Right = window.Right,
-            .Bottom = position + height
-        };
-
-        SetConsoleWindowInfo(hConsole, TRUE, &new_window);
-    }
+    COORD pos = { 0, (SHORT)position };
+    SetConsoleCursorPosition(active_console, pos);
 }

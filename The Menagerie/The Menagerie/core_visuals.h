@@ -7,8 +7,9 @@
 #include <stdarg.h>
 #include <conio.h>
 #include <windows.h>
-#include "time.h"
+#include <time.h>
 
+int hold_seconds(double second);
 void reset_console();
 void printg(double duration, const char* format, ...);
 void scroll_to_line(int position);

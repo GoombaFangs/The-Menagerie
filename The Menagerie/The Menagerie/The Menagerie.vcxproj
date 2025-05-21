@@ -144,7 +144,6 @@
     <ClCompile Include="planet_manager.c" />
     <ClCompile Include="print_alien_card.c" />
     <ClCompile Include="rocky.c" />
-    <ClCompile Include="time.c" />
     <ClCompile Include="core_visuals.c" />
   </ItemGroup>
   <ItemGroup>
@@ -169,7 +168,6 @@
     <ClInclude Include="print_alien_card.h" />
     <ClInclude Include="rocky.h" />
     <ClInclude Include="species.h" />
-    <ClInclude Include="time.h" />
     <ClInclude Include="core_visuals.h" />
     <ClInclude Include="visuals.h" />
   </ItemGroup>

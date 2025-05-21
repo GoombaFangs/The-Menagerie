@@ -1,15 +1,42 @@
 #include "core_visuals.h"
 
-void reset_console()
+int hold_seconds(double second)
 {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
+    clock_t start = clock();
+    while (1)
+    {
+        if (_kbhit())
+        {
+            return 0;
+        }
+
+        clock_t end = clock();
+        double seconds = ((double)(end - start)) / CLOCKS_PER_SEC;
+        if (seconds >= second)
+        {
+            return 1;
+        }
+    }
 }
 
-inline void printg(double duration, const char* format, ...)
+void reset_console()
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    DWORD written;
+
+    if (GetConsoleScreenBufferInfo(hConsole, &csbi))
+    {
+        DWORD size = csbi.dwSize.X * csbi.dwSize.Y;
+        COORD top_left = { 0, 0 };
+
+        FillConsoleOutputCharacter(hConsole, ' ', size, top_left, &written);
+        FillConsoleOutputAttribute(hConsole, csbi.wAttributes, size, top_left, &written);
+        SetConsoleCursorPosition(hConsole, top_left);
+    }
+}
+
+void printg(double duration, const char* format, ...)
 {
     va_list args;
     va_start(args, format);

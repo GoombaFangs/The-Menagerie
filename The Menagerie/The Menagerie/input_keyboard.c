@@ -39,9 +39,15 @@ void print_text_options(int selected, const char* menu_list[], int amount)
             printf("\n");
         }
         printf("\n");
+        if (i + 1 == amount)
+        {
+            if (strcmp(text, "  Exit   ") != 0)
+            {
+                printf("\n\n     Choose a planet to explore..\n");
+            }
+        }
     }
 }
-
 
 int input_text(const char* menu_list[], int amount)
 {
@@ -116,7 +122,7 @@ void print_alien_options(Alien* aliens, int count, int selected, int visible_cou
 
     if (start + visible_count < count)
     {
-        printf("           %d aliens below press down to show\n", (count - start));
+        printf("           %d aliens below press down to show\n", (count - start - 1));
     } 
 }
 

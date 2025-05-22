@@ -3,9 +3,9 @@
 
 typedef struct
 {
+	char name[20];
     double distance;
     char terrain[20];
-    int hasLife;
 } Planet;
 
 #endif

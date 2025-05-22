@@ -7,7 +7,8 @@
 #include <time.h>
 #include "planet_folder.h"
 
+void generate_random_name(char* name, int max_length);
 Planet* generate_planet(int count);
-char* travel_to_planet(char* planet_selected);
+Planet travel_to_planet(Planet planet_selected);
 
 #endif

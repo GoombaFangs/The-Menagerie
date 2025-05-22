@@ -12,30 +12,39 @@ Alien alien_selection_screen(char* planet_terrain , int count)
     return aliens[selected];
 }
 
-char* map_screen()
+Planet map_screen()
 {
     Planet* planets = generate_planet(NUM_PLANETS);
-
-    const char** terrain_ptrs = malloc(NUM_PLANETS * sizeof(char*));
-    if (!terrain_ptrs)
+    if (!planets)
     {
-        printf("Memory allocation failed!\n");
-        free(planets);
-        return -1;
+        printf("Failed to generate planets.\n");
+        exit(1);
     }
+
+    
+    const char* terrain_ptrs[NUM_PLANETS];
+    double planet_distances[NUM_PLANETS];
 
     for (int i = 0; i < NUM_PLANETS; i++)
     {
-        terrain_ptrs[i] = planets[i].terrain;
+        terrain_ptrs[i] = planets[i].name;
+        planet_distances[i] = planets[i].distance;
+
     }
 
     int selected_planet = input_text(terrain_ptrs, NUM_PLANETS);
-	char* planet_terrain = travel_to_planet(planets[selected_planet].terrain);
+    if (selected_planet == -1)
+    {
+        printf("Planet selection canceled.\n");
+        free(planets);
+        return (Planet) { 0 };
+    }
 
-    free(terrain_ptrs);
+    Planet chosen = planets[selected_planet];
+    travel_to_planet(chosen);
+
     free(planets);
-
-    return planet_terrain;
+    return chosen;
 }
 
 int main_menu_screen()
@@ -65,10 +74,10 @@ void app_start()
 
         case 0: // Explore Planet
         {
-            char* planet_terrain = map_screen();
+            Planet planet = map_screen();
             for (int i = 0; i < 8; i++)
             {
-                printf("You have traveled to planet %s.\n", planet_terrain);
+                printf("Navigating through deep space...\n");
                 if (i % 2 == 0)
                 {
                     printf("\n");
@@ -77,7 +86,19 @@ void app_start()
                 hold_seconds(0.3);
                 reset_console();
             }
-            selected_alien = alien_selection_screen(planet_terrain, NUM_ALIENS);
+            printg(0.025, "You have arrived at planet %s.\n", planet.name);
+            hold_seconds(1);
+			reset_console();
+            printg(0.05, "Scanning surface...\n");
+            hold_seconds(1);
+            printg(0.035, "Planet %s is covered in %s terrain.\n", planet.name, planet.terrain);
+            hold_seconds(2);
+            reset_console();
+            printg(0.05, "Life signs detected...\n");
+            hold_seconds(1);
+            printg(0.035, "You have discovered %d alien lifeforms on this world.\n", NUM_ALIENS);
+			hold_seconds(2.5);
+            selected_alien = alien_selection_screen(planet.terrain, NUM_ALIENS);
             do_next = -1;
             break;
         }

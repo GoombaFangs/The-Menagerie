@@ -10,8 +10,8 @@ const char* terrain_list[] =
     "volcanic",
     "icy",
     "gas",
-    "urban_ruins",
-    "crystal_plains"
+    "urban ruins",
+    "crystal plains"
 };
 
 const int num_terrain = sizeof(terrain_list) / sizeof(terrain_list[0]);

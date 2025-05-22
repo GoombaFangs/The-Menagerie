@@ -51,11 +51,23 @@ void set_active_console(HANDLE h)
     active_console = h;
 }
 
-void scroll_to_line(int position)
+void set_console_size(int columns, int rows)
 {
-    if (active_console == NULL)
-        active_console = GetStdHandle(STD_OUTPUT_HANDLE);
+    char command[64];
+    sprintf_s(command, sizeof(command), "mode con: cols=%d lines=%d", columns, rows);
+    system(command);
+}
 
-    COORD pos = { 0, (SHORT)position };
-    SetConsoleCursorPosition(active_console, pos);
+void set_console_font_size(int width, int height)
+{
+    CONSOLE_FONT_INFOEX font_info = { 0 };
+    font_info.cbSize = sizeof(font_info);
+    font_info.dwFontSize.X = width;
+    font_info.dwFontSize.Y = height;
+    font_info.FontFamily = FF_DONTCARE;
+    font_info.FontWeight = FW_NORMAL;
+    wcscpy_s(font_info.FaceName, LF_FACESIZE, L"Consolas");
+
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetCurrentConsoleFontEx(hOut, FALSE, &font_info);
 }

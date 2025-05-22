@@ -139,7 +139,7 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="manager.c" />
     <ClCompile Include="alien_visuals.c" />
-    <ClCompile Include="menu_option.c" />
+    <ClCompile Include="menu_option_data_base.c" />
     <ClCompile Include="planet_data_base.c" />
     <ClCompile Include="planet_manager.c" />
     <ClCompile Include="rocky.c" />
@@ -159,7 +159,7 @@
     <ClInclude Include="input_keyboard.h" />
     <ClInclude Include="manager.h" />
     <ClInclude Include="alien_visuals.h" />
-    <ClInclude Include="menu_option.h" />
+    <ClInclude Include="menu_option_data_base.h" />
     <ClInclude Include="planet_folder.h" />
     <ClInclude Include="planet_data_base.h" />
     <ClInclude Include="planet_manager.h" />

@@ -29,10 +29,9 @@ char* map_screen()
         terrain_ptrs[i] = planets[i].terrain;
     }
 
-    int selected_planet = input_menu(terrain_ptrs, NUM_PLANETS);
+    int selected_planet = input_text(terrain_ptrs, NUM_PLANETS);
 	char* planet_terrain = travel_to_planet(planets[selected_planet].terrain);
 
-    scroll_to_line(0);
     free(terrain_ptrs);
     free(planets);
 
@@ -41,13 +40,16 @@ char* map_screen()
 
 int main_menu_screen()
 {
-    int selected = input_menu(main_menu_list, main_menu_num);
+    int selected = input_text(main_menu_list, main_menu_num);
     return selected;
 }
 
 void app_start()
 {
    srand((unsigned int)time(NULL));
+   set_console_size(110, 40); 
+   set_console_font_size(7, 14);
+   reset_console();
 
    int running = 1;
    int do_next = main_menu_screen();

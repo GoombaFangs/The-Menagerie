@@ -27,23 +27,3 @@ Alien* generate_aliens(char* planet_terrain, int count)
 
     return aliens;
 }
-
-void alien_card(const Alien* alien, int count, int selected)
-{
-    reset_console();
-    for (int i = selected -1; i < count; i++)
-    {
-        printf("+--------- Alien %d ---------+", i + 1);
-        printf("\n                                    +----------------------------+\n");
-        printf("                                    | Species  : %-15s |\n", alien[i].species);
-        printf("                                    | Sex      : %-15c |\n", alien[i].sex);
-        printf("                                    | Age      : %-15d |\n", alien[i].age);
-        printf("                                    | Size     : %-15s |\n", alien[i].size);
-        printf("                                    | Diet     : %-15s |\n", alien[i].diet);
-        printf("                                    | Nickname : %-15s |\n", alien[i].nickname[0] ? alien->nickname : "(none)");
-        printf("                                    +----------------------------+\n");
-        print_alien_art(&alien[i], i);
-        printf("+----------------------------+\n\n\n\n");
-    }
-	scroll_to_line(0);
-}

@@ -6,14 +6,13 @@
 #include <conio.h>
 
 #include "visuals_folder.h"
-#include "menu_option.h"
+#include "menu_option_data_base.h"
 #include "alien_folder.h"
 
-int input_menu(const char* menu_list[], int amount);
+void print_text_options(int selected, const char* menu_list[], int amount);
+int input_text(const char* menu_list[], int amount);
 
+void print_alien_options(Alien* aliens, int count, int selected, int visible_count);
 int input_aliens(Alien* aliens, int count);
-
-void print_style_1(int selected, const char* menu_list[], int amount);
-void print_style_2(Alien* aliens, int count, int selected);
 
 #endif

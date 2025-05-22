@@ -1,5 +1,5 @@
-#ifndef MENU_POTION_H
-#define MENU_POTION_H
+#ifndef MENU_POTION_DATA_BASE_H
+#define MENU_POTION_DATA_BASE_H
 
 extern const char* main_menu_list[];
 

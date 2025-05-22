@@ -112,11 +112,12 @@ void app_start()
 			{
 
 			}
-            if(printg(0.02, "Choose your next destination among the stars..\n") == -1)
+            printg(0.02, "Choose your next destination among the stars..\n");
+            /*if(printg(0.02, "Choose your next destination among the stars..\n") == -1)
             {
                 do_next = -1;
                 break;
-            }
+            }*/
             hold_seconds(1.2);
             Planet planet = map_screen();
             if (story_screen(planet) == -1)

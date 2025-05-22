@@ -82,51 +82,6 @@ int input_text(const char* menu_list[], int amount)
     }
 }
 
-void print_alien_options(Alien* aliens, int count, int selected, int visible_count)
-{
-    reset_console();
-    printf("\n\n");
-
-    int start = 0;
-    if (count > visible_count)
-    {
-        if (selected < visible_count / 2)
-            start = 0;
-        else if (selected > count - (visible_count + 1) / 2)
-            start = count - visible_count;
-        else
-            start = selected - visible_count / 2;
-    }
-
-    if (start > 0)
-    {
-        printf("           %d aliens above press up to show\n\n", start);
-    }
-
-    for (int i = start; i < start + visible_count && i < count; i++)
-    {
-        printf("+--------- Alien %d ---------+\n", i + 1);
-        printf("                                    +----------------------------+\n");
-        printf("                                    | Species  : %-15s |\n", aliens[i].species);
-        printf("                                    | Sex      : %-15c |\n", aliens[i].sex);
-        printf("                                    | Age      : %-15d |\n", aliens[i].age);
-        printf("                                    | Size     : %-15s |\n", aliens[i].size);
-        printf("                                    | Diet     : %-15s |\n", aliens[i].diet);
-        printf("                                    | Nickname : %-15s |\n", aliens[i].nickname[0] ? aliens[i].nickname : "(none)");
-        printf("                                    +----------------------------+\n");
-        print_alien_art(&aliens[i], i);
-        //if (i == selected)
-        //    printf("                         <<< SELECTED >>>\n");
-        printf("+----------------------------+\n\n");
-    }
-
-    if (start + visible_count < count)
-    {
-        printf("           %d aliens below press down to show\n", (count - start - 1));
-    } 
-}
-
-
 int input_aliens(Alien* aliens, int count)
 {
     int selected = 0;

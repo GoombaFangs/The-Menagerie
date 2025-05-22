@@ -8,6 +8,9 @@
 #include "alien_folder.h"
 #include "visuals_folder.h"
 
+int get_alien_types_for_terrain(const char* terrain, AlienType* out_types);
+const char* get_alien_type_name(AlienType type);
 Alien* generate_aliens(char* planet_terrain, int count);
+int get_alien_types_for_terrain(const char* terrain, AlienType* out_types);
 
 #endif

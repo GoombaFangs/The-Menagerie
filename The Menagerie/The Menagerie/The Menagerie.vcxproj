@@ -136,6 +136,7 @@
     <ClCompile Include="gas_based.c" />
     <ClCompile Include="glowing.c" />
     <ClCompile Include="input_keyboard.c" />
+    <ClCompile Include="loading_screen.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="manager.c" />
     <ClCompile Include="alien_visuals.c" />
@@ -157,6 +158,7 @@
     <ClInclude Include="gas_based.h" />
     <ClInclude Include="glowing.h" />
     <ClInclude Include="input_keyboard.h" />
+    <ClInclude Include="loading_screen.h" />
     <ClInclude Include="manager.h" />
     <ClInclude Include="alien_visuals.h" />
     <ClInclude Include="menu_option_data_base.h" />

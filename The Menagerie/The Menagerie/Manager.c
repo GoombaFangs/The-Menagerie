@@ -46,54 +46,63 @@ int main_menu_screen()
 
 void app_start()
 {
-   srand((unsigned int)time(NULL));
-   set_console_size(110, 40); 
-   set_console_font_size(7, 14);
-   reset_console();
+    srand((unsigned int)time(NULL));
+    set_console_size(110, 40);
+    set_console_font_size(7, 14);
+    reset_console();
 
-   int running = 1;
-   int do_next = main_menu_screen();
-   Alien selected_alien = { 0 };
+    int running = 1;
+    int do_next = main_menu_screen();
+    Alien selected_alien = { 0 };
 
-   while (running)
-   {
-       switch (do_next)
-       {
-	   case -1: // return to menu
-           do_next = main_menu_screen();
-		   break;
+    while (running)
+    {
+        switch (do_next)
+        {
+        case -1: // return to menu
+            do_next = main_menu_screen();
+            break;
 
-       case 0: // Explore Planet
-       {
-           char* planet_terrain = map_screen();
-           printf("You have traveled to planet %s.\n", planet_terrain);
-		   hold_seconds(1.5);
-           selected_alien = alien_selection_screen(planet_terrain, NUM_ALIENS);
-           do_next = -1;
-           break;
-       }
+        case 0: // Explore Planet
+        {
+            char* planet_terrain = map_screen();
+            for (int i = 0; i < 8; i++)
+            {
+                printf("You have traveled to planet %s.\n", planet_terrain);
+                if (i % 2 == 0)
+                {
+                    printf("\n");
+                }
+                print_ship();
+                hold_seconds(0.3);
+                reset_console();
+            }
+            selected_alien = alien_selection_screen(planet_terrain, NUM_ALIENS);
+            do_next = -1;
+            break;
+        }
 
-       case 1: //zoo
-           do_next = -1;
-		   // TODO: open zoo
-           break;
+        case 1: //zoo
+            do_next = -1;
+            // TODO: open zoo
+            break;
 
-       case 2: //inventory
-           do_next = -1;
-           // TODO: open inventory
-           break;
+        case 2: //inventory
+            do_next = -1;
+            // TODO: open inventory
+            break;
 
-       case 3: //exit
-           running = 0;
-           break;
-	   case 4: //add alien to the zoo
-           do_next = -1;
-           // TODO: add alien to zoo
-		   break;
+        case 3: //exit
+            running = 0;
+            break;
+        case 4: //add alien to the zoo
+            do_next = -1;
+            // TODO: add alien to zoo
+            break;
 
-       default:
-           do_next = -1;
-           break;
-       }
-   }
+        default:
+            do_next = -1;
+            break;
+        }
+    }
 }

@@ -7,7 +7,7 @@ Alien alien_selection_screen(char* planet_terrain , int count)
 {
     Alien* aliens = generate_aliens(planet_terrain ,NUM_ALIENS);
 
-    int selected = input_aliens(aliens, count);
+    int selected = input_aliens(planet_terrain, aliens, count);
 
     return aliens[selected];
 }
@@ -28,7 +28,7 @@ Planet map_screen()
         terrain_ptrs[i] = planets[i].name;
     }
 
-    int selected_planet = input_text(terrain_ptrs, NUM_PLANETS);
+    int selected_planet = input_text(terrain_ptrs, NUM_PLANETS, 1 ,"");//1 to reset console
     if (selected_planet == -1)
     {
         printf("Planet selection canceled.\n");
@@ -45,7 +45,7 @@ Planet map_screen()
 
 int main_menu_screen()
 {
-    int selected = input_text(main_menu_list, main_menu_num);
+	int selected = input_text(main_menu_list, main_menu_num, 1, "");//1 to reset console
     return selected;
 }
 
@@ -66,7 +66,7 @@ int story_screen(Planet planet)
         hold_seconds(0.3);
         reset_console();
     }
-	print_ship_arrive_planet();
+	print_ship_arrive_planet(planet.terrain);
 
     if (printg(0.0005, "                                            You have arrived at planet %s.\n", planet.name) == -1) return -1;
     hold_seconds(1);
@@ -87,7 +87,7 @@ int story_screen(Planet planet)
 
 void app_start()
 {
-    srand((unsigned int)time(NULL));
+	srand((unsigned int)time(NULL)); // Seed the random number generator
     set_console_size(110, 40);
     set_console_font_size(7, 14);
     reset_console();
@@ -106,11 +106,6 @@ void app_start()
 
         case 0: // Explore Planet
         {
-			Planet curnt_planet = { 0 };
-			if (curnt_planet.name[0] != '\0')
-			{
-
-			}
             printg(0.02, "Choose your next destination among the stars..\n");
             /*if(printg(0.02, "Choose your next destination among the stars..\n") == -1)
             {

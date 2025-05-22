@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <ctype.h>
 #include "planet_folder.h"
 
 void generate_random_name(char* name, int max_length);

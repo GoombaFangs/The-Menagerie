@@ -59,4 +59,6 @@ Planet travel_to_planet(Planet planet_selected)
             return planet_selected;
         }
     }
+    Planet default_planet = { "Unknown", 0.0, "Unknown" };
+    return default_planet;
 }

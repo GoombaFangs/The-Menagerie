@@ -2,9 +2,11 @@
 #define LOADING_SCREEN_H
 
 #include "visuals_folder.h"
+#include "planet_folder.h"
 
 void print_ship();
-void print_planet();
-void print_ship_arrive_planet();
+void print_planet(char* planet_terrain);
+void print_ship_arrive_planet(char* planet_terrain);
+void print_planet_menu(char* planet_terrain);
 
 #endif 

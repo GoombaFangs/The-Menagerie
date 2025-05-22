@@ -5,13 +5,12 @@
 
 void print_text_options(int selected, const char* menu_list[], int amount)
 {
-	reset_console();
     printf("    Press Up or Down arrow and Enter to confirm:\n\n\n");
 
     for (int i = 0; i < amount; i++)
     {
         const char* text = menu_list[i];
-        int len = strlen(text);
+        int len = (int)strlen(text);
         int padding_total = FRAME_WIDTH - len;
         int padding_left = padding_total / 2;
         int padding_right = padding_total - padding_left;
@@ -49,9 +48,18 @@ void print_text_options(int selected, const char* menu_list[], int amount)
     }
 }
 
-int input_text(const char* menu_list[], int amount)
+int input_text(const char* menu_list[], int amount, int console, char* planet_terrain)// console 1 to reset console 0 to not reset
 {
     int selected = 0;
+    if (console == 1)
+    {
+        reset_console();
+    }
+	else if (console == 0)
+	{
+        reset_console();
+        print_planet_menu(planet_terrain);
+	}
     print_text_options(selected, menu_list, amount);
 
     while (1)
@@ -78,11 +86,20 @@ int input_text(const char* menu_list[], int amount)
             return -1;
         }
 
+        if (console == 1)
+        {
+            reset_console();
+        }
+        else if (console == 0)
+        {
+            reset_console();
+            print_planet_menu(planet_terrain);
+        }
         print_text_options(selected, menu_list, amount);
     }
 }
 
-int input_aliens(Alien* aliens, int count)
+int input_aliens(char* planet_terrain, Alien* aliens, int count)
 {
     int selected = 0;
     print_alien_options(aliens, count, selected, VISIBLE_ALIENS);
@@ -110,20 +127,13 @@ int input_aliens(Alien* aliens, int count)
         }
         else if (key == 27) // ESC
         {
-            reset_console();
-            print_ship_arrive_planet();
-			const char* list[] = { "  Continue  ", "  Exit   " };
-            //int selected = input_text(list, 2);
-			if (selected == 0)
-			{
-                continue;
-			}
-			else
-			{
-				return -1;
-			}
+            const char* list[] = { "  Continue  ", "  Exit   " };
+            int selected = input_text(list, 2, 0, planet_terrain);//0 dont reset the console
+            if (selected != 0)
+            {
+                return -1;
+            }
         }
-
         print_alien_options(aliens, count, selected, VISIBLE_ALIENS);
     }
 }

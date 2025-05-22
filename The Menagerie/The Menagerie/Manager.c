@@ -28,7 +28,7 @@ Planet map_screen()
         terrain_ptrs[i] = planets[i].name;
     }
 
-    int selected_planet = input_text(terrain_ptrs, NUM_PLANETS, 1 ,"");//1 to reset console
+	int selected_planet = input_text(terrain_ptrs, NUM_PLANETS, 3, "");//3 to Star map style
     if (selected_planet == -1)
     {
         printf("Planet selection canceled.\n");
@@ -45,7 +45,15 @@ Planet map_screen()
 
 int main_menu_screen()
 {
-	int selected = input_text(main_menu_list, main_menu_num, 1, "");//1 to reset console
+    for (int i = 0; i < 2; i++)
+    {
+        if (i % 2 == 0) printf("\n");
+
+        print_ship();
+        hold_seconds(0.3);
+        reset_console();
+    }
+    int selected = input_text(main_menu_list, main_menu_num, 2, "");//2 to space windows style
     return selected;
 }
 

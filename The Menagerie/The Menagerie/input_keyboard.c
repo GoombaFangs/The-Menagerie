@@ -5,7 +5,7 @@
 
 void print_text_options(int selected, const char* menu_list[], int amount)
 {
-    printf("Press Up or Down arrow ,  Enter to confirm , Escape to go back\n\n");
+    //printf("Press Up or Down arrow ,  Enter to confirm , Escape to go back\n\n");
 
     for (int i = 0; i < amount; i++)
     {
@@ -48,18 +48,21 @@ void print_text_options(int selected, const char* menu_list[], int amount)
     }
 }
 
-int input_text(const char* menu_list[], int amount, int console, char* planet_terrain)// console 1 to reset console 0 to not reset
+int input_text(const char* menu_list[], int amount, int console, char* planet_terrain)// console 0 to reset console
 {
     int selected = 0;
-    if (console == 1)
-    {
-        reset_console();
-    }
-	else if (console == 0)
+	switch (console)
 	{
-        reset_console();
-        print_planet_menu(planet_terrain);
-	}
+	case 0:  reset_console();
+		break;
+	case 1:  reset_console(); print_planet_menu(planet_terrain);
+		break;
+	case 2:  reset_console(); print_space_windows();
+		break;
+	case 3:  reset_console(); stars();
+		break;
+    }
+
     print_text_options(selected, menu_list, amount);
 
     while (1)
@@ -86,15 +89,18 @@ int input_text(const char* menu_list[], int amount, int console, char* planet_te
             return -1;
         }
 
-        if (console == 1)
+        switch (console)
         {
-            reset_console();
+        case 0:  reset_console();
+            break;
+        case 1:  reset_console(); print_planet_menu(planet_terrain);
+            break;
+        case 2:  reset_console(); print_space_windows();
+            break;
+        case 3:  reset_console(); stars();
+            break;
         }
-        else if (console == 0)
-        {
-            reset_console();
-            print_planet_menu(planet_terrain);
-        }
+
         print_text_options(selected, menu_list, amount);
     }
 }
@@ -128,7 +134,7 @@ int input_aliens(char* planet_terrain, Alien* aliens, int count)
         else if (key == 27) // ESC
         {
             const char* list[] = { "  Continue  ", "  Exit   " };
-            int selected = input_text(list, 2, 0, planet_terrain);//0 dont reset the console
+            int selected = input_text(list, 2, 1, planet_terrain);//1 planet terrain style
             if (selected != 0)
             {
                 return -1;

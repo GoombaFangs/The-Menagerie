@@ -71,4 +71,5 @@ void print_alien_options(Alien* aliens, int count, int selected, int visible_cou
     {
         printf("           %d aliens below press down to show\n", (count - start - 1));
     }
+    printf("\n\n\n                                                               An alien awaits. Bring it on board.");
 }

@@ -12,7 +12,7 @@
 Alien alien_selection_screen(char* planet_terrain ,int count);
 Planet map_screen();
 int main_menu_screen();
-void story_screen(Planet planet);
+int story_screen(Planet planet);
 void app_start();
 
 #endif

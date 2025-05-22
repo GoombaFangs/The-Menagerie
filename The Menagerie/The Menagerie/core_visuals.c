@@ -28,20 +28,42 @@ void reset_console()
 #endif
 }
 
-void printg(double duration, const char* format, ...)
+int printg(double duration, const char* format, ...)
 {
     va_list args;
     va_start(args, format);
 
-    char buffer[256]; // Temporary buffer to store the formatted string
-    vsnprintf(buffer, sizeof(buffer), format, args); // Format the string
+    char buffer[256];
+    vsnprintf(buffer, sizeof(buffer), format, args);
     va_end(args);
+
+    int skip_delay = 0;
 
     for (int i = 0; buffer[i] != '\0'; i++)
     {
+        if (_kbhit())
+        {
+            int key = _getch();
+            if (key == 13)  // Enter
+            {
+				hold_seconds(0.1); // short delay before skipping
+                skip_delay = 1;
+            }
+            else if (key == 27) // Escape
+            {
+                return -1;
+            }
+        }
+
         printf("%c", buffer[i]);
-        hold_seconds(duration);
+		fflush(stdout);// immediately flush the output buffer
+
+        if (!skip_delay)
+        {
+            hold_seconds(duration);
+        }
     }
+    return 0;
 }
 
 static HANDLE active_console = NULL;

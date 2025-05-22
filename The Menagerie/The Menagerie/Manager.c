@@ -49,33 +49,41 @@ int main_menu_screen()
     return selected;
 }
 
-void story_screen(Planet planet)
+int story_screen(Planet planet)
 {
-    printg(0.05, "Scanning...\n");
-	hold_seconds(1);
-    printg(0.05, "%s is %.1f light years away.\n", planet.name, planet.distance / 4);
-	hold_seconds(1);
+    if (printg(0.05, "Scanning...\n") == -1) return -1;
+    hold_seconds(1);
+
+    if (printg(0.05, "%s is %.1f light years away.\n", planet.name, planet.distance / 4) == -1) return -1;
+    hold_seconds(1);
+
     for (int i = 0; i < 8; i++)
     {
         printf("Navigating through deep space...\n");
-        if (i % 2 == 0)
-        {
-            printf("\n");
-        }
+        if (i % 2 == 0) printf("\n");
+
         print_ship();
         hold_seconds(0.3);
         reset_console();
     }
-    printg(0.025, "You have arrived at planet %s.\n", planet.name);
+
+    if (printg(0.025, "You have arrived at planet %s.\n", planet.name) == -1) return -1;
     hold_seconds(1);
+
     reset_console();
-    printg(0.05, "Scanning surface...\n");
+
+    if (printg(0.05, "Scanning surface...\n") == -1) return -1;
     hold_seconds(1);
-    printg(0.035, "Planet %s is covered in %s terrain.\n", planet.name, planet.terrain);
+
+    if (printg(0.035, "Planet %s is covered in %s terrain.\n", planet.name, planet.terrain) == -1) return -1;
     hold_seconds(2);
+
     reset_console();
-    printg(0.05, "Life signs detected...\n");
+
+    if (printg(0.05, "Life signs detected...\n") == -1) return -1;
     hold_seconds(2.5);
+
+    return 0;
 }
 
 void app_start()
@@ -99,10 +107,23 @@ void app_start()
 
         case 0: // Explore Planet
         {
-            printg(0.02, "Choose your next destination among the stars..\n");
+			Planet curnt_planet = { 0 };
+			if (curnt_planet.name[0] != '\0')
+			{
+
+			}
+            if(printg(0.02, "Choose your next destination among the stars..\n") == -1)
+            {
+                do_next = -1;
+                break;
+            }
             hold_seconds(1.2);
             Planet planet = map_screen();
-            story_screen(planet);
+            if (story_screen(planet) == -1)
+            {
+                do_next = -1;
+                break;
+            }
             selected_alien = alien_selection_screen(planet.terrain, NUM_ALIENS);
             do_next = -1;
             break;

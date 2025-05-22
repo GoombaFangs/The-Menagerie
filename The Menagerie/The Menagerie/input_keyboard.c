@@ -5,7 +5,7 @@
 
 void print_text_options(int selected, const char* menu_list[], int amount)
 {
-    reset_console();
+	reset_console();
     printf("    Press Up or Down arrow and Enter to confirm:\n\n\n");
 
     for (int i = 0; i < amount; i++)
@@ -111,7 +111,17 @@ int input_aliens(Alien* aliens, int count)
         else if (key == 27) // ESC
         {
             reset_console();
-            return -1;
+            print_ship_arrive_planet();
+			const char* list[] = { "  Continue  ", "  Exit   " };
+            //int selected = input_text(list, 2);
+			if (selected == 0)
+			{
+                continue;
+			}
+			else
+			{
+				return -1;
+			}
         }
 
         print_alien_options(aliens, count, selected, VISIBLE_ALIENS);

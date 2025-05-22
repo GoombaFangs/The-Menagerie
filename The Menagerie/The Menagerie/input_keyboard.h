@@ -8,6 +8,7 @@
 #include "visuals_folder.h"
 #include "menu_option_data_base.h"
 #include "alien_folder.h"
+#include "manager.h"
 
 void print_text_options(int selected, const char* menu_list[], int amount);
 int input_text(const char* menu_list[], int amount);

@@ -66,11 +66,10 @@ int story_screen(Planet planet)
         hold_seconds(0.3);
         reset_console();
     }
+	print_ship_arrive_planet();
 
-    if (printg(0.025, "You have arrived at planet %s.\n", planet.name) == -1) return -1;
+    if (printg(0.0005, "                                            You have arrived at planet %s.\n", planet.name) == -1) return -1;
     hold_seconds(1);
-
-    reset_console();
 
     if (printg(0.05, "Scanning surface...\n") == -1) return -1;
     hold_seconds(1);

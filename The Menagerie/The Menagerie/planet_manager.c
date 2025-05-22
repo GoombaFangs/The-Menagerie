@@ -10,7 +10,7 @@ void generate_random_name(char* name, int max_length)
     };
 
     const int num_syllables = sizeof(syllables) / sizeof(syllables[0]);
-	int num_parts = 2 + rand() % 3; // 2 to 4 syllables
+    int num_parts = 1 + rand() % 3; // 1 to 3 syllables
 
     name[0] = '\0';
 

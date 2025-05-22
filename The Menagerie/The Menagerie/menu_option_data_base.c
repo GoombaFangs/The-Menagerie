@@ -4,7 +4,7 @@ const char* main_menu_list[] =
 {
     "   Map   ",
     "   Zoo   ",
-    "Inventory",
+    "Ship Log ",
     "  Exit   ",
 };
 

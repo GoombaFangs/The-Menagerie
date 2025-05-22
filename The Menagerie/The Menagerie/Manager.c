@@ -71,7 +71,7 @@ int story_screen(Planet planet)
     if (printg(0.0005, "                                            You have arrived at planet %s.\n", planet.name) == -1) return -1;
     hold_seconds(1);
 
-    if (printg(0.05, "Scanning surface...\n") == -1) return -1;
+    if (printg(0.05, "\n\nScanning surface...\n") == -1) return -1;
     hold_seconds(1);
 
     if (printg(0.035, "Planet %s is covered in %s terrain.\n", planet.name, planet.terrain) == -1) return -1;
@@ -85,12 +85,19 @@ int story_screen(Planet planet)
     return 0;
 }
 
+void key_binding_screen()
+{
+    printg(0.015, "Press Up or Down arrow ,  Enter to confirm , Escape to go back\n\n");
+	hold_seconds(0.3);
+}
+
 void app_start()
 {
 	srand((unsigned int)time(NULL)); // Seed the random number generator
     set_console_size(110, 40);
     set_console_font_size(7, 14);
     reset_console();
+	key_binding_screen();
 
     int running = 1;
     int do_next = main_menu_screen();
@@ -106,19 +113,24 @@ void app_start()
 
         case 0: // Explore Planet
         {
-            printg(0.02, "Choose your next destination among the stars..\n");
-            /*if(printg(0.02, "Choose your next destination among the stars..\n") == -1)
-            {
-                do_next = -1;
-                break;
-            }*/
-            hold_seconds(1.2);
-            Planet planet = map_screen();
-            if (story_screen(planet) == -1)
+            //printg(0.02, "Choose your next destination among the stars..\n");
+            if(printg(0.02, "Choose your next destination among the stars..\n") == -1)
             {
                 do_next = -1;
                 break;
             }
+            hold_seconds(1.2);
+            Planet planet = map_screen();
+			if (planet.name[0] == '\0')//Exit while choosing planet
+			{
+				do_next = -1;
+				break;
+			}
+			else if (story_screen(planet) == -1)//Exit while the story is running
+			{
+				do_next = -1;
+				break;
+			}
             selected_alien = alien_selection_screen(planet.terrain, NUM_ALIENS);
             do_next = -1;
             break;
@@ -129,9 +141,9 @@ void app_start()
             // TODO: open zoo
             break;
 
-        case 2: //inventory
+        case 2: //Ship log
             do_next = -1;
-            // TODO: open inventory
+            // TODO: open Ship log
             break;
 
         case 3: //exit

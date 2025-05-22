@@ -5,7 +5,7 @@
 
 void print_text_options(int selected, const char* menu_list[], int amount)
 {
-    printf("    Press Up or Down arrow and Enter to confirm:\n\n\n");
+    printf("Press Up or Down arrow ,  Enter to confirm , Escape to go back\n\n");
 
     for (int i = 0; i < amount; i++)
     {

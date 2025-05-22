@@ -31,6 +31,7 @@ void print_species_art(const char* type, int variant)
 void print_alien_options(Alien* aliens, int count, int selected, int visible_count)
 {
     reset_console();
+    printf("Press Up or Down arrow ,  Enter to confirm , Escape to go back\n\n");
     printf("\n\n");
 
     int start = 0;

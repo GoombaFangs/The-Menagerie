@@ -75,6 +75,11 @@ const char* get_alien_type_name(AlienType type)
     }
 }
 
+Alien add_nickname(Alien alien, const char* nickname)
+{
+    get_alpha_input(alien.nickname, sizeof(alien.nickname));
+	return alien;
+}
 
 Alien* generate_aliens(char* planet_terrain, int count)
 {

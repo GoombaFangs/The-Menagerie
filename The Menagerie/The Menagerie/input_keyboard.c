@@ -149,3 +149,39 @@ int input_aliens(char* planet_terrain, Alien* aliens, int count)
         print_alien_options(aliens, count, selected, VISIBLE_ALIENS);
     }
 }
+
+int get_alpha_input(char* inputBuffer, int bufferSize)
+{
+    int bufferIndex = 0;
+    char key;
+
+    while (1)
+    {
+        key = _getch();
+
+        if (key == '\r') //Enter
+        {
+            inputBuffer[bufferIndex] = '\0';
+            break;
+        }
+
+        if ((key >= 'A' && key <= 'Z') ||
+            (key >= 'a' && key <= 'z'))
+        {
+            if (bufferIndex < bufferSize - 1)
+            {
+                inputBuffer[bufferIndex++] = key;
+                putchar(key);
+            }
+        }
+        else if (key == '\b' && bufferIndex > 0) // Backspace
+        {
+            bufferIndex--;
+            printf("\b \b"); // Remove the last character from the console
+        }
+        else if (key == 27) // Escape Key
+        {
+            return -1;
+        }
+    }
+}

@@ -141,6 +141,7 @@ void app_start()
 				break;
 			}
             selected_alien = alien_selection_screen(planet.terrain, NUM_ALIENS);
+            add_nickname(selected_alien, selected_alien.nickname);
             do_next = -1;
             break;
         }

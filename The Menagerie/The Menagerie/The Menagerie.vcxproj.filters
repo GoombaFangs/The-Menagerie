@@ -90,6 +90,12 @@
     <ClCompile Include="menu_option_data_base.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="planet_visuals.c">
+      <Filter>Source Files\Planet</Filter>
+    </ClCompile>
+    <ClCompile Include="loading_screen.c">
+      <Filter>Source Files\Visuals</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="manager.h">
@@ -146,17 +152,23 @@
     <ClInclude Include="menu_option_data_base.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="alien_folder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="planet_folder.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="planet_visuals.h">
+      <Filter>Header Files\Planet</Filter>
     </ClInclude>
     <ClInclude Include="species_folder.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Alien\Species</Filter>
+    </ClInclude>
+    <ClInclude Include="planet_folder.h">
+      <Filter>Header Files\Planet</Filter>
     </ClInclude>
     <ClInclude Include="visuals_folder.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="alien_folder.h">
+      <Filter>Header Files\Alien</Filter>
+    </ClInclude>
+    <ClInclude Include="loading_screen.h">
+      <Filter>Header Files\Visuals</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

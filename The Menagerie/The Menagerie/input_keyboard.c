@@ -162,6 +162,7 @@ int get_alpha_input(char* inputBuffer, int bufferSize)
         if (key == 0 || key == 224) // Arrow key or special key
         {
             (void)_getch(); // Consume the next byte (arrow key code)
+            putchar('\a'); // Beep sound
             continue; // Ignore
         }
 
@@ -195,6 +196,10 @@ int get_alpha_input(char* inputBuffer, int bufferSize)
         else if (key == 27) // Escape Key
         {
             return -1;
+        }
+        else
+        {
+            putchar('\a'); // Beep sound
         }
     }
 	return 0;

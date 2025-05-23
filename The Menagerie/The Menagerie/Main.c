@@ -2,5 +2,5 @@
 
 void main()
 {
-		 app_start();
+	app_start();
 }

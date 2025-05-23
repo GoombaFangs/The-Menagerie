@@ -299,18 +299,18 @@ void print_space_windows()
 
 void stars()
 {
-	printf("     *       .                 *        *        *        .      *        *   .  *     .     \n");
-	printf("  .               .              .    *              *   .  *          .     *    *   .  *      *   .  *\n");
-	printf("       *              *              .   *                  .  *      .       *  *       .   *\n");
-	printf("  *   .              .                      *     .  *                       .      *       \n");
-	printf("     .  *       .               *    .            *   .         *    \n");
-	printf("  *       .                  .                *    .      *    .      *   .        *  \n");
-	printf("     .      *   .        *        .   *           .    *        *        .   *     .    *\n");
-    printf("     *       .                 .         *         *        .  *     .     \n");
-    printf("  *   .      *                      *            *       .  *      \n");
+	printf(" *       .                 *        *        *        .      *        *   .  *     .     \n");
+	printf("   .               .              .    *              *   .  *          .     *    *   .  *      *   .  *\n");
+	printf("       *              *              .   *                     .  *      .       *  *       .   *\n");
+	printf("      *   .              .                      *     .  *                        .      *       \n");
+	printf("         .  *       .               *    .            *       .         *             *     .       * \n");
+	printf("       *       .                  .                *    .            *    .      *   .        *  \n");
+	printf("         .      *   .        *        .   *            .    *        *        .   *     .    *\n");
+    printf("          *       .                 .         *          *            .             .  *     .     \n");
+    printf("     *   .      *                      *            *       .                  *         .        *  \n");
     printf("       *        .               .  *        *   .             .      *        *   .  *     .     \n");
-    printf("         *         .                      .           .           *   .        *    \n");
-    printf("     .      *         *        .   *          .  *    .      *   .        *    \n");
+    printf("         *         .                      .           .           *   .        *     .           *  \n");
+    printf("     .      *         *        .   *          .  *    .      *   .        *                . \n");
 	printf("\n\n");
 }
 	

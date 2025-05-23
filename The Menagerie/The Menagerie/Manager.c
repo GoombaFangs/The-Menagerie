@@ -65,9 +65,9 @@ int story_screen(Planet planet)
     if (printg(0.05, "%s is %.1f light years away.\n", planet.name, planet.distance / 4) == -1) return -1;
     hold_seconds(1);
 
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < 14; i++)
     {
-        printf("Navigating through deep space...\n");
+        printf("\n   Navigating through deep space...\n\n");
         if (i % 2 == 0) printf("\n");
 
         print_ship();
@@ -79,24 +79,25 @@ int story_screen(Planet planet)
     if (printg(0.0005, "                                            You have arrived at planet %s.\n", planet.name) == -1) return -1;
     hold_seconds(1);
 
-    if (printg(0.05, "\n\nScanning surface...\n") == -1) return -1;
+    if (printg(0.05, "\n\n\nScanning surface...\n") == -1) return -1;
     hold_seconds(1);
+    if (printg(0.3, ".....\n") == -1) return -1;
 
-    if (printg(0.035, "Planet %s is covered in %s terrain.\n", planet.name, planet.terrain) == -1) return -1;
-    hold_seconds(2);
+    if (printg(0.04, "Planet %s is covered in %s terrain.\n", planet.name, planet.terrain) == -1) return -1;
+    hold_seconds(2.2);
 
     reset_console();
 
-    if (printg(0.05, "Life signs detected...\n") == -1) return -1;
-    hold_seconds(2.5);
+    printg(0.05, "Life signs detected...\n");
+    hold_seconds(1.5);
 
     return 0;
 }
 
 void key_binding_screen()
 {
-    printg(0.015, "Press Up or Down arrow ,  Enter to confirm , Escape to go back\n\n");
-	hold_seconds(0.3);
+    printg(0.045, "Press Up or Down arrow ,  Enter to confirm , Escape to go back\n\n");
+	hold_seconds(2);
 }
 
 void app_start()

@@ -96,7 +96,7 @@ void print_camouflaged(int variant)
 
 	case 9:
 		printf(
-			"    __        _\n"
+			"    __       _\n"
 			"  /    \\~~~/  \\\n"
 			" |  o    o    |\n"
 			" |     !      |\n"

@@ -3,7 +3,7 @@
 #define FRAME_WIDTH 13
 #define VISIBLE_ALIENS 1
 
-void print_text_options(int selected, const char* menu_list[], int amount)
+void print_text_options(int selected, const char* menu_list[], int amount, int console)
 {
     //printf("Press Up or Down arrow ,  Enter to confirm , Escape to go back\n\n");
 
@@ -18,22 +18,28 @@ void print_text_options(int selected, const char* menu_list[], int amount)
         if (i == selected)
         {
             printf("             ");
+            if (console == 3) printf("              ");
             for (int j = 0; j < FRAME_WIDTH + 2; j++) printf("-");
             printf("\n");
-
-            printf("            |");
+            if (console == 3) printf("       Destination:       |");
+			else printf("            |");
+     
             for (int j = 0; j < padding_left; j++) printf(" ");
+
             printf(" %s ", text);
+
             for (int j = 0; j < padding_right; j++) printf(" ");
             printf("|\n");
 
             printf("             ");
+            if (console == 3) printf("              ");
             for (int j = 0; j < FRAME_WIDTH + 2; j++) printf("-");
             printf("\n");
         }
         else
         {
             printf("\n");
+            if (console == 3) printf("              ");
             printf("                %s\n", text);
             printf("\n");
         }
@@ -42,7 +48,7 @@ void print_text_options(int selected, const char* menu_list[], int amount)
         {
             if (strcmp(text, "  Exit   ") != 0)
             {
-                printf("\n\n     Choose a planet to explore..\n");
+                printf("\n\n                                                                   Choose a planet to explore..\n");
             }
         }
     }
@@ -53,17 +59,17 @@ int input_text(const char* menu_list[], int amount, int console, char* planet_te
     int selected = 0;
 	switch (console)
 	{
-	case 0:  reset_console();
+	case 0:  reset_console();// default style
 		break;
-	case 1:  reset_console(); print_planet_menu(planet_terrain);
+	case 1:  reset_console(); print_planet_menu(planet_terrain); // planet terrain style
 		break;
-	case 2:  reset_console(); print_space_windows();
+	case 2:  reset_console(); print_space_windows(); // space windows style
 		break;
-	case 3:  reset_console(); stars();
+	case 3:  reset_console(); stars(); // stars style
 		break;
     }
 
-    print_text_options(selected, menu_list, amount);
+    print_text_options(selected, menu_list, amount , console);
 
     while (1)
     {
@@ -101,7 +107,7 @@ int input_text(const char* menu_list[], int amount, int console, char* planet_te
             break;
         }
 
-        print_text_options(selected, menu_list, amount);
+        print_text_options(selected, menu_list, amount, console);
     }
 }
 

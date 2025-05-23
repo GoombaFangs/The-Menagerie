@@ -3,17 +3,6 @@
 
 void generate_random_name(char* name, int max_length)
 {
-    const char* syllables[] = 
-    {
-        "za", "tor", "ex", "lun", "kir", "von", "rax", "shi", "ka", "mi",
-        "dra", "xel", "vor", "qu", "zen", "tha", "jo", "rek", "nu", "sol",
-        "zor", "lek", "tri", "val", "nor", "bel", "pha", "kra", "sil", "mar",
-        "ion", "zer", "nek", "gol", "tas", "ru", "ish", "vek", "tia", "mon",
-        "elu", "sar", "kim", "dro", "ani", "lor", "bem", "ush", "zan", "yor",
-        "nex", "il", "pri", "dak", "ash", "thy", "omo", "gal", "rik", "su"
-    };
-
-    const int num_syllables = sizeof(syllables) / sizeof(syllables[0]);
     int num_parts = 1 + rand() % 3; // 1 to 3 syllables
 
     name[0] = '\0';

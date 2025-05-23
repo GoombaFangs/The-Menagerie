@@ -75,10 +75,14 @@ const char* get_alien_type_name(AlienType type)
     }
 }
 
-Alien add_nickname(Alien alien, const char* nickname)
+Alien add_nickname(Alien* aliens, int selected_index)
 {
-    get_alpha_input(alien.nickname, sizeof(alien.nickname));
-	return alien;
+    alien_card(aliens, selected_index);
+    printg(0.025, "\n  Enter a nickname for this alien:  \n");
+    get_alpha_input(aliens[selected_index].nickname, sizeof(aliens[selected_index].nickname));
+    reset_console();
+
+    return aliens[selected_index];
 }
 
 Alien* generate_aliens(char* planet_terrain, int count)
@@ -103,15 +107,14 @@ Alien* generate_aliens(char* planet_terrain, int count)
 
     for (int i = 0; i < count; i++)
     {
-        strcpy_s(aliens[i].species, sizeof(aliens[i].species), species_list[rand() % num_species]);
+        aliens[i].type = possible_types[rand() % 2];
+        strcpy_s(aliens[i].species, sizeof(aliens[i].species), get_alien_type_name(aliens[i].type));
         aliens[i].sex = (rand() % 2 == 0) ? 'M' : 'F';
         aliens[i].age = rand() % 100 + 1;
         strcpy_s(aliens[i].size, sizeof(aliens[i].size), size_list[rand() % num_sizes]);
         strcpy_s(aliens[i].diet, sizeof(aliens[i].diet), diet_list[rand() % num_diets]);
         aliens[i].art_variant = rand() % 10;
         aliens[i].nickname[0] = '\0';
-
-        aliens[i].type = possible_types[rand() % 2];
     }
 
     return aliens;

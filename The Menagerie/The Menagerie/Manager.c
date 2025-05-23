@@ -3,13 +3,17 @@
 #define NUM_ALIENS 6
 #define NUM_PLANETS 5
 
-Alien alien_selection_screen(char* planet_terrain , int count)
+Alien* alien_selection_screen(char* planet_terrain , int count ,int* selected_alien_index)
 {
     Alien* aliens = generate_aliens(planet_terrain ,NUM_ALIENS);
 
     int selected = input_aliens(planet_terrain, aliens, count);
 
-    return aliens[selected];
+    if (selected_alien_index != NULL)
+    {
+        *selected_alien_index = selected;
+    }
+    return aliens;
 }
 
 Planet map_screen()
@@ -110,7 +114,7 @@ void app_start()
 
     int running = 1;
     int do_next = main_menu_screen();
-    Alien selected_alien = { 0 };
+    Alien* alien_list = NULL;
 
     while (running)
     {
@@ -140,12 +144,24 @@ void app_start()
 				do_next = -1;
 				break;
 			}
-            selected_alien = alien_selection_screen(planet.terrain, NUM_ALIENS);
-            add_nickname(selected_alien, selected_alien.nickname);
+
+            int selected_alien_index;
+            alien_list = alien_selection_screen(planet.terrain, NUM_ALIENS, &selected_alien_index);
+
+            if (alien_list && selected_alien_index >= 0 && selected_alien_index < NUM_ALIENS)
+            {
+                alien_list[selected_alien_index] = add_nickname(alien_list, selected_alien_index);
+            }
+			alien_card(alien_list, selected_alien_index);
+			hold_seconds(2);
+			reset_console();
+
+            free(alien_list);
+            alien_list = NULL;
+
             do_next = -1;
             break;
         }
-
         case 1: //zoo
             do_next = -1;
             // TODO: open zoo

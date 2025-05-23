@@ -135,7 +135,7 @@ int input_aliens(char* planet_terrain, Alien* aliens, int count)
         else if (key == 13) // ENTER
         {
             reset_console();
-            return selected + 1; 
+            return selected; 
         }
         else if (key == 27) // ESC
         {

@@ -74,10 +74,10 @@ void print_planet(char* planet_terrain)
     {
         printf("             _________              \n");
         printf("         .-'           '.           \n");
-        printf("       .'         /^\\   '.        \n");
+        printf("       .'         /^\\    '.        \n");
         printf("     .'   /^\\             '.        \n");
         printf("    /                        \\       \n");
-        printf("   /              /^\\        \\      \n");
+        printf("   /              /^\\         \\      \n");
         printf("  |                           |     \n");
         printf("  |       /^\\                |     \n");
         printf("  |                     /^\\  |     \n");

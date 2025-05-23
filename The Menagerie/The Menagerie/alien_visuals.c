@@ -27,10 +27,23 @@ void print_species_art(const char* type, int variant)
         );
     }
 }
-void alien_card()
+void alien_card(Alien* aliens , int index)
 {
-
+    printf("+--------- Alien %d ---------+\n", index + 1);
+    printf("                                    +----------------------------+\n");
+    printf("                                    | Species  : %-15s |\n", get_alien_type_name(aliens[index].type));
+    printf("                                    | Sex      : %-15c |\n", aliens[index].sex);
+    printf("                                    | Age      : %-15d |\n", aliens[index].age);
+    printf("                                    | Size     : %-15s |\n", aliens[index].size);
+    printf("                                    | Diet     : %-15s |\n", aliens[index].diet);
+    printf("                                    | Nickname : %-15s |\n", aliens[index].nickname[0] ? aliens[index].nickname : "(none)");
+    printf("                                    +----------------------------+\n");
+    print_alien_art(&aliens[index], index);
+    //if (i == selected)
+    //    printf("                         <<< SELECTED >>>\n");
+    printf("+----------------------------+\n\n");
 }
+
 void print_alien_options(Alien* aliens, int count, int selected, int visible_count)
 {
     reset_console();
@@ -55,19 +68,7 @@ void print_alien_options(Alien* aliens, int count, int selected, int visible_cou
 
     for (int i = start; i < start + visible_count && i < count; i++)
     {
-        printf("+--------- Alien %d ---------+\n", i + 1);
-        printf("                                    +----------------------------+\n");
-        printf("                                    | Species  : %-15s |\n", get_alien_type_name(aliens[i].type));
-        printf("                                    | Sex      : %-15c |\n", aliens[i].sex);
-        printf("                                    | Age      : %-15d |\n", aliens[i].age);
-        printf("                                    | Size     : %-15s |\n", aliens[i].size);
-        printf("                                    | Diet     : %-15s |\n", aliens[i].diet);
-        printf("                                    | Nickname : %-15s |\n", aliens[i].nickname[0] ? aliens[i].nickname : "(none)");
-        printf("                                    +----------------------------+\n");
-        print_alien_art(&aliens[i], i);
-        //if (i == selected)
-        //    printf("                         <<< SELECTED >>>\n");
-        printf("+----------------------------+\n\n");
+        alien_card(aliens, i);
     }
 
     if (start + visible_count < count)

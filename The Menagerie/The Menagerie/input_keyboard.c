@@ -54,10 +54,10 @@ void print_text_options(int selected, const char* menu_list[], int amount, int c
     }
 }
 
-int input_text(const char* menu_list[], int amount, int console, char* planet_terrain)// console 0 to reset console
+int input_text(const char* menu_list[], int amount, int console_style, char* planet_terrain)// console 0 to reset console
 {
     int selected = 0;
-	switch (console)
+	switch (console_style)
 	{
 	case 0:  reset_console();// default style
 		break;
@@ -69,7 +69,7 @@ int input_text(const char* menu_list[], int amount, int console, char* planet_te
 		break;
     }
 
-    print_text_options(selected, menu_list, amount , console);
+    print_text_options(selected, menu_list, amount , console_style);
 
     while (1)
     {
@@ -95,7 +95,7 @@ int input_text(const char* menu_list[], int amount, int console, char* planet_te
             return -1;
         }
 
-        switch (console)
+        switch (console_style)
         {
         case 0:  reset_console();
             break;
@@ -107,7 +107,7 @@ int input_text(const char* menu_list[], int amount, int console, char* planet_te
             break;
         }
 
-        print_text_options(selected, menu_list, amount, console);
+        print_text_options(selected, menu_list, amount, console_style);
     }
 }
 
@@ -165,10 +165,17 @@ int get_alpha_input(char* inputBuffer, int bufferSize)
             continue; // Ignore
         }
 
-        if (key == '\r') //Enter
+        if (key == '\r') // Enter
         {
-            inputBuffer[bufferIndex] = '\0';
-            break;
+            if (bufferIndex > 0)  
+            {
+                inputBuffer[bufferIndex] = '\0';
+                break;
+            }
+            else
+            {
+                putchar('\a'); // Beep sound
+            }
         }
 
         if ((key >= 'A' && key <= 'Z') ||

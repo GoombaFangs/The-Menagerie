@@ -62,8 +62,8 @@ void print_planet(char* planet_terrain)
         printf("    /     ^      ^       ^   \\       \n");
         printf("   /   ^     ^      ^        /\\      \n");
         printf("  |                    _____/ |     \n");
-        printf("  |\\ ^     ^       ^ /       |     \n");
-        printf("  |  \\______________/     ~  |     \n");
+        printf("  |\\ ^     ^       ^ /        |     \n");
+        printf("  |  \\______________/     ~   |     \n");
         printf("   \\                         /      \n");
         printf("    \\  ~      ~     ~       /       \n");
         printf("     '.                   .'        \n");
@@ -75,15 +75,15 @@ void print_planet(char* planet_terrain)
         printf("             _________              \n");
         printf("         .-'           '.           \n");
         printf("       .'         /^\\    '.        \n");
-        printf("     .'   /^\\             '.        \n");
+        printf("     .'   /^\\              '.        \n");
         printf("    /                        \\       \n");
         printf("   /              /^\\         \\      \n");
         printf("  |                           |     \n");
-        printf("  |       /^\\                |     \n");
-        printf("  |                     /^\\  |     \n");
+        printf("  |       /^\\                 |     \n");
+        printf("  |                     /^\\   |     \n");
         printf("   \\                         /      \n");
         printf("    \\                       /       \n");
-        printf("     '.     /^\\          .'        \n");
+        printf("     '.     /^\\           .'        \n");
         printf("       '-.             .-'          \n");
         printf("          '-._______.-'             \n");
     }
@@ -91,16 +91,16 @@ void print_planet(char* planet_terrain)
     {
         printf("             _________              \n");
         printf("         .-'  @        '.           \n");
-        printf("       .'         /^\\   '.        \n");
-        printf("     .'   /^\\             '.        \n");
+        printf("       .'         /^\\    '.        \n");
+        printf("     .'   /^\\              '.        \n");
         printf("    /   @               @    \\       \n");
-        printf("   /   @@@@       /^\\  @@    \\      \n");
+        printf("   /   @@@@       /^\\  @@     \\      \n");
         printf("  |   @@        @        @@   |     \n");
-        printf("  |       /^\\ @@@@           |     \n");
-        printf("  |              @      /^\\  |     \n");
+        printf("  |       /^\\ @@@@            |     \n");
+        printf("  |              @      /^\\   |     \n");
         printf("   \\     @@@        @        /      \n");
         printf("    \\   @         @@@@@     /       \n");
-        printf("     '.     /^\\    @@    .'        \n");
+        printf("     '.     /^\\    @@     .'        \n");
         printf("       '-.             .-'          \n");
         printf("          '-._______.-'             \n");
     }
@@ -125,13 +125,13 @@ void print_planet(char* planet_terrain)
     {
         printf("             _________              \n");
         printf("         .-'           '.           \n");
-        printf("       .' \\   ;      ;  '.        \n");
+        printf("       .' \\   ;      ;   '.        \n");
         printf("     .'    |     ;         '.        \n");
         printf("    /   ;  |   ;         ;   \\       \n");
         printf("   /      /           ;       \\      \n");
         printf("  |  ;   /       ; ;    ; ____|     \n");
-        printf("  |_____/   ;             \\  |     \n");
-        printf("  |                      ; \\_|     \n");
+        printf("  |_____/   ;             \\   |     \n");
+        printf("  |                      ; \\__|     \n");
         printf("   \\    ;     ;       ;      /      \n");
         printf("    \\                       /       \n");
         printf("     '.    ;    ;    ;    .'        \n");

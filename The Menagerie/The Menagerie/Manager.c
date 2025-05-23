@@ -32,7 +32,7 @@ Planet map_screen()
         terrain_ptrs[i] = planets[i].name;
     }
 
-	int selected_planet = input_text(terrain_ptrs, NUM_PLANETS, 3, "");//3 to Star map style
+	int selected_planet = input_text(terrain_ptrs, NUM_PLANETS, 3, "");//3 = Star map style
     if (selected_planet == -1)
     {
         printf("Planet selection canceled.\n");
@@ -57,7 +57,7 @@ int main_menu_screen()
         hold_seconds(0.3);
         reset_console();
     }
-    int selected = input_text(main_menu_list, main_menu_num, 2, "");//2 to space windows style
+    int selected = input_text(main_menu_list, main_menu_num, 2, "");//2 = space windows style
     return selected;
 }
 

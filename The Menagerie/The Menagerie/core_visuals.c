@@ -46,7 +46,7 @@ int printg(double duration, const char* format, ...)
             int key = _getch();
             if (key == 13)  // Enter
             {
-				hold_seconds(0.1); // short delay before skipping
+				hold_seconds(0.05); // short delay before skipping
                 skip_delay = 1;
             }
             else if (key == 27) // Escape

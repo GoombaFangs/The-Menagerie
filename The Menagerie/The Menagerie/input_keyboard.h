@@ -11,7 +11,7 @@
 #include "manager.h"
 
 void print_text_options(int selected, const char* menu_list[], int amount, int console);
-int input_text(const char* menu_list[], int amount, int console, char* planet_terrain);// console 0 to reset console
+int input_text(const char* menu_list[], int amount, int console_style, char* planet_terrain);// console 0 to reset console
 
 int input_aliens(char* planet_terrain, Alien* aliens, int count);
 

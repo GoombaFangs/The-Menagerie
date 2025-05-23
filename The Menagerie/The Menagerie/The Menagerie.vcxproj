@@ -146,6 +146,7 @@
     <ClCompile Include="planet_visuals.c" />
     <ClCompile Include="rocky.c" />
     <ClCompile Include="core_visuals.c" />
+    <ClCompile Include="zoo.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alien_folder.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="species_folder.h" />
     <ClInclude Include="core_visuals.h" />
     <ClInclude Include="visuals_folder.h" />
+    <ClInclude Include="zoo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

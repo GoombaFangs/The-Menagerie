@@ -179,10 +179,11 @@ void app_start()
 			if (do_next != -1)
 			{
                 alien_card(alien_list, selected_alien_index);
+                
                 hold_seconds(2);
                 reset_console();
 			}
-
+            add_alien_to_zoo(alien_list[selected_alien_index]);
             free(alien_list);
             alien_list = NULL;
 
@@ -190,8 +191,9 @@ void app_start()
             break;
         }
         case 1: //zoo
+            display_zoo();
+            hold_seconds(5);
             do_next = -1;
-            // TODO: open zoo
             break;
 
         case 2: //Ship log

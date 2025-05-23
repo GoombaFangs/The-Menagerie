@@ -272,7 +272,7 @@ void print_planet_menu(char* planet_terrain)
 {
 	print_ship();
 	print_planet(planet_terrain);
-	printf("\n\n");
+	printf("                                                           %s planet\n\n", planet_terrain);
 }
 
 void print_space_windows()

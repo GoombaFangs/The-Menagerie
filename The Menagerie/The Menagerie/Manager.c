@@ -157,10 +157,6 @@ void app_start()
         case 3: //exit
             running = 0;
             break;
-        case 4: //add alien to the zoo
-            do_next = -1;
-            // TODO: add alien to zoo
-            break;
 
         default:
             do_next = -1;

@@ -106,11 +106,11 @@ void key_binding_screen()
 
 void app_start()
 {
-	srand((unsigned int)time(NULL)); // Seed the random number generator
+    srand((unsigned int)time(NULL)); // Seed the random number generator
     set_console_size(110, 40);
     set_console_font_size(7, 14);
     reset_console();
-	key_binding_screen();
+    key_binding_screen();
 
     int running = 1;
     int do_next = main_menu_screen();
@@ -126,35 +126,62 @@ void app_start()
 
         case 0: // Explore Planet
         {
-            //printg(0.02, "Choose your next destination among the stars..\n");
-            if(printg(0.02, "Choose your next destination among the stars..\n") == -1)
+            if (printg(0.02, "Choose your next destination among the stars..\n") == -1)
             {
                 do_next = -1;
                 break;
             }
             hold_seconds(1.2);
             Planet planet = map_screen();
-			if (planet.name[0] == '\0')//Exit while choosing planet
-			{
-				do_next = -1;
-				break;
-			}
-			else if (story_screen(planet) == -1)//Exit while the story is running
-			{
-				do_next = -1;
-				break;
-			}
+            if (planet.name[0] == '\0')//Exit while choosing planet
+            {
+                do_next = -1;
+                break;
+            }
+            else if (story_screen(planet) == -1)//Exit while the story is running
+            {
+                do_next = -1;
+                break;
+            }
 
             int selected_alien_index;
+            int backspace;
             alien_list = alien_selection_screen(planet.terrain, NUM_ALIENS, &selected_alien_index);
 
             if (alien_list && selected_alien_index >= 0 && selected_alien_index < NUM_ALIENS)
             {
-                alien_list[selected_alien_index] = add_nickname(alien_list, selected_alien_index);
+                int show_nickname_prompt = 1;
+
+                do
+                {
+                    alien_list[selected_alien_index] = add_nickname(alien_list, selected_alien_index, &backspace);
+
+                    if (backspace == -1)
+                    {
+						alien_list[selected_alien_index].nickname[0] = '\0'; // Clear nickname
+                        const char* list[] = { "  Continue  ", "  Exit   " };
+                        int selected = input_text(list, 2, 1, planet.terrain); // 1 = planet terrain style
+
+                        if (selected != 0)
+                        {
+                            do_next = -1;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        show_nickname_prompt = 0;
+                    }
+
+                } while (show_nickname_prompt);
             }
-			alien_card(alien_list, selected_alien_index);
-			hold_seconds(2);
-			reset_console();
+
+			if (do_next != -1)
+			{
+                alien_card(alien_list, selected_alien_index);
+                hold_seconds(2);
+                reset_console();
+			}
 
             free(alien_list);
             alien_list = NULL;

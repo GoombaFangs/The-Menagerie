@@ -153,11 +153,17 @@ int input_aliens(char* planet_terrain, Alien* aliens, int count)
 int get_alpha_input(char* inputBuffer, int bufferSize)
 {
     int bufferIndex = 0;
-    char key;
+    int key;
 
     while (1)
     {
         key = _getch();
+
+        if (key == 0 || key == 224) // Arrow key or special key
+        {
+            (void)_getch(); // Consume the next byte (arrow key code)
+            continue; // Ignore
+        }
 
         if (key == '\r') //Enter
         {
@@ -184,4 +190,5 @@ int get_alpha_input(char* inputBuffer, int bufferSize)
             return -1;
         }
     }
+	return 0;
 }

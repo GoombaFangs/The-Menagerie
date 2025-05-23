@@ -75,13 +75,19 @@ const char* get_alien_type_name(AlienType type)
     }
 }
 
-Alien add_nickname(Alien* aliens, int selected_index)
+Alien add_nickname(Alien* aliens, int selected_index, int* backspace)
 {
     alien_card(aliens, selected_index);
     printg(0.025, "\n  Enter a nickname for this alien:  \n");
-    get_alpha_input(aliens[selected_index].nickname, sizeof(aliens[selected_index].nickname));
-    reset_console();
+    printg(0.025, "  English letters only              \n\n");
 
+    int result = get_alpha_input(aliens[selected_index].nickname, sizeof(aliens[selected_index].nickname));
+    if (backspace)
+    {
+        *backspace = result;
+    }
+ 
+    reset_console();
     return aliens[selected_index];
 }
 

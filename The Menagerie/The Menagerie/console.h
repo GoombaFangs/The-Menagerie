@@ -9,8 +9,8 @@
 
 #include "visuals_folder.h"
 
-int is_windows_terminal();
-int is_powershell_parent();
+int is_terminal_host();
+int is_power_shell();
 void relaunch_in_cmd_if_needed();
 void print_current_console_info();
 void set_active_console(HANDLE h);

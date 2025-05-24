@@ -1,6 +1,6 @@
 #include "input_keyboard.h"
 
-#define FRAME_WIDTH 13
+#define FRAME_WIDTH 14
 #define VISIBLE_ALIENS 1
 
 void print_text_options(int selected, const char* menu_list[], int amount, int console)

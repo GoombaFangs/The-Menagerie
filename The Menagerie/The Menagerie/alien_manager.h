@@ -11,7 +11,7 @@
 
 int get_alien_types_for_terrain(const char* terrain, AlienType* out_types);
 const char* get_alien_type_name(AlienType type);
-Alien add_nickname(Alien* alien, int selected_index, int* backspace);
+Alien add_nickname(Alien* alien, int selected_index, int* backspace, int* print_text_again);
 Alien* generate_aliens(char* planet_terrain, int count);
 
 #endif

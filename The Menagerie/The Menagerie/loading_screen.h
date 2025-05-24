@@ -7,7 +7,7 @@
 void title();
 void print_ship();
 void print_planet(char* planet_terrain);
-void print_ship_leave_planet(char* planet_terrain);
+void print_ship_leave_planet(char* planet_terrain, int got_alien);
 void print_ship_arrive_planet(char* planet_terrain);
 void print_planet_menu(char* planet_terrain);
 void print_space_window();

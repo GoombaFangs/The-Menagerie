@@ -3,9 +3,13 @@
 #define NUM_ALIENS 6
 #define NUM_PLANETS 5
 
-Alien* alien_selection_screen(char* planet_terrain , int count ,int* selected_alien_index)
+Alien* alien_selection_screen(char* planet_terrain, int count, int* selected_alien_index, int generate_new)
 {
-    Alien* aliens = generate_aliens(planet_terrain ,NUM_ALIENS);
+	static Alien* aliens = NULL;
+    if (generate_new == 1)
+    {
+         aliens = generate_aliens(planet_terrain, NUM_ALIENS);
+    }
 
     int selected = input_aliens(planet_terrain, aliens, count);
 
@@ -99,12 +103,15 @@ int story_screen(Planet planet)
     return 0;
 }
 
-void new_alien_screen(Planet planet)
+void new_alien_screen(Planet planet, int got_alien)
 {
 	reset_console();
     print_planet_menu(planet.terrain);
-	printg(0.03 ,"\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
-    print_ship_leave_planet(planet.terrain);
+    if (got_alien != -1)
+    {
+        printg(0.03, "\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+    }
+    print_ship_leave_planet(planet.terrain,  got_alien);
 	hold_seconds(0.5);
 	reset_console();
 }
@@ -145,27 +152,34 @@ void app_start()
 
             int selected_alien_index;
             int backspace;
-            alien_list = alien_selection_screen(planet.terrain, NUM_ALIENS, &selected_alien_index);
+            int generate_new = 1;
+            alien_list = alien_selection_screen(planet.terrain, NUM_ALIENS, &selected_alien_index, generate_new);
 
             if (alien_list && selected_alien_index >= 0 && selected_alien_index < NUM_ALIENS)
             {
                 int show_nickname_prompt = 1;
+                int selected = 1;
 
                 do
                 {
-                    alien_list[selected_alien_index] = add_nickname(alien_list, selected_alien_index, &backspace);
+                    alien_list[selected_alien_index] = add_nickname(alien_list, selected_alien_index, &backspace, &selected);
 
                     if (backspace == -1)
                     {
 						alien_list[selected_alien_index].nickname[0] = '\0'; // Clear nickname
-                        const char* list[] = { "  Continue  ", "  Exit   " };
-                        int selected = input_text(list, 2, 1, planet.terrain); // 1 = planet terrain style
+                        const char* list[] = {"  Continue  ","  Back   ","  Exit   "};
+                         selected = input_text(list, 3, 1, planet.terrain); // 1 = planet terrain style
 
-                        if (selected != 0)
-                        {
-                            do_next = -1;
-                            break;
-                        }
+						 switch (selected)
+                         {
+						 case 1: // Back
+                             alien_list = alien_selection_screen(planet.terrain, NUM_ALIENS, &selected_alien_index , generate_new = 0);
+							 break;
+                         case 2: // Exit
+                             do_next = -1;
+                             show_nickname_prompt = 0;
+                             break;
+                         }
                     }
                     else
                     {
@@ -174,6 +188,10 @@ void app_start()
 
                 } while (show_nickname_prompt);
             }
+			else if (selected_alien_index == -1)
+			{
+				do_next = -1;
+			}
 
 			if (do_next != -1)
 			{
@@ -182,7 +200,7 @@ void app_start()
                 reset_console();
 			}
 
-            new_alien_screen(planet);
+            new_alien_screen(planet, do_next);
 
             free(alien_list);
             alien_list = NULL;

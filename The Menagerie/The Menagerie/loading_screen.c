@@ -119,7 +119,7 @@ void print_ship()
 
 }
 
-void print_ship_leave_planet(char* planet_terrain)
+void print_ship_leave_planet(char* planet_terrain, int got_alien)
 {
     double durtion = 0.2;
     hold_seconds(durtion);
@@ -136,7 +136,7 @@ void print_ship_leave_planet(char* planet_terrain)
     printf("                    /__________/          _______________________/          \n");
     printf("                              /___________/          \n");
     print_planet(planet_terrain);
-    printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+    if(got_alien != -1) printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
     hold_seconds(durtion);
     reset_console();
     printf("                           __________________                        \n");
@@ -151,7 +151,7 @@ void print_ship_leave_planet(char* planet_terrain)
     printf("                                /__________/          _______________________/  \n");
     printf("                                          /___________/  \n");
     print_planet(planet_terrain);
-    printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
     hold_seconds(durtion);
     reset_console();
     printf("                                                 __________________              \n");
@@ -166,7 +166,7 @@ void print_ship_leave_planet(char* planet_terrain)
     printf("                                                      /__________/          ________________\n");
     printf("                                                                /____\n");
     print_planet(planet_terrain);
-    printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
     hold_seconds(durtion);
     reset_console();
     printf("                                                                    __________________  \n");
@@ -181,7 +181,7 @@ void print_ship_leave_planet(char* planet_terrain)
     printf("                                                                         /__________/          ______\n");
     printf("                                                                              \n");
     print_planet(planet_terrain);
-    printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
     hold_seconds(durtion);
     reset_console();
     printf("                                                                                    ____\n");
@@ -196,7 +196,7 @@ void print_ship_leave_planet(char* planet_terrain)
     printf("                                                                                         /________\n");
     printf("                                                                                              \n");
     print_planet(planet_terrain);
-    printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
     hold_seconds(durtion);
     reset_console();
     printf("                                                                                                       \n");
@@ -211,7 +211,7 @@ void print_ship_leave_planet(char* planet_terrain)
     printf("                                                                                               \n");
     printf("                                                                                              \n");
     print_planet(planet_terrain);
-    printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
     hold_seconds(durtion);
     reset_console();
     printf("\n\n\n\n\n\n\n\n\n\n\n");

@@ -1,25 +1,26 @@
 #include "zoo.h"
-#include <stdio.h> // Needed for FILE operations
 
 static Alien* zoo = NULL;
 static int zoo_count = 0;
 static int zoo_capacity = 0;
 
-void add_alien_to_zoo(Alien alien) 
+void add_alien_to_zoo(Alien alien)
 {
-    if (zoo_count == zoo_capacity) 
+    if (zoo_count == zoo_capacity)
     {
         zoo_capacity = (zoo_capacity == 0) ? 4 : zoo_capacity * 2;
-        zoo = realloc(zoo, zoo_capacity * sizeof(Alien));
-        if (!zoo) 
+
+        Alien* temp = realloc(zoo, zoo_capacity * sizeof(Alien));
+        if (!temp)
         {
             printf("Failed to allocate memory for the zoo.\n");
             exit(1);
         }
+        zoo = temp;
     }
+
     zoo[zoo_count++] = alien;
 }
-
 
 void save_zoo_to_file(const char* filename)
 {

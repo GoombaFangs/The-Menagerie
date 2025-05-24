@@ -94,3 +94,23 @@ void print_zoo_aliens(Alien* aliens, int count, int selected, int visible_count)
     }
 }
 
+int get_zoo_count(void)
+{
+    return zoo_count;
+}
+Alien* get_zoo(void)
+{
+    return zoo;
+}
+int get_zoo_capacity(void)
+{
+    return zoo_capacity;
+}
+void zoo_setter(Alien* new_zoo, int count, int capacity) {
+    if (zoo) free(zoo);
+    zoo = new_zoo;
+    zoo_count = count;
+    zoo_capacity = capacity;
+}
+int* get_zoo_count_ptr(void) { return &zoo_count; }
+int* get_zoo_capacity_ptr(void) { return &zoo_capacity; }

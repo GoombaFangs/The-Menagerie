@@ -149,6 +149,22 @@ void app_start()
     set_console_font_size(7, 14);
     reset_console();
     title();
+    load_data("zoo_count.txt", get_zoo_count_ptr(), sizeof(int), 1);
+    load_data("zoo_capacity.txt", get_zoo_capacity_ptr(), sizeof(int), 1);
+
+    if (get_zoo_count() > 0) {
+        Alien* loaded_zoo = malloc(sizeof(Alien) * get_zoo_count());
+        if (loaded_zoo && load_data("zoo_array.txt", loaded_zoo, sizeof(Alien), get_zoo_count())) {
+            zoo_setter(loaded_zoo, get_zoo_count(), get_zoo_capacity());
+        }
+        else {
+            if (loaded_zoo) free(loaded_zoo);
+            zoo_setter(NULL, 0, 0);
+        }
+    }
+    else {
+        zoo_setter(NULL, 0, 0);
+    }
 
     int running = 1;
     int do_next = main_menu_screen();
@@ -231,6 +247,9 @@ void app_start()
             if (alien_list != NULL && selected_alien_index >= 0 && selected_alien_index < NUM_ALIENS)
             {
                 add_alien_to_zoo(alien_list[selected_alien_index]);
+                save_data("zoo_capacity.txt", get_zoo_capacity_ptr(), sizeof(int), 1);
+                save_data("zoo_count.txt", get_zoo_count_ptr(), sizeof(int), 1);
+                save_data("zoo_array.txt", get_zoo(), sizeof(Alien), get_zoo_count());
                 free(alien_list);
                 alien_list = NULL;
             }

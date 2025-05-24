@@ -194,7 +194,6 @@ void app_start()
         }
         case 1: //zoo
             display_zoo();
-            hold_seconds(5);
             do_next = -1;
             break;
 

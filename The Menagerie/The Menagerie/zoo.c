@@ -45,7 +45,17 @@ int display_zoo()
         }
         else if (key == 13) // ENTER
         {
-           return -1;
+            reset_console();
+            printf("Are you sure you want to remove that alien?\n\n");
+            int choice = zoo_remove_alien_menu(zoo, zoo_count, selected);
+
+            if (choice == 0)
+            { // Remove
+                remove_alien_from_zoo(selected);
+                if (zoo_count == 0) return -1;
+                if (selected >= zoo_count) selected = zoo_count - 1;
+            }
+            return -1;
         }
         else if (key == 27) // ESC
         {
@@ -92,6 +102,38 @@ void print_zoo_aliens(Alien* aliens, int count, int selected, int visible_count)
         reset_console();
         printf(" No Aliens in the zoo.");
     }
+}
+
+void remove_alien_from_zoo(int index)
+{
+    if (index < 0 || index >= zoo_count) return;
+    for (int i = index; i < zoo_count - 1; i++)
+    {
+        zoo[i] = zoo[i + 1];
+    }
+    zoo_count--;
+    if (zoo_count > 0 && zoo_count < zoo_capacity / 4)
+    {
+        int new_capacity = zoo_capacity / 2;
+        if (new_capacity < 4) new_capacity = 4;
+        Alien* new_zoo = realloc(zoo, new_capacity * sizeof(Alien));
+        if (new_zoo)
+        {
+            zoo = new_zoo;
+            zoo_capacity = new_capacity;
+        }
+    }
+    save_data("zoo_capacity.txt", get_zoo_capacity_ptr(), sizeof(int), 1);
+    save_data("zoo_count.txt", get_zoo_count_ptr(), sizeof(int), 1);
+    save_data("zoo_array.txt", get_zoo(), sizeof(Alien), get_zoo_count());
+} 
+int zoo_remove_alien_menu(Alien* aliens, int count, int selected) {
+    const char* options[] = { "  Remove  ", "  Cancel  " };
+    // 5 = custom style for remove menu, or you can use 4 for ship log style
+    int menu_selected = input_text(options, 2, 4, ""); // 4 = ship log style
+
+    reset_console();
+    return menu_selected; // 0 = Remove, 1 = Cancel
 }
 
 int get_zoo_count(void)

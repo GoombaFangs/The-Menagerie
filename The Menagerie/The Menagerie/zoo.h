@@ -17,5 +17,9 @@ int* get_zoo_count_ptr(void);
 int* get_zoo_capacity_ptr(void);
 Alien* get_zoo(void);
 int get_zoo_capacity(void);
+
+void remove_alien_from_zoo(int index);
+int zoo_remove_alien_menu(Alien* aliens, int count, int selected);
+
 #endif
 

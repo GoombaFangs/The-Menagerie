@@ -204,7 +204,7 @@ void app_start()
 
                 do
                 {
-                    alien_list[selected_alien_index] = add_nickname(alien_list, selected_alien_index, &backspace, &selected);
+                    alien_list[selected_alien_index] = add_nickname(alien_list, selected_alien_index, &backspace);
 
                     if (backspace == -1)
                     {
@@ -216,7 +216,12 @@ void app_start()
                          {
 						 case 1: // Back
                              alien_list = alien_selection_screen(planet.terrain, NUM_ALIENS, &selected_alien_index , generate_new = 0);
-							 break;
+                             if(selected_alien_index == -1)
+                             {
+                                 show_nickname_prompt = 0;
+                                 do_next = -1;
+                             }
+                             break;
                          case 2: // Exit
                              do_next = -1;
                              show_nickname_prompt = 0;
@@ -244,16 +249,16 @@ void app_start()
 
             new_alien_screen(planet, do_next);
 
-            if (alien_list != NULL && selected_alien_index >= 0 && selected_alien_index < NUM_ALIENS)
+            if (alien_list != NULL && selected_alien_index >= 0 && selected_alien_index < NUM_ALIENS && backspace != -1)
             {
                 add_alien_to_zoo(alien_list[selected_alien_index]);
                 save_data("zoo_capacity.txt", get_zoo_capacity_ptr(), sizeof(int), 1);
                 save_data("zoo_count.txt", get_zoo_count_ptr(), sizeof(int), 1);
                 save_data("zoo_array.txt", get_zoo(), sizeof(Alien), get_zoo_count());
-                free(alien_list);
-                alien_list = NULL;
             }
 
+            free(alien_list);
+            alien_list = NULL;
             do_next = -1;
             break;
         }

@@ -4,6 +4,29 @@ static Alien* zoo = NULL;
 static int zoo_count = 0;
 static int zoo_capacity = 0;
 
+//save stuff start
+int get_zoo_count(void) 
+{
+    return zoo_count;
+}
+Alien* get_zoo(void) 
+{
+    return zoo;
+}
+int get_zoo_capacity(void) 
+{
+    return zoo_capacity;
+}
+void zoo_setter(Alien* new_zoo, int count, int capacity) {
+    if (zoo) free(zoo);
+    zoo = new_zoo;
+    zoo_count = count;
+    zoo_capacity = capacity;
+}
+int* get_zoo_count_ptr(void) { return &zoo_count; }
+int* get_zoo_capacity_ptr(void) { return &zoo_capacity; }
+//save stuff end
+
 void add_alien_to_zoo(Alien alien) 
 {
     if (zoo_count == zoo_capacity) 

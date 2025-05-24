@@ -122,7 +122,23 @@ void app_start()
     console_manager();
     reset_console();
     title();
-
+    //save stuff
+    load_data("zoo_count.txt", get_zoo_count_ptr(), sizeof(int), 1);
+    load_data("zoo_capacity.txt", get_zoo_capacity_ptr(), sizeof(int), 1);
+    if (get_zoo_count() > 0) {
+        Alien* loaded_zoo = malloc(sizeof(Alien) * get_zoo_count());
+        if (loaded_zoo && load_data("zoo_array.txt", loaded_zoo, sizeof(Alien), get_zoo_count())) {
+            zoo_setter(loaded_zoo, get_zoo_count(), get_zoo_capacity());
+        }
+        else {
+            if (loaded_zoo) free(loaded_zoo);
+            zoo_setter(NULL, 0, 0);
+        }
+    }
+    else {
+        zoo_setter(NULL, 0, 0);
+    }
+    //save stuff
     int running = 1;
     int do_next = main_menu_screen();
     Alien* alien_list = NULL;
@@ -202,6 +218,11 @@ void app_start()
             new_alien_screen(planet, do_next);
 
             add_alien_to_zoo(alien_list[selected_alien_index]);
+            //save stuff
+            save_data("zoo_capacity.txt", get_zoo_capacity_ptr(), sizeof(int), 1);
+            save_data("zoo_count.txt", get_zoo_count_ptr(), sizeof(int), 1);
+            save_data("zoo_array.txt", get_zoo(), sizeof(Alien), get_zoo_count());
+            //save stuff
             free(alien_list);
             alien_list = NULL;
 

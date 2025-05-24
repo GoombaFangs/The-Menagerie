@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "alien_struct.h"
+#include "alien_folder.h"
 #include "manager.h"
 
 void add_alien_to_zoo(Alien alien);

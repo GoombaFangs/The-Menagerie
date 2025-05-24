@@ -167,7 +167,8 @@ void print_zoo_aliens(Alien* aliens, int count, int selected, int visible_count)
 }
 
 void print_zoo_menu_options(int selected, const char* menu_list[], int amount) {
-    for (int i = 0; i < amount; i++) {
+    for (int i = 0; i < amount; i++) 
+    {
         const char* text = menu_list[i];
         int len = (int)strlen(text);
         int padding_total = FRAME_WIDTH - len;
@@ -217,12 +218,12 @@ void print_alien_visual_and_info(Alien* aliens, int index)
     {
         // Print art line (you need to implement get_alien_art_line)
         printf("    ");
-        get_alien_art_line(&aliens[index], i); // This should print one line of the art
+        print_alien_art(& aliens[index], i); // This should print one line of the art
         printf("    %s\n", info_lines[i]);
     }
     // Print the bottom border of the info card
     printf("    ");
-    get_alien_art_line(&aliens[index], 8); // Last line of art, if any
+    print_alien_art(&aliens[index], 8); // Last line of art, if any
     printf("    +----------------------------+\n");
 }
 

@@ -111,6 +111,7 @@ void app_start()
     set_console_font_size(7, 14);
     reset_console();
     key_binding_screen();
+	load_zoo_from_file("zoo.txt");
 
     int running = 1;
     int do_next = main_menu_screen();
@@ -184,6 +185,7 @@ void app_start()
                 reset_console();
 			}
             add_alien_to_zoo(alien_list[selected_alien_index]);
+            save_zoo_to_file("zoo.txt");
             free(alien_list);
             alien_list = NULL;
 

@@ -1,4 +1,5 @@
 #include "zoo.h"
+#include <stdio.h> // Needed for FILE operations
 
 static Alien* zoo = NULL;
 static int zoo_count = 0;
@@ -17,6 +18,44 @@ void add_alien_to_zoo(Alien alien)
         }
     }
     zoo[zoo_count++] = alien;
+}
+
+
+void save_zoo_to_file(const char* filename)
+{
+    FILE* file = fopen(filename, "wb");
+    if (!file) {
+        printf("Could not open file for writing.\n");
+        return;
+    }
+    fwrite(&zoo_count, sizeof(int), 1, file);
+    fwrite(zoo, sizeof(Alien), zoo_count, file);
+    fclose(file);
+}
+
+void load_zoo_from_file(const char* filename)
+{
+    FILE* file = fopen(filename, "rb");
+    if (!file) {
+        // File might not exist yet, that's OK
+        return;
+    }
+    int count = 0;
+    fread(&count, sizeof(int), 1, file);
+    if (count > 0) {
+        Alien* temp = malloc(count * sizeof(Alien));
+        if (!temp) {
+            printf("Failed to allocate memory for loading zoo.\n");
+            fclose(file);
+            return;
+        }
+        fread(temp, sizeof(Alien), count, file);
+        free(zoo);
+        zoo = temp;
+        zoo_count = count;
+        zoo_capacity = count;
+    }
+    fclose(file);
 }
 
 int display_zoo() //modified ver of input_aliens

@@ -201,6 +201,7 @@ void app_start()
 
             new_alien_screen(planet, do_next);
 
+            add_alien_to_zoo(alien_list[selected_alien_index]);
             free(alien_list);
             alien_list = NULL;
 

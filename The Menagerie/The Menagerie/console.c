@@ -1,15 +1,9 @@
-
 #define _CRT_SECURE_NO_WARNINGS
 #include "console.h"
 
 static HANDLE active_console = NULL;
 
-int is_terminal_host()
-{
-    return getenv("WT_PROFILE_ID") != NULL;
-}
-
-int is_power_shell()
+int is_not_cmd()
 {
     DWORD pid = GetCurrentProcessId();
     DWORD ppid = 0;
@@ -36,14 +30,12 @@ int is_power_shell()
     GetModuleBaseName(hParent, NULL, parent_name, MAX_PATH);
     CloseHandle(hParent);
 
-    return _tcsicmp(parent_name, _T("powershell.exe")) == 0 ||
-        _tcsicmp(parent_name, _T("pwsh.exe")) == 0 ||
-        _tcsicmp(parent_name, _T("WindowsTerminal.exe")) == 0;
+    return _tcsicmp(parent_name, _T("cmd.exe")) != 0;
 }
 
 void relaunch_in_cmd_if_needed()
 {
-    if (is_terminal_host() || is_power_shell())
+    if (is_not_cmd())
     {
         TCHAR exe_path[MAX_PATH];
         GetModuleFileName(NULL, exe_path, MAX_PATH);

@@ -1,60 +1,57 @@
+
 #define _CRT_SECURE_NO_WARNINGS
 #include "console.h"
 
 static HANDLE active_console = NULL;
 
-int is_windows_terminal()
+int is_terminal_host()
 {
     return getenv("WT_PROFILE_ID") != NULL;
 }
 
-int is_powershell_parent()
+int is_power_shell()
 {
-    DWORD parent_pid = 0;
-    DWORD current_pid = GetCurrentProcessId();
-    HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    DWORD pid = GetCurrentProcessId();
+    DWORD ppid = 0;
 
-    PROCESSENTRY32 entry;
-    entry.dwSize = sizeof(PROCESSENTRY32);
-    if (Process32First(snapshot, &entry)) {
+    HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    PROCESSENTRY32 pe = { sizeof(PROCESSENTRY32) };
+
+    if (Process32First(snapshot, &pe)) {
         do {
-            if (entry.th32ProcessID == current_pid) {
-                parent_pid = entry.th32ParentProcessID;
+            if (pe.th32ProcessID == pid) {
+                ppid = pe.th32ParentProcessID;
                 break;
             }
-        } while (Process32Next(snapshot, &entry));
+        } while (Process32Next(snapshot, &pe));
     }
     CloseHandle(snapshot);
 
-    if (parent_pid == 0) return 0;
+    if (ppid == 0) return 0;
 
-    HANDLE parent = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, parent_pid);
-    if (parent) {
-        TCHAR name[MAX_PATH];
-        if (GetModuleBaseName(parent, NULL, name, MAX_PATH)) {
-            if (_tcsicmp(name, _T("powershell.exe")) == 0 || _tcsicmp(name, _T("pwsh.exe")) == 0) {
-                CloseHandle(parent);
-                return 1;
-            }
-        }
-        CloseHandle(parent);
-    }
+    HANDLE hParent = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, ppid);
+    if (!hParent) return 0;
 
-    return 0;
+    TCHAR parent_name[MAX_PATH];
+    GetModuleBaseName(hParent, NULL, parent_name, MAX_PATH);
+    CloseHandle(hParent);
+
+    return _tcsicmp(parent_name, _T("powershell.exe")) == 0 ||
+        _tcsicmp(parent_name, _T("pwsh.exe")) == 0 ||
+        _tcsicmp(parent_name, _T("WindowsTerminal.exe")) == 0;
 }
 
 void relaunch_in_cmd_if_needed()
 {
-    if (is_windows_terminal() || is_powershell_parent())
+    if (is_terminal_host() || is_power_shell())
     {
-        TCHAR path[MAX_PATH];
-        GetModuleFileName(NULL, path, MAX_PATH);
+        TCHAR exe_path[MAX_PATH];
+        GetModuleFileName(NULL, exe_path, MAX_PATH);
 
         TCHAR command[MAX_PATH + 50];
-        _stprintf_s(command, MAX_PATH + 50, _T("cmd.exe /k \"%s\""), path);
+        _stprintf_s(command, MAX_PATH + 50, _T("cmd.exe /c \"%s\""), exe_path);
 
-        STARTUPINFO si = { 0 };
-        si.cb = sizeof(si);
+        STARTUPINFO si = { sizeof(si) };
         PROCESS_INFORMATION pi;
 
         if (CreateProcess(NULL, command, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi))

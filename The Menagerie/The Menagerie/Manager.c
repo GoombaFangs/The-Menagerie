@@ -39,7 +39,6 @@ Planet map_screen()
 	int selected_planet = input_text(terrain_ptrs, NUM_PLANETS, 3, "");//3 = Star map style
     if (selected_planet == -1)
     {
-        printf("Planet selection canceled.\n");
         free(planets);
         return (Planet) { 0 };
     }
@@ -96,7 +95,7 @@ int story_screen(Planet planet)
     if (printg(0.04, "Planet %s is covered in %s terrain.\n", planet.name, planet.terrain) == -1) return -1;
     hold_seconds(2.2);
 
-    printg(0.05, "\n/-\\ |_ | [- |\\| is found..\n");
+    printg(0.05, "\nAlien is found..\n");
 
     hold_seconds(2);
 
@@ -109,40 +108,48 @@ void new_alien_screen(Planet planet, int got_alien)
     print_planet_menu(planet.terrain);
     if (got_alien != -1)
     {
-        printg(0.03, "\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+        printg(0.03, "\n YOU GOT A NEW  ALIEN\n");
     }
     print_ship_leave_planet(planet.terrain,  got_alien);
 	hold_seconds(0.5);
 	reset_console();
 }
 
+int ship_log_screen()
+{
+	int selected = 0;
+    reset_console();
+    const char* list[] = { "  Planet  ","  Alien   ","  Exit   " };
+    selected = input_text(list, 3, 4, ""); // 4 = ship log style
+    switch (selected)
+    {
+    case -1: // Exit
+        reset_console();
+        return -1;
+    case 0: // Planet
+        //display_planet_log();
+		return 0;
+        break;
+    case 1: // Alien
+        //display_alien_log();
+        return 0;
+        break;
+    case 2: // Exit
+        reset_console();
+        return -1;
+    default:
+		return 0;
+    }
+}
+
 void app_start()
 {
     srand((unsigned int)time(NULL)); // Seed the random number generator
-    console_manager();
+    set_console_size(110, 45);
+    set_console_font_size(7, 14);
     reset_console();
     title();
-    //save stuff
-    load_data("zoo_count.txt", get_zoo_count_ptr(), sizeof(int), 1);
-    load_data("zoo_capacity.txt", get_zoo_capacity_ptr(), sizeof(int), 1);
-    if (get_zoo_count() > 0) 
-    {
-        Alien* loaded_zoo = malloc(sizeof(Alien) * get_zoo_count());
-        if (loaded_zoo && load_data("zoo_array.txt", loaded_zoo, sizeof(Alien), get_zoo_count())) 
-        {
-            zoo_setter(loaded_zoo, get_zoo_count(), get_zoo_capacity());
-        }
-        else 
-        {
-            if (loaded_zoo) free(loaded_zoo);
-            zoo_setter(NULL, 0, 0);
-        }
-    }
-    else 
-    {
-        zoo_setter(NULL, 0, 0);
-    }
-    //save stuff
+
     int running = 1;
     int do_next = main_menu_screen();
     Alien* alien_list = NULL;
@@ -221,27 +228,30 @@ void app_start()
 
             new_alien_screen(planet, do_next);
 
-            add_alien_to_zoo(alien_list[selected_alien_index]);
-            //save stuff
-            save_data("zoo_capacity.txt", get_zoo_capacity_ptr(), sizeof(int), 1);
-            save_data("zoo_count.txt", get_zoo_count_ptr(), sizeof(int), 1);
-            save_data("zoo_array.txt", get_zoo(), sizeof(Alien), get_zoo_count());
-            //save stuff
-            free(alien_list);
-            alien_list = NULL;
+            if (alien_list != NULL && selected_alien_index >= 0 && selected_alien_index < NUM_ALIENS)
+            {
+                add_alien_to_zoo(alien_list[selected_alien_index]);
+                free(alien_list);
+                alien_list = NULL;
+            }
 
             do_next = -1;
             break;
         }
-        case 1: //zoo
-            display_zoo();
+        case 1://zoo
+        {
+            int selected = display_zoo();
+			reset_console();
+            do_next = selected;
             break;
+        }
 
         case 2: //Ship log
-            do_next = -1;
-            // TODO: open Ship log
+        {
+            int selected = ship_log_screen();
+            do_next = selected;
             break;
-
+        }
         case 3: //exit
             running = 0;
             break;

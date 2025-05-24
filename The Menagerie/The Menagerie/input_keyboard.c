@@ -78,6 +78,8 @@ int input_text(const char* menu_list[], int amount, int console_style, char* pla
 		break;
 	case 3:  reset_console(); stars(); // stars style
 		break;
+    case 4:  reset_console(); print_ship_log(); printf("\n"); // ship log style
+		break;
     }
 
     print_text_options(selected, menu_list, amount , console_style);
@@ -108,13 +110,15 @@ int input_text(const char* menu_list[], int amount, int console_style, char* pla
 
         switch (console_style)
         {
-        case 0:  reset_console();
+        case 0:  reset_console(); // default style
             break;
-        case 1:  reset_console(); print_planet_menu(planet_terrain);
+        case 1:  reset_console(); print_planet_menu(planet_terrain);  // planet terrain style
             break;
-        case 2:  reset_console(); print_captain_seat(anim);
+        case 2:  reset_console(); print_captain_seat(anim); // space windows style 
             break;
-        case 3:  reset_console(); stars();
+        case 3:  reset_console(); stars();   // stars style
+            break;
+        case 4:  reset_console(); print_ship_log(); printf("\n"); // ship log style
             break;
         }
 

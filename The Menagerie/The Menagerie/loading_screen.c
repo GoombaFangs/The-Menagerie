@@ -136,7 +136,7 @@ void print_ship_leave_planet(char* planet_terrain, int got_alien)
     printf("                    /__________/          _______________________/          \n");
     printf("                              /___________/          \n");
     print_planet(planet_terrain);
-    if(got_alien != -1) printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+    if(got_alien != -1) printf("\n\n\n YOU GOT A NEW  ALIEN\n");
     hold_seconds(durtion);
     reset_console();
     printf("                           __________________                        \n");
@@ -151,7 +151,7 @@ void print_ship_leave_planet(char* planet_terrain, int got_alien)
     printf("                                /__________/          _______________________/  \n");
     printf("                                          /___________/  \n");
     print_planet(planet_terrain);
-    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  ALIEN\n");
     hold_seconds(durtion);
     reset_console();
     printf("                                                 __________________              \n");
@@ -166,7 +166,7 @@ void print_ship_leave_planet(char* planet_terrain, int got_alien)
     printf("                                                      /__________/          ________________\n");
     printf("                                                                /____\n");
     print_planet(planet_terrain);
-    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  ALIEN\n");
     hold_seconds(durtion);
     reset_console();
     printf("                                                                    __________________  \n");
@@ -181,7 +181,7 @@ void print_ship_leave_planet(char* planet_terrain, int got_alien)
     printf("                                                                         /__________/          ______\n");
     printf("                                                                              \n");
     print_planet(planet_terrain);
-    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  ALIEN\n");
     hold_seconds(durtion);
     reset_console();
     printf("                                                                                    ____\n");
@@ -196,7 +196,7 @@ void print_ship_leave_planet(char* planet_terrain, int got_alien)
     printf("                                                                                         /________\n");
     printf("                                                                                              \n");
     print_planet(planet_terrain);
-    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  ALIEN\n");
     hold_seconds(durtion);
     reset_console();
     printf("                                                                                                       \n");
@@ -211,7 +211,7 @@ void print_ship_leave_planet(char* planet_terrain, int got_alien)
     printf("                                                                                               \n");
     printf("                                                                                              \n");
     print_planet(planet_terrain);
-    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+    if (got_alien != -1) printf("\n\n\n YOU GOT A NEW  ALIEN\n");
     hold_seconds(durtion);
     reset_console();
     printf("\n\n\n\n\n\n\n\n\n\n\n");
@@ -507,6 +507,22 @@ void print_space_window_anim()
     printf("    \\____________/         \\____________________________________________/         \\____________/\n");
 }
 
+void print_big_window() 
+{
+    printf("     _______________________________________________________________________________________\n");
+    printf("    /                                                                                       \\\n");
+    printf("   /        *       .        *        .         *        .     *        .         *         \\\n");
+    printf("  |   *        .        *       .       *     .      .       *     .       .     *       .   |\n");
+    printf("  |        .        *       .       *     .       *       .       *     .       *     .      |\n");
+    printf("  |    .     *       .      .   *       .     .      *      .      *      .   *       .       |\n");
+    printf("  |       *     .     *        .     *       .    *     .      .    *       .      *     .   |\n");
+    printf("  |   .        *     .     *      .      .      *    .       *    .     *      .     .       |\n");
+    printf("  |      *     .     .     *       .     .      *      .     *     .     .     *     .       |\n");
+    printf("   \\                                                                                       /\n");
+    printf("    \\_____________________________________________________________________________________/\n");
+
+}
+
 void print_control_panel()
 {
         printf("                      ___ _                                                    ___                 \n");
@@ -519,6 +535,19 @@ void print_control_panel()
         printf("     |    Key binding  :   [^] Up    [v] Down    [ESC] Back / Exit    [ Enter ] Confirm      | \n");
         printf("     |_______________________________________________________________________________________| \n");
         printf("\n");
+}
+
+void print_screen_panel()
+{
+    printf("                     ___ _                                               ___                \n");
+    printf("       __________________________________________________________________________________ \n");
+    printf("      |  (o) LOG   (o) MAP   (o) SCN   (o) NAV   (o) COM     SYS: Online    TEMP: 243K   |\n");
+    printf("      |  +-----+   +-----+   +-----+   +-----+   +-----+      PWR: Stable    O2:   98%%   |\n");
+    printf("      |  | LOG |   | MAP |   | SCN |   | NAV |   | COM |      SHD: 72%%      ENG: Nominal |\n");
+    printf("      |  +-----+   +-----+   +-----+   +-----+   +-----+                                 |\n");
+    printf("      |                                                                                  | \n");
+    printf("      |  Key binding :   [^] Up    [v] Down    [ESC] Back / Exit    [ Enter ] Confirm    | \n");
+    printf("      |__________________________________________________________________________________| \n");
 }
 
 void print_captain_seat()
@@ -541,6 +570,12 @@ void print_captain_seat()
         print_control_panel();
         anim = 0;
     }
+}
+
+void print_ship_log()
+{
+    print_big_window();
+    print_screen_panel();
 }
 
 void stars()

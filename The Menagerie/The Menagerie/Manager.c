@@ -209,8 +209,7 @@ void app_start()
             break;
         }
         case 1: //zoo
-            do_next = -1;
-            // TODO: open zoo
+            display_zoo();
             break;
 
         case 2: //Ship log

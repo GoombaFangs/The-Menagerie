@@ -47,7 +47,7 @@ void alien_card(Alien* aliens , int index)
 void print_alien_options(Alien* aliens, int count, int selected, int visible_count)
 {
     reset_console();
-    printf("Press Up or Down arrow ,  Enter to confirm , Escape to go back\n\n");
+    printf("Key binding  :   [^] Up    [v] Down    [ESC] Back / Exit    [ Enter ] Confirm\n\n");
     printf("\n\n");
 
     int start = 0;
@@ -63,7 +63,7 @@ void print_alien_options(Alien* aliens, int count, int selected, int visible_cou
 
     if (start > 0)
     {
-        printf("           %d aliens above press up to show\n\n", start);
+        printf("            [^]  %d\n\n", start);
     }
 
     for (int i = start; i < start + visible_count && i < count; i++)
@@ -73,7 +73,7 @@ void print_alien_options(Alien* aliens, int count, int selected, int visible_cou
 
     if (start + visible_count < count)
     {
-        printf("           %d aliens below press down to show\n", (count - start - 1));
+        printf("            [v]  %d\n", (count - start - 1));
     }
-    printf("\n\n\n\n  An alien awaits. Bring it on board.");
+    printf("\n\n\n   Choose an /-\\ |_ | [- |\\|\n");
 }

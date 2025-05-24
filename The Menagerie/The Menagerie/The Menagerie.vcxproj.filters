@@ -96,6 +96,9 @@
     <ClCompile Include="loading_screen.c">
       <Filter>Source Files\Visuals</Filter>
     </ClCompile>
+    <ClCompile Include="zoo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="manager.h">
@@ -169,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="loading_screen.h">
       <Filter>Header Files\Visuals</Filter>
+    </ClInclude>
+    <ClInclude Include="zoo.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

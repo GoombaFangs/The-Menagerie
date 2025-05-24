@@ -119,8 +119,7 @@ void new_alien_screen(Planet planet, int got_alien)
 void app_start()
 {
     srand((unsigned int)time(NULL)); // Seed the random number generator
-    set_console_size(110, 40);
-    set_console_font_size(7, 14);
+    console_manager();
     reset_console();
     title();
 

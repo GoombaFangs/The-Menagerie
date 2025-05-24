@@ -17,7 +17,8 @@ int get_zoo_capacity(void)
 {
     return zoo_capacity;
 }
-void zoo_setter(Alien* new_zoo, int count, int capacity) {
+void zoo_setter(Alien* new_zoo, int count, int capacity) 
+{
     if (zoo) free(zoo);
     zoo = new_zoo;
     zoo_count = count;

@@ -125,17 +125,21 @@ void app_start()
     //save stuff
     load_data("zoo_count.txt", get_zoo_count_ptr(), sizeof(int), 1);
     load_data("zoo_capacity.txt", get_zoo_capacity_ptr(), sizeof(int), 1);
-    if (get_zoo_count() > 0) {
+    if (get_zoo_count() > 0) 
+    {
         Alien* loaded_zoo = malloc(sizeof(Alien) * get_zoo_count());
-        if (loaded_zoo && load_data("zoo_array.txt", loaded_zoo, sizeof(Alien), get_zoo_count())) {
+        if (loaded_zoo && load_data("zoo_array.txt", loaded_zoo, sizeof(Alien), get_zoo_count())) 
+        {
             zoo_setter(loaded_zoo, get_zoo_count(), get_zoo_capacity());
         }
-        else {
+        else 
+        {
             if (loaded_zoo) free(loaded_zoo);
             zoo_setter(NULL, 0, 0);
         }
     }
-    else {
+    else 
+    {
         zoo_setter(NULL, 0, 0);
     }
     //save stuff

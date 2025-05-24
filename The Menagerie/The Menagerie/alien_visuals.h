@@ -10,6 +10,7 @@
 void print_alien_art(const Alien* alien, int index);
 void print_species_art(const char* type, int variant);
 void alien_card(Alien* aliens, int index);
+void zoo_alien_card(Alien* aliens, int index);
 void print_alien_options(Alien* aliens, int count, int selected, int visible_count);
 
 #endif

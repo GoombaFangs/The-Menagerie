@@ -39,9 +39,13 @@ void alien_card(Alien* aliens , int index)
     printf("                                    | Nickname : %-15s |\n", aliens[index].nickname[0] ? aliens[index].nickname : "(none)");
     printf("                                    +----------------------------+\n");
     print_alien_art(&aliens[index], index);
-    //if (i == selected)
-    //    printf("                         <<< SELECTED >>>\n");
     printf("+----------------------------+\n\n");
+}
+
+void zoo_alien_card(Alien* aliens, int index)
+{
+    printf("Nickname : %-15s\n\n", aliens[index].nickname[0] ? aliens[index].nickname : "(none)");
+    print_alien_art(&aliens[index], index);
 }
 
 void print_alien_options(Alien* aliens, int count, int selected, int visible_count)

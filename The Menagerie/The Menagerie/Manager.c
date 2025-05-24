@@ -96,7 +96,7 @@ int story_screen(Planet planet)
     if (printg(0.04, "Planet %s is covered in %s terrain.\n", planet.name, planet.terrain) == -1) return -1;
     hold_seconds(2.2);
 
-    printg(0.05, "\n/-\\ |_ | [- |\\| is found..\n");
+    printg(0.05, "\nAlien is found..\n");
 
     hold_seconds(2);
 
@@ -109,7 +109,7 @@ void new_alien_screen(Planet planet, int got_alien)
     print_planet_menu(planet.terrain);
     if (got_alien != -1)
     {
-        printg(0.03, "\n YOU GOT A NEW  /-\\ |_ | [- |\\|\n");
+        printg(0.03, "\n YOU GOT A NEW  ALIEN\n");
     }
     print_ship_leave_planet(planet.terrain,  got_alien);
 	hold_seconds(0.5);
@@ -119,7 +119,8 @@ void new_alien_screen(Planet planet, int got_alien)
 void app_start()
 {
     srand((unsigned int)time(NULL)); // Seed the random number generator
-    console_manager();
+    set_console_size(110, 40);
+    set_console_font_size(7, 14);
     reset_console();
     title();
 
@@ -201,16 +202,23 @@ void app_start()
 
             new_alien_screen(planet, do_next);
 
-            add_alien_to_zoo(alien_list[selected_alien_index]);
-            free(alien_list);
-            alien_list = NULL;
+            if (alien_list != NULL && selected_alien_index >= 0 && selected_alien_index < NUM_ALIENS)
+            {
+                add_alien_to_zoo(alien_list[selected_alien_index]);
+                free(alien_list);
+                alien_list = NULL;
+            }
 
             do_next = -1;
             break;
         }
-        case 1: //zoo
-            display_zoo();
+        case 1://zoo
+        {
+            int selected = display_zoo();
+			reset_console();
+            do_next = selected;
             break;
+        }
 
         case 2: //Ship log
             do_next = -1;

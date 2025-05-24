@@ -22,44 +22,7 @@ void add_alien_to_zoo(Alien alien)
     zoo[zoo_count++] = alien;
 }
 
-void save_zoo_to_file(const char* filename)
-{
-    FILE* file = fopen(filename, "wb");
-    if (!file) {
-        printf("Could not open file for writing.\n");
-        return;
-    }
-    fwrite(&zoo_count, sizeof(int), 1, file);
-    fwrite(zoo, sizeof(Alien), zoo_count, file);
-    fclose(file);
-}
-
-void load_zoo_from_file(const char* filename)
-{
-    FILE* file = fopen(filename, "rb");
-    if (!file) {
-        // File might not exist yet, that's OK
-        return;
-    }
-    int count = 0;
-    fread(&count, sizeof(int), 1, file);
-    if (count > 0) {
-        Alien* temp = malloc(count * sizeof(Alien));
-        if (!temp) {
-            printf("Failed to allocate memory for loading zoo.\n");
-            fclose(file);
-            return;
-        }
-        fread(temp, sizeof(Alien), count, file);
-        free(zoo);
-        zoo = temp;
-        zoo_count = count;
-        zoo_capacity = count;
-    }
-    fclose(file);
-}
-
-int display_zoo() //modified ver of input_aliens
+int display_zoo()
 {
     int selected = 0;
     print_zoo_aliens(zoo, zoo_count, selected, 1);
@@ -80,14 +43,10 @@ int display_zoo() //modified ver of input_aliens
         {
             selected++;
         }
-		// Commented out selection by ENTER key MAYBE ADD REMOVE ALIEN OPTION
-        /*
         else if (key == 13) // ENTER
         {
-            reset_console();
-            return selected;
+           return -1;
         }
-        */
         else if (key == 27) // ESC
         {
             return -1;
@@ -98,9 +57,8 @@ int display_zoo() //modified ver of input_aliens
 
 void print_zoo_aliens(Alien* aliens, int count, int selected, int visible_count) 
 {
-
     reset_console();
-    printf("Press Up or Down arrow , Escape to go back to main menu\n\n");
+    printf("Key binding  :   [^] Up    [v] Down    [ESC]  Exit    [ Enter ]  Exit\n\n");
     printf("\n\n");
 
     int start = 0;
@@ -116,7 +74,7 @@ void print_zoo_aliens(Alien* aliens, int count, int selected, int visible_count)
 
     if (start > 0)
     {
-        printf("           %d aliens above press up to show\n\n", start);
+        printf("            [^]  %d\n\n", start);
     }
 
     for (int i = start; i < start + visible_count && i < count; i++)
@@ -126,13 +84,13 @@ void print_zoo_aliens(Alien* aliens, int count, int selected, int visible_count)
 
     if (start + visible_count < count)
     {
-        printf("           %d aliens below press down to show\n", (count - start - 1));
+        printf("            [v]  %d\n", (count - start - 1));
     }
 
-    // Print the currently selected alien number (1-based) and total count
-    if (count > 0)
-        printf("\n\n\n\n  Currently viewing Alien #%d out of %d", selected + 1, count);
-    else
-        printf("\n\n\n\n  No aliens in the zoo.");
+    if (count <= 0)
+    {
+        reset_console();
+        printf(" No Aliens in the zoo.");
+    }
 }
 

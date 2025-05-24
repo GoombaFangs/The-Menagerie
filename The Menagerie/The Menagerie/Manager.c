@@ -39,7 +39,6 @@ Planet map_screen()
 	int selected_planet = input_text(terrain_ptrs, NUM_PLANETS, 3, "");//3 = Star map style
     if (selected_planet == -1)
     {
-        printf("Planet selection canceled.\n");
         free(planets);
         return (Planet) { 0 };
     }
@@ -116,10 +115,37 @@ void new_alien_screen(Planet planet, int got_alien)
 	reset_console();
 }
 
+int ship_log_screen()
+{
+	int selected = 0;
+    reset_console();
+    const char* list[] = { "  Planet  ","  Alien   ","  Exit   " };
+    selected = input_text(list, 3, 4, ""); // 4 = ship log style
+    switch (selected)
+    {
+    case -1: // Exit
+        reset_console();
+        return -1;
+    case 0: // Planet
+        //display_planet_log();
+		return 0;
+        break;
+    case 1: // Alien
+        //display_alien_log();
+        return 0;
+        break;
+    case 2: // Exit
+        reset_console();
+        return -1;
+    default:
+		return 0;
+    }
+}
+
 void app_start()
 {
     srand((unsigned int)time(NULL)); // Seed the random number generator
-    set_console_size(110, 40);
+    set_console_size(110, 45);
     set_console_font_size(7, 14);
     reset_console();
     title();
@@ -221,10 +247,11 @@ void app_start()
         }
 
         case 2: //Ship log
-            do_next = -1;
-            // TODO: open Ship log
+        {
+            int selected = ship_log_screen();
+            do_next = selected;
             break;
-
+        }
         case 3: //exit
             running = 0;
             break;

@@ -51,6 +51,7 @@ int printg(double duration, const char* format, ...)
             }
             else if (key == 27) // Escape
             {
+				reset_console();
                 return -1;
             }
         }

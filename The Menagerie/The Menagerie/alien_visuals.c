@@ -79,5 +79,5 @@ void print_alien_options(Alien* aliens, int count, int selected, int visible_cou
     {
         printf("            [v]  %d\n", (count - start - 1));
     }
-    printf("\n\n\n   Choose an /-\\ |_ | [- |\\|\n");
+    printf("\n\n\n   Choose an Alien\n");
 }

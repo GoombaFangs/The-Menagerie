@@ -131,6 +131,7 @@
     <ClCompile Include="alien_manager.c" />
     <ClCompile Include="aquatic.c" />
     <ClCompile Include="camouflaged.c" />
+    <ClCompile Include="console.c" />
     <ClCompile Include="crawler.c" />
     <ClCompile Include="flying.c" />
     <ClCompile Include="gas_based.c" />
@@ -155,6 +156,7 @@
     <ClInclude Include="alien_manager.h" />
     <ClInclude Include="aquatic.h" />
     <ClInclude Include="camouflaged.h" />
+    <ClInclude Include="console.h" />
     <ClInclude Include="crawler.h" />
     <ClInclude Include="flying.h" />
     <ClInclude Include="gas_based.h" />

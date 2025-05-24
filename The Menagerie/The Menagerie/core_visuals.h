@@ -12,8 +12,5 @@
 int hold_seconds(double second);
 void reset_console();
 int printg(double duration, const char* format, ...);
-void set_active_console(HANDLE h);
-void set_console_size(int columns, int rows);
-void set_console_font_size(int width, int height);
 
 #endif

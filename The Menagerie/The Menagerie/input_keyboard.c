@@ -1,12 +1,11 @@
 #include "input_keyboard.h"
 
-#define FRAME_WIDTH 13
+#define FRAME_WIDTH 14
 #define VISIBLE_ALIENS 1
 
 void print_text_options(int selected, const char* menu_list[], int amount, int console)
 {
-    //printf("Press Up or Down arrow ,  Enter to confirm , Escape to go back\n\n");
-
+    static int stop_holding = 1;
     for (int i = 0; i < amount; i++)
     {
         const char* text = menu_list[i];
@@ -44,12 +43,23 @@ void print_text_options(int selected, const char* menu_list[], int amount, int c
             printf("\n");
         }
         printf("\n");
+
+        if (stop_holding == 1)
+        {
+            hold_seconds(0.2); // Add a small delay for better visual effect
+        }
+
         if (i + 1 == amount)
         {
+			stop_holding = 0;
             if (strcmp(text, "  Exit   ") != 0)
             {
                 printf("\n\n                                                                   Choose a planet to explore..\n");
-            }
+            } 
+        }
+        else
+        {
+           
         }
     }
 }
@@ -57,13 +67,14 @@ void print_text_options(int selected, const char* menu_list[], int amount, int c
 int input_text(const char* menu_list[], int amount, int console_style, char* planet_terrain)// console 0 to reset console
 {
     int selected = 0;
+    int anim = 1;
 	switch (console_style)
 	{
 	case 0:  reset_console();// default style
 		break;
 	case 1:  reset_console(); print_planet_menu(planet_terrain); // planet terrain style
 		break;
-	case 2:  reset_console(); print_space_windows(); // space windows style
+	case 2:  reset_console(); print_captain_seat();// space windows style 
 		break;
 	case 3:  reset_console(); stars(); // stars style
 		break;
@@ -101,7 +112,7 @@ int input_text(const char* menu_list[], int amount, int console_style, char* pla
             break;
         case 1:  reset_console(); print_planet_menu(planet_terrain);
             break;
-        case 2:  reset_console(); print_space_windows();
+        case 2:  reset_console(); print_captain_seat(anim);
             break;
         case 3:  reset_console(); stars();
             break;
@@ -162,6 +173,7 @@ int get_alpha_input(char* inputBuffer, int bufferSize)
         if (key == 0 || key == 224) // Arrow key or special key
         {
             (void)_getch(); // Consume the next byte (arrow key code)
+            putchar('\a'); // Beep sound
             continue; // Ignore
         }
 
@@ -195,6 +207,10 @@ int get_alpha_input(char* inputBuffer, int bufferSize)
         else if (key == 27) // Escape Key
         {
             return -1;
+        }
+        else
+        {
+            putchar('\a'); // Beep sound
         }
     }
 	return 0;

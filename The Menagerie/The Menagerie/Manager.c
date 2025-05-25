@@ -142,6 +142,78 @@ int ship_log_screen()
     }
 }
 
+int explore_planet(Zoo* zoo)
+{
+    Planet planet = map_screen();
+    if (planet.name[0] == '\0' || story_screen(planet) == -1)
+    {
+        return -1;
+    }
+
+    int selected_alien_index;
+    int backspace = 0;
+    int generate_new = 1;
+
+    Alien* alien_list = alien_selection_screen(planet.terrain, NUM_ALIENS, &selected_alien_index, generate_new);
+
+    if (alien_list && selected_alien_index >= 0 && selected_alien_index < NUM_ALIENS)
+    {
+        int show_nickname_prompt = 1;
+        int menu_choice = 1;
+
+        do
+        {
+            alien_list[selected_alien_index] = add_nickname(alien_list, selected_alien_index, &backspace);
+
+            if (backspace == -1)
+            {
+                alien_list[selected_alien_index].nickname[0] = '\0';
+                const char* list[] = { "  Continue  ", "  Back   ", "  Exit   " };
+                menu_choice = input_text(list, 3, 1, planet.terrain);
+
+                switch (menu_choice)
+                {
+                case 1:
+                    generate_new = 0;
+                    alien_list = alien_selection_screen(planet.terrain, NUM_ALIENS, &selected_alien_index, generate_new);
+                    if (selected_alien_index == -1)
+                    {
+                        return -1;
+                    } 
+                    break;
+                case 2:
+                    return -1;
+                }
+            }
+            else
+            {
+                show_nickname_prompt = 0;
+            }
+
+        } while (show_nickname_prompt);
+    }
+    else
+    {
+        return -1;
+    }
+
+    alien_card(alien_list, selected_alien_index);
+    hold_seconds(2);
+    reset_console();
+    new_alien_screen(planet, 0);
+
+    if (selected_alien_index >= 0 && backspace != -1)
+    {
+        add_alien_to_zoo(zoo, alien_list[selected_alien_index]);
+        save_data("zoo_capacity.txt", &zoo->capacity, sizeof(int), 1);
+        save_data("zoo_count.txt", &zoo->count, sizeof(int), 1);
+        save_data("zoo_array.txt", zoo->list, sizeof(Alien), zoo->count);
+    }
+
+    free(alien_list);
+    return -1;
+}
+
 void app_start()
 {
     srand((unsigned int)time(NULL)); // Seed the random number generator
@@ -153,124 +225,35 @@ void app_start()
     Zoo zoo = { NULL, 0, 0 };
     load_data("zoo_count.txt", &zoo.count, sizeof(int), 1);
     load_data("zoo_capacity.txt", &zoo.capacity, sizeof(int), 1);
-    load_data("zoo_array.txt", NULL, sizeof(Alien), 0);
     zoo.list = malloc(zoo.capacity * sizeof(Alien));
     if (zoo.list)
         load_data("zoo_array.txt", zoo.list, sizeof(Alien), zoo.count);
 
     int running = 1;
-    int do_next = main_menu_screen();
-    Alien* alien_list = NULL;
-    Alien* alien_in_zoo = NULL;
-    static int alien_total_in_zoo = 0;
+    int do_next = -1;
 
     while (running)
     {
         switch (do_next)
         {
-        case -1: // return to menu
+		case -1: // Return to main menu
             do_next = main_menu_screen();
             break;
 
-        case 0: // Explore Planet
-        {
-            Planet planet = map_screen();
-            if (planet.name[0] == '\0')//Exit while choosing planet
-            {
-                do_next = -1;
-                break;
-            }
-            else if (story_screen(planet) == -1)//Exit while the story is running
-            {
-                do_next = -1;
-                break;
-            }
-
-            int selected_alien_index;
-            int backspace = 0;
-            int generate_new = 1;
-            alien_list = alien_selection_screen(planet.terrain, NUM_ALIENS, &selected_alien_index, generate_new);
-
-            if (alien_list && selected_alien_index >= 0 && selected_alien_index < NUM_ALIENS)
-            {
-                int show_nickname_prompt = 1;
-                int selected = 1;
-
-                do
-                {
-                    alien_list[selected_alien_index] = add_nickname(alien_list, selected_alien_index, &backspace);
-
-                    if (backspace == -1)
-                    {
-						alien_list[selected_alien_index].nickname[0] = '\0'; // Clear nickname
-                        const char* list[] = {"  Continue  ","  Back   ","  Exit   "};
-                         selected = input_text(list, 3, 1, planet.terrain); // 1 = planet terrain style
-
-						 switch (selected)
-                         {
-						 case 1: // Back
-                             alien_list = alien_selection_screen(planet.terrain, NUM_ALIENS, &selected_alien_index , generate_new = 0);
-                             if(selected_alien_index == -1)
-                             {
-                                 show_nickname_prompt = 0;
-                                 do_next = -1;
-                             }
-                             break;
-                         case 2: // Exit
-                             do_next = -1;
-                             show_nickname_prompt = 0;
-                             break;
-                         }
-                    }
-                    else
-                    {
-                        show_nickname_prompt = 0;
-                    }
-
-                } while (show_nickname_prompt);
-            }
-			else if (selected_alien_index == -1)
-			{
-				do_next = -1;
-			}
-
-			if (do_next != -1)
-			{
-                alien_card(alien_list, selected_alien_index);
-                hold_seconds(2);
-                reset_console();
-			}
-
-            new_alien_screen(planet, do_next);
-
-
-            if (alien_list && selected_alien_index >= 0 && backspace != -1)
-            {
-                add_alien_to_zoo(&zoo, alien_list[selected_alien_index]);
-                save_data("zoo_capacity.txt", &zoo.capacity, sizeof(int), 1);
-                save_data("zoo_count.txt", &zoo.count, sizeof(int), 1);
-                save_data("zoo_array.txt", zoo.list, sizeof(Alien), zoo.count);
-            }
-
-            free(alien_list);
-            alien_list = NULL;
-            do_next = -1;
+        case 0:// Map
+            do_next = explore_planet(&zoo);
             break;
-        }
-        case 1://zoo
-        {
-            int selected = input_zoo(&zoo);
-			reset_console();
-            do_next = selected;
+
+		case 1: // Zoo
+            do_next = input_zoo(&zoo);
+            reset_console();
             break;
-        }
-        case 2: //Ship log
-        {
-            int selected = ship_log_screen();
-            do_next = selected;
+
+		case 2: //Ship log
+            do_next = ship_log_screen();
             break;
-        }
-        case 3: //exit
+
+		case 3: //Exit
             free_zoo(&zoo);
             running = 0;
             break;

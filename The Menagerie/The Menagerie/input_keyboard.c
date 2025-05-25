@@ -126,6 +126,43 @@ int input_text(const char* menu_list[], int amount, int console_style, char* pla
     }
 }
 
+int input_zoo(Zoo* zoo)
+{
+    if (zoo->count <= 0)
+    {
+        printf("The zoo is empty.\n");
+        hold_seconds(2);
+        return -1;
+    }
+
+    int selected = 0;
+    print_zoo_aliens(zoo->list, zoo->count, selected, 1);
+
+    while (1)
+    {
+        int key = _getch();
+        if (key == 0 || key == 224)
+        {
+            key = _getch();
+        }
+
+        if (key == 72 && selected > 0) // UP
+        {
+            selected--;
+        }
+        else if (key == 80 && selected < zoo->count - 1) // DOWN
+        {
+            selected++;
+        }
+        else if (key == 13 || key == 27) // ENTER or ESC
+        {
+            return -1;
+        }
+
+        print_zoo_aliens(zoo->list, zoo->count, selected, 1);
+    }
+}
+
 int input_aliens(char* planet_terrain, Alien* aliens, int count)
 {
     int selected = 0;

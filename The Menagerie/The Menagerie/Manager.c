@@ -149,26 +149,20 @@ void app_start()
     set_console_font_size(7, 14);
     reset_console();
     title();
-    load_data("zoo_count.txt", get_zoo_count_ptr(), sizeof(int), 1);
-    load_data("zoo_capacity.txt", get_zoo_capacity_ptr(), sizeof(int), 1);
 
-    if (get_zoo_count() > 0) {
-        Alien* loaded_zoo = malloc(sizeof(Alien) * get_zoo_count());
-        if (loaded_zoo && load_data("zoo_array.txt", loaded_zoo, sizeof(Alien), get_zoo_count())) {
-            zoo_setter(loaded_zoo, get_zoo_count(), get_zoo_capacity());
-        }
-        else {
-            if (loaded_zoo) free(loaded_zoo);
-            zoo_setter(NULL, 0, 0);
-        }
-    }
-    else {
-        zoo_setter(NULL, 0, 0);
-    }
+    Zoo zoo = { NULL, 0, 0 };
+    load_data("zoo_count.txt", &zoo.count, sizeof(int), 1);
+    load_data("zoo_capacity.txt", &zoo.capacity, sizeof(int), 1);
+    load_data("zoo_array.txt", NULL, sizeof(Alien), 0);
+    zoo.list = malloc(zoo.capacity * sizeof(Alien));
+    if (zoo.list)
+        load_data("zoo_array.txt", zoo.list, sizeof(Alien), zoo.count);
 
     int running = 1;
     int do_next = main_menu_screen();
     Alien* alien_list = NULL;
+    Alien* alien_in_zoo = NULL;
+    static int alien_total_in_zoo = 0;
 
     while (running)
     {
@@ -193,7 +187,7 @@ void app_start()
             }
 
             int selected_alien_index;
-            int backspace;
+            int backspace = 0;
             int generate_new = 1;
             alien_list = alien_selection_screen(planet.terrain, NUM_ALIENS, &selected_alien_index, generate_new);
 
@@ -249,12 +243,13 @@ void app_start()
 
             new_alien_screen(planet, do_next);
 
-            if (alien_list != NULL && selected_alien_index >= 0 && selected_alien_index < NUM_ALIENS && backspace != -1)
+
+            if (alien_list && selected_alien_index >= 0 && backspace != -1)
             {
-                add_alien_to_zoo(alien_list[selected_alien_index]);
-                save_data("zoo_capacity.txt", get_zoo_capacity_ptr(), sizeof(int), 1);
-                save_data("zoo_count.txt", get_zoo_count_ptr(), sizeof(int), 1);
-                save_data("zoo_array.txt", get_zoo(), sizeof(Alien), get_zoo_count());
+                add_alien_to_zoo(&zoo, alien_list[selected_alien_index]);
+                save_data("zoo_capacity.txt", &zoo.capacity, sizeof(int), 1);
+                save_data("zoo_count.txt", &zoo.count, sizeof(int), 1);
+                save_data("zoo_array.txt", zoo.list, sizeof(Alien), zoo.count);
             }
 
             free(alien_list);
@@ -264,12 +259,11 @@ void app_start()
         }
         case 1://zoo
         {
-            int selected = display_zoo();
+            int selected = input_zoo(&zoo);
 			reset_console();
             do_next = selected;
             break;
         }
-
         case 2: //Ship log
         {
             int selected = ship_log_screen();
@@ -277,6 +271,7 @@ void app_start()
             break;
         }
         case 3: //exit
+            free_zoo(&zoo);
             running = 0;
             break;
 

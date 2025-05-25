@@ -147,7 +147,7 @@
     <ClCompile Include="rocky.c" />
     <ClCompile Include="core_visuals.c" />
     <ClCompile Include="save_load_data.c" />
-    <ClCompile Include="zoo.c" />
+    <ClCompile Include="alien_zoo.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alien_folder.h" />
@@ -175,7 +175,8 @@
     <ClInclude Include="species_folder.h" />
     <ClInclude Include="core_visuals.h" />
     <ClInclude Include="visuals_folder.h" />
-    <ClInclude Include="zoo.h" />
+    <ClInclude Include="alien_zoo.h" />
+    <ClInclude Include="zoo_struct.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -8,7 +8,6 @@
 #include "alien_folder.h"
 #include "visuals_folder.h"
 #include "planet_folder.h"
-#include "zoo.h"
 #include "save_load_data.h"
 
 Alien* alien_selection_screen(char* planet_terrain ,int count , int* selected_alien_index, int generate_new);

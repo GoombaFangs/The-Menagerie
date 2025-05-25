@@ -96,8 +96,11 @@
     <ClCompile Include="loading_screen.c">
       <Filter>Source Files\Visuals</Filter>
     </ClCompile>
-    <ClCompile Include="zoo.c">
+    <ClCompile Include="save_load_data.c">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="alien_zoo.c">
+      <Filter>Source Files\Alien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -173,8 +176,14 @@
     <ClInclude Include="loading_screen.h">
       <Filter>Header Files\Visuals</Filter>
     </ClInclude>
-    <ClInclude Include="zoo.h">
+    <ClInclude Include="save_load_data.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="alien_zoo.h">
+      <Filter>Header Files\Alien</Filter>
+    </ClInclude>
+    <ClInclude Include="zoo_struct.h">
+      <Filter>Header Files\Alien</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

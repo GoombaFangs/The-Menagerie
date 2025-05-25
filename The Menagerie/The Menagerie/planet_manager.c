@@ -72,7 +72,8 @@ void planet_log()
             int end = start + VISITS_PER_PAGE;
             if (end > num_visited_planets) end = num_visited_planets;
 
-            printf("\n                         [<]/[>] Page | [Enter]/[Esc] Exit\n\n");
+            printf("\n                              [<]/[>] Page | [Enter]/[Esc] Exit\n\n");
+            printf("                     Shiplog Update: %d planets explored on your journey.\n", num_visited_planets);
             printf("\n\n     Planet Log (Page %d/%d)\n\n", current_page + 1, total_pages);
 
             for (int i = start; i < end; ++i)

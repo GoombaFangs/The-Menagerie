@@ -46,7 +46,6 @@ int display_zoo()
         else if (key == 13) // ENTER
         {
             reset_console();
-            printf("Are you sure you want to remove that alien?\n\n");
             int choice = zoo_remove_alien_menu(zoo, zoo_count, selected);
 
             if (choice == 0)

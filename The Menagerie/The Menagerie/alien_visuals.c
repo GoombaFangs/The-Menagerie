@@ -29,17 +29,16 @@ void print_species_art(const char* type, int variant)
 
 void alien_card(Alien* aliens , int index)
 {
-    printf("+--------- Alien %d ---------+\n", index + 1);
-    printf("                                    +----------------------------+\n");
-    printf("                                    | Species  : %-15s |\n", get_alien_type_name(aliens[index].type));
-    printf("                                    | Sex      : %-15c |\n", aliens[index].sex);
-    printf("                                    | Age      : %-15d |\n", aliens[index].age);
-    printf("                                    | Size     : %-15s |\n", aliens[index].size);
-    printf("                                    | Diet     : %-15s |\n", aliens[index].diet);
-    printf("                                    | Nickname : %-15s |\n", aliens[index].nickname[0] ? aliens[index].nickname : "(none)");
-    printf("                                    +----------------------------+\n");
+    printf("     +--------- Alien %d ---------+                  +----------------------------+", index + 1);
+    printf("                                                                                | Species  : %-15s |\n", get_alien_type_name(aliens[index].type));
+    printf("                                                    | Sex      : %-15c |\n", aliens[index].sex);
+    printf("                                                    | Age      : %-15d |\n", aliens[index].age);
+    printf("                                                    | Size     : %-15s |\n", aliens[index].size);
+    printf("                                                    | Diet     : %-15s |\n", aliens[index].diet);
+    printf("                                                    | Nickname : %-15s |\n", aliens[index].nickname[0] ? aliens[index].nickname : "(none)");
+    printf("                                                    +----------------------------+\n");
     print_alien_art(&aliens[index], index);
-    printf("+----------------------------+\n\n");
+    printf("     +----------------------------+\n\n");
 }
 
 void zoo_alien_card(Alien* aliens, int index)
@@ -51,8 +50,17 @@ void zoo_alien_card(Alien* aliens, int index)
 void print_alien_options(Alien* aliens, int count, int selected, int visible_count)
 {
     reset_console();
-    printf("Key binding  :   [^] Up    [v] Down    [ESC] Back / Exit    [ Enter ] Confirm\n\n");
-    printf("\n\n");
+
+    printf("  _____________________________________________________________________________________\n");
+    printf(" /                                                                                     \\\n");
+    printf("|        ____ _                                             _    _ _                   | \n");
+    printf("|       / ___| |__   ___   ___  ___  ___    __ _ _ __      / \\  | (_) ___ _ __         | \n");
+    printf("|      | |   | '_ \\ / _ \\ / _ \\/ __|/ _ \\  / _` | '_ \\    / _ \\ | | |/ _ \\ '_ \\        | \n");
+    printf("|      | |___| | | | (_) | (_) \\__ \\  __/ | (_| | | | |  / ___ \\| | |  __/ | | |       | \n");
+    printf("|       \\____|_| |_|\\___/ \\___/|___/\\___|  \\__,_|_| |_| /_/   \\_\\_|_|\\___|_| |_|       | \n");
+    printf("|                                                                                      | \n");
+    printf("|    [^] / [v] Up / Down        [ESC] Back / Exit          [ Enter ] Confirm           | \n");
+    printf("|______________________________________________________________________________________| \n");
 
     int start = 0;
     if (count > visible_count)
@@ -67,7 +75,14 @@ void print_alien_options(Alien* aliens, int count, int selected, int visible_cou
 
     if (start > 0)
     {
-        printf("            [^]  %d\n\n", start);
+     
+        printf("   |                                         [^]  %d                                 |\n", start);
+        printf("   |________________________________________________________________________________|\n\n");
+    }
+    else
+    {
+        printf("   |                                         [^]                                   |\n");
+        printf("   |_______________________________________________________________________________|\n\n");
     }
 
     for (int i = start; i < start + visible_count && i < count; i++)
@@ -77,9 +92,18 @@ void print_alien_options(Alien* aliens, int count, int selected, int visible_cou
 
     if (start + visible_count < count)
     {
-        printf("            [v]  %d\n", (count - start - 1));
+        printf("    _________________________________________________________________________________\n");
+        printf("   |                                                                                 |\n");
+        printf("   |                                         [v]  %d                                  |\n", (count - start - 1));
+        printf("   |                                                                                 |\n");
     }
-    printf("\n\n\n   Choose an Alien\n");
+    else
+    {
+        printf("    _________________________________________________________________________________\n");
+        printf("   |                                                                                 |\n");
+        printf("   |                                         [v]                                      |\n");
+        printf("   |                                                                                 |\n");
+    }
 }
 
 void pirnt_alien_type_title(AlienType type)

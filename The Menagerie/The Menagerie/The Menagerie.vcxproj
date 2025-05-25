@@ -150,6 +150,7 @@
     <ClCompile Include="core_visuals.c" />
     <ClCompile Include="save_load_data.c" />
     <ClCompile Include="alien_zoo.c" />
+    <ClCompile Include="ship_log.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alien_folder.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="planet_visuals.h" />
     <ClInclude Include="rocky.h" />
     <ClInclude Include="save_load_data.h" />
+    <ClInclude Include="ship_log.h" />
     <ClInclude Include="species_folder.h" />
     <ClInclude Include="core_visuals.h" />
     <ClInclude Include="visuals_folder.h" />

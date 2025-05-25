@@ -1,10 +1,5 @@
 ﻿#include "alien_manager.h"
 
-// for alien_log
-#define NUM_TYPES 7
-#define VARIANTS_PER_TYPE 10
-#define ALIENS_PER_PAGE 2
-
 int get_alien_types_for_terrain(const char* terrain, AlienType* out_types)
 {
     if (strcmp(terrain, "ocean") == 0)
@@ -83,11 +78,11 @@ const char* get_alien_type_name(AlienType type)
 Alien add_nickname(Alien* aliens, int selected_index, int* backspace)
 {
     alien_card(aliens, selected_index);
-    printf("\n  Enter a nickname for this alien:  \n");
-    printf("  English letters only              \n\n");
-
+    printf("English letters only!\n");
+    printf("Enter a nickname for this alien:\n");
 
     int result = get_alpha_input(aliens[selected_index].nickname, sizeof(aliens[selected_index].nickname));
+
     if (backspace)
     {
         *backspace = result;
@@ -130,92 +125,4 @@ Alien* generate_aliens(char* planet_terrain, int count)
     }
 
     return aliens;
-}
-
-void alien_log(const Zoo* zoo)
-{
-
-    int selected_type = 0;
-    int current_page = 0;
-
-    while (1)
-    {
-        reset_console();
-
-        AlienType type = (AlienType)selected_type;
-        const char* type_name = get_alien_type_name(type);
-
-        // Count how many aliens were found
-        int found_count = 0;
-        for (int v = 0; v < VARIANTS_PER_TYPE; ++v)
-        {
-            Alien dummy;
-            if (find_alien_in_zoo(zoo, type, v, &dummy))
-                found_count++;
-        }
-
-        int total_pages = (VARIANTS_PER_TYPE + ALIENS_PER_PAGE - 1) / ALIENS_PER_PAGE;
-        if (current_page >= total_pages)
-            current_page = total_pages - 1;
-
-		print_small_window();
-        printf("\n                       [^]/[v] Category | [<]/[>] Page | [Enter/Esc] Exit\n\n");
-        pirnt_alien_type_title(type);
-        printf("\n                                       [%d/%d collected]   \n", found_count, VARIANTS_PER_TYPE);
-
-        int start_variant = current_page * ALIENS_PER_PAGE;
-        int end_variant = start_variant + ALIENS_PER_PAGE;
-        if (end_variant > VARIANTS_PER_TYPE)
-            end_variant = VARIANTS_PER_TYPE;
-
-        for (int v = start_variant; v < end_variant; ++v)
-        {
-            Alien found;
-            if (find_alien_in_zoo(zoo, type, v, &found))
-            {
-                printf("Alien %s-%d: [%s]\n", type_name, v + 1, found.nickname);
-                print_alien_art(&found, v);
-            }
-            else
-            {
-                printf("Alien %s-%d: [UNKNOWN]\n", type_name, v + 1);
-                print_species_art("unknown", 0);
-            }
-            printf("\n");
-        }
-
-        int missing = VARIANTS_PER_TYPE - found_count;
-        if (missing == 0)
-        {
-            printf("All aliens collected in this category!\n\n");
-        }
-
-        printf("\n  Page %d/%d\n",current_page + 1, total_pages);
-
-        int key = _getch();
-        if (key == 0 || key == 224) key = _getch();
-
-		if (key == 72 && selected_type > 0) // UP
-        {
-            selected_type--;
-            current_page = 0;
-        }
-		else if (key == 80 && selected_type < NUM_TYPES - 1) // DOWN
-        {
-            selected_type++;
-            current_page = 0;
-        }
-        else if (key == 75 && current_page > 0)// LEFT
-        {
-            current_page--;
-        }
-		else if (key == 77 && current_page < total_pages - 1) // RIGHT
-        {
-            current_page++;
-        }
-		else if (key == 27 || key == 13)  // ESC or ENTER
-        {
-			break;
-        }
-    }
 }

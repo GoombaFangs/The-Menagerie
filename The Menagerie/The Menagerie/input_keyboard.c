@@ -3,7 +3,7 @@
 #define FRAME_WIDTH 14
 #define VISIBLE_ALIENS 1
 
-void print_text_options(int selected, const char* menu_list[], int amount, int console)
+void print_text_options(int selected, const char* menu_list[], int amount, int console_style)
 {
     static int stop_holding = 1;
     for (int i = 0; i < amount; i++)
@@ -17,10 +17,10 @@ void print_text_options(int selected, const char* menu_list[], int amount, int c
         if (i == selected)
         {
             printf("             ");
-            if (console == 3) printf("              ");
+            if (console_style == 3) printf("              ");
             for (int j = 0; j < FRAME_WIDTH + 2; j++) printf("-");
             printf("\n");
-            if (console == 3) printf("       Destination:       |");
+            if (console_style == 3) printf("       Destination:       |");
 			else printf("            |");
      
             for (int j = 0; j < padding_left; j++) printf(" ");
@@ -28,17 +28,20 @@ void print_text_options(int selected, const char* menu_list[], int amount, int c
             printf(" %s ", text);
 
             for (int j = 0; j < padding_right; j++) printf(" ");
-            printf("|\n");
+
+            if (console_style == 3) printf("|       [^]/[v]\n");
+            else printf("|\n");
+            
 
             printf("             ");
-            if (console == 3) printf("              ");
+            if (console_style == 3) printf("              ");
             for (int j = 0; j < FRAME_WIDTH + 2; j++) printf("-");
             printf("\n");
         }
         else
         {
             printf("\n");
-            if (console == 3) printf("              ");
+            if (console_style == 3) printf("              ");
             printf("                %s\n", text);
             printf("\n");
         }
@@ -56,6 +59,7 @@ void print_text_options(int selected, const char* menu_list[], int amount, int c
             if (strcmp(text, "  Exit   ") != 0 && strcmp(text, "  Back   ") != 0)
             {
                 printf("\n\n                                                                   Choose a planet to explore..\n");
+                printf("                                                                           [ Enter ] Confirm \n");
             } 
         }
         else
@@ -72,11 +76,11 @@ int input_text(const char* menu_list[], int amount, int console_style, char* pla
 	{
 	case 0:  reset_console();// default style
 		break;
-	case 1:  reset_console(); print_planet_menu(planet_terrain); // planet terrain style
+	case 1:  reset_console(); print_planet_menu(planet_terrain); // story style
 		break;
-	case 2:  reset_console(); print_captain_seat();// space windows style 
+	case 2:  reset_console(); print_captain_seat();// main menu style 
 		break;
-	case 3:  reset_console(); stars(); // stars style
+	case 3:  reset_console(); stars(); // map style style
 		break;
     case 4:  reset_console(); print_ship_log(); printf("\n"); // ship log style
 		break;

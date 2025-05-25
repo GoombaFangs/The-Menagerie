@@ -14,6 +14,7 @@ void print_space_window();
 void print_space_window_star_fal();
 void print_space_window_anim();
 void print_big_window();
+void print_small_window();
 void print_control_panel();
 void print_screen_panel();
 void print_captain_seat();

@@ -119,7 +119,7 @@ int ship_log_screen(const Zoo* zoo)
 {
 	int selected = 0;
     reset_console();
-    const char* list[] = { "  Planet  ","  Alien   ","  Exit   " };
+    const char* list[] = { "  Planet  ","  Alien   ","  Back   " };
     selected = input_text(list, 3, 4, ""); // 4 = ship log style
     switch (selected)
     {

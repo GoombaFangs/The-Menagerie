@@ -22,8 +22,8 @@ int add_alien_to_zoo(Zoo* zoo, Alien alien)
 void print_zoo_aliens(Alien* aliens, int count, int selected, int visible_count) 
 {
     reset_console();
-    printf("Key binding  :   [^] Up    [v] Down    [ESC]  Exit    [ Enter ]  Exit\n\n");
-    printf("\n\n");
+	print_big_window();
+    printf("\n                 Key binding  :   [^] Up    [v] Down    [Enter/Esc] Exit\n\n");
 
     int start = 0;
     if (count > visible_count)

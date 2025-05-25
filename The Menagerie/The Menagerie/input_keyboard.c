@@ -51,8 +51,9 @@ void print_text_options(int selected, const char* menu_list[], int amount, int c
 
         if (i + 1 == amount)
         {
+           
 			stop_holding = 0;
-            if (strcmp(text, "  Exit   ") != 0)
+            if (strcmp(text, "  Exit   ") != 0 && strcmp(text, "  Back   ") != 0)
             {
                 printf("\n\n                                                                   Choose a planet to explore..\n");
             } 

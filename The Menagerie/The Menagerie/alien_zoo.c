@@ -24,6 +24,7 @@ void print_zoo_aliens(Alien* aliens, int count, int selected, int visible_count)
     reset_console();
 	print_big_window();
     printf("\n                 Key binding  :   [^] Up    [v] Down    [Enter/Esc] Exit\n\n");
+    printf("                          You have collected %d aliens in total!\n\n", count);
 
     int start = 0;
     if (count > visible_count)

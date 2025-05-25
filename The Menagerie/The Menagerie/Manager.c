@@ -207,9 +207,7 @@ int explore_planet(Zoo* zoo)
     if (selected_alien_index >= 0 && backspace != -1)
     {
         add_alien_to_zoo(zoo, alien_list[selected_alien_index]);
-        save_data("zoo_capacity.txt", &zoo->capacity, sizeof(int), 1);
-        save_data("zoo_count.txt", &zoo->count, sizeof(int), 1);
-        save_data("zoo_array.txt", zoo->list, sizeof(Alien), zoo->count);
+        save_aliens_to_file(zoo);
 
         add_planet_visit(planet, alien_list[selected_alien_index]);
     }
@@ -226,14 +224,9 @@ void app_start()
     reset_console();
     title();
 
-    load_planet_visits_from_file();
-
     Zoo zoo = { NULL, 0, 0 };
-    load_data("zoo_count.txt", &zoo.count, sizeof(int), 1);
-    load_data("zoo_capacity.txt", &zoo.capacity, sizeof(int), 1);
-    zoo.list = malloc(zoo.capacity * sizeof(Alien));
-    if (zoo.list)
-        load_data("zoo_array.txt", zoo.list, sizeof(Alien), zoo.count);
+    load_planet_visits_from_file();
+    load_aliens_from_file(&zoo);
 
     int running = 1;
     int do_next = -1;

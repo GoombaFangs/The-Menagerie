@@ -1,6 +1,6 @@
 #include "planet_manager.h"
 
-#define VISITS_PER_PAGE 10// for planet log
+#define VISITS_PER_PAGE 5// for planet log
 
 void generate_random_name(char* name, int max_length)
 {
@@ -74,17 +74,15 @@ void planet_log()
 
             printf("\n                         [<]/[>] Page | [Enter]/[Esc] Exit\n\n");
             printf("\n\n     Planet Log (Page %d/%d)\n\n", current_page + 1, total_pages);
-            printf("     ----------------------------------------\n");
 
             for (int i = start; i < end; ++i)
             {
                 PlanetVisit visit = visited_planets[i];
                 printf("      %2d. Planet: %s | Terrain: %s | Distance: %.1f ly\n",
                     i + 1, visit.planet.name, visit.planet.terrain, visit.planet.distance / 4);
-                printf("                   Alien: %s | Type: %s\n",
+                printf("                       Alien: %s | Type: %s\n\n",
                     visit.alien.nickname[0] ? visit.alien.nickname : "[NO NAME]",
                     get_alien_type_name(visit.alien.type));
-                printf("     ----------------------------------------\n");
             }
         }
 

@@ -105,6 +105,9 @@
     <ClCompile Include="planet_save_load.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="alien_save_load.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="manager.h">
@@ -190,6 +193,9 @@
     </ClInclude>
     <ClInclude Include="planet_save_load.h">
       <Filter>Header Files\Planet</Filter>
+    </ClInclude>
+    <ClInclude Include="alien_save_load.h">
+      <Filter>Header Files\Alien</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

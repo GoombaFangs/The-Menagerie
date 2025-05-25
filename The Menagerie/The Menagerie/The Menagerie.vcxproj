@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="alien_data_base.c" />
     <ClCompile Include="alien_manager.c" />
+    <ClCompile Include="alien_save_load.c" />
     <ClCompile Include="aquatic.c" />
     <ClCompile Include="camouflaged.c" />
     <ClCompile Include="crawler.c" />
@@ -152,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alien_folder.h" />
+    <ClInclude Include="alien_save_load.h" />
     <ClInclude Include="alien_struct.h" />
     <ClInclude Include="alien_data_base.h" />
     <ClInclude Include="alien_manager.h" />

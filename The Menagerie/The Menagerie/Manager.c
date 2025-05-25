@@ -115,7 +115,7 @@ void new_alien_screen(Planet planet, int got_alien)
 	reset_console();
 }
 
-int ship_log_screen()
+int ship_log_screen(const Zoo* zoo)
 {
 	int selected = 0;
     reset_console();
@@ -126,14 +126,17 @@ int ship_log_screen()
     case -1: // Exit
         reset_console();
         return -1;
+
     case 0: // Planet
         //display_planet_log();
-		return 0;
+		return 2;
         break;
+
     case 1: // Alien
-        //display_alien_log();
-        return 0;
+        alien_log(zoo);
+        return 2;
         break;
+
     case 2: // Exit
         reset_console();
         return -1;
@@ -250,7 +253,7 @@ void app_start()
             break;
 
 		case 2: //Ship log
-            do_next = ship_log_screen();
+            do_next = ship_log_screen(&zoo);
             break;
 
 		case 3: //Exit

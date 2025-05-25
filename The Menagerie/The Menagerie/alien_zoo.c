@@ -59,6 +59,20 @@ void print_zoo_aliens(Alien* aliens, int count, int selected, int visible_count)
     }
 }
 
+bool find_alien_in_zoo(const Zoo* zoo, AlienType type, int variant, Alien* result)
+{
+    for (int i = 0; i < zoo->count; ++i)
+    {
+        if (zoo->list[i].type == type && zoo->list[i].art_variant == variant)
+        {
+            if (result)
+                *result = zoo->list[i];
+            return true;
+        }
+    }
+    return false;
+}
+
 void free_zoo(Zoo* zoo)
 {
     if (zoo->list != NULL)

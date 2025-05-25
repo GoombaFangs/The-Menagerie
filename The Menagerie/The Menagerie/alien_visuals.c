@@ -1,6 +1,5 @@
 #include "alien_visuals.h"
 
-
 void print_alien_art(const Alien* alien, int index)
 {
     const char* type_name = get_alien_type_name(alien->type);
@@ -27,6 +26,7 @@ void print_species_art(const char* type, int variant)
         );
     }
 }
+
 void alien_card(Alien* aliens , int index)
 {
     printf("+--------- Alien %d ---------+\n", index + 1);

@@ -1,5 +1,8 @@
 ﻿#include "alien_manager.h"
 
+#define NUM_TYPES 7
+#define VARIANTS_PER_TYPE 10
+
 int get_alien_types_for_terrain(const char* terrain, AlienType* out_types)
 {
     if (strcmp(terrain, "ocean") == 0)
@@ -125,4 +128,72 @@ Alien* generate_aliens(char* planet_terrain, int count)
     }
 
     return aliens;
+}
+
+void alien_log(const Zoo* zoo)
+{
+    AlienType all_types[NUM_TYPES] = {
+        ALIEN_FLYING, ALIEN_AQUATIC, ALIEN_CRAWLER,
+        ALIEN_GLOWING, ALIEN_CAMOUFLAGED, ALIEN_ROCKY, ALIEN_GAS_BASED
+    };
+
+    int selected_type = 0;
+
+    while (1)
+    {
+        reset_console();
+
+        AlienType type = all_types[selected_type];
+        const char* type_name = get_alien_type_name(type);
+
+        int found_count = 0;
+
+        for (int v = 0; v < VARIANTS_PER_TYPE; ++v)
+        {
+            Alien dummy;
+            if (find_alien_in_zoo(zoo, type, v, &dummy))
+                found_count++;
+        }
+
+        printf("  Alien Type: %s   [%d/%d collected]\n\n", type_name, found_count, VARIANTS_PER_TYPE);
+
+        for (int v = 0; v < VARIANTS_PER_TYPE; ++v)
+        {
+            Alien found;
+            if (find_alien_in_zoo(zoo, type, v, &found))
+            {
+                print_alien_art(&found, v);
+                printf("\n");
+            }
+        }
+
+        int missing = VARIANTS_PER_TYPE - found_count;
+        if (missing > 0)
+        {
+            printf("Missing %d alien%s in this category.\n\n",
+                missing, missing == 1 ? "" : "s");
+        }
+        else
+        {
+            printf("All aliens collected in this category!\n\n");
+        }
+
+        printf("[Up/Down] Navigate Categories  |  [Enter/Esc] Exit\n");
+
+        int key = _getch();
+        if (key == 0 || key == 224) key = _getch();
+
+        if (key == 72 && selected_type > 0) // UP
+        {
+            selected_type--;
+        }
+		else if (key == 80 && selected_type < NUM_TYPES - 1) // DOWN
+        {
+            selected_type++;
+        } 
+        else if (key == 27 || key == 13) // ESC or ENTER
+        {
+			break;
+        }
+    }
 }

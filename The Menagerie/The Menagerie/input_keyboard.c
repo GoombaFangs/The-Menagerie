@@ -67,7 +67,6 @@ void print_text_options(int selected, const char* menu_list[], int amount, int c
 int input_text(const char* menu_list[], int amount, int console_style, char* planet_terrain)// console 0 to reset console
 {
     int selected = 0;
-    int anim = 1;
 	switch (console_style)
 	{
 	case 0:  reset_console();// default style
@@ -114,7 +113,7 @@ int input_text(const char* menu_list[], int amount, int console_style, char* pla
             break;
         case 1:  reset_console(); print_planet_menu(planet_terrain);  // planet terrain style
             break;
-        case 2:  reset_console(); print_captain_seat(anim); // space windows style 
+        case 2:  reset_console(); print_captain_seat(); // space windows style 
             break;
         case 3:  reset_console(); stars();   // stars style
             break;

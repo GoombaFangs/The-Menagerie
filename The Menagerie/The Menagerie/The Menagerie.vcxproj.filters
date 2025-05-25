@@ -102,11 +102,11 @@
     <ClCompile Include="alien_zoo.c">
       <Filter>Source Files\Alien</Filter>
     </ClCompile>
-    <ClCompile Include="planet_save_load.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="alien_save_load.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Alien</Filter>
+    </ClCompile>
+    <ClCompile Include="planet_save_load.c">
+      <Filter>Source Files\Planet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

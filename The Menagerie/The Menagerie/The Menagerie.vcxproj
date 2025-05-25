@@ -143,6 +143,7 @@
     <ClCompile Include="menu_option_data_base.c" />
     <ClCompile Include="planet_data_base.c" />
     <ClCompile Include="planet_manager.c" />
+    <ClCompile Include="planet_save_load.c" />
     <ClCompile Include="planet_visuals.c" />
     <ClCompile Include="rocky.c" />
     <ClCompile Include="core_visuals.c" />
@@ -168,6 +169,7 @@
     <ClInclude Include="planet_folder.h" />
     <ClInclude Include="planet_data_base.h" />
     <ClInclude Include="planet_manager.h" />
+    <ClInclude Include="planet_save_load.h" />
     <ClInclude Include="planet_struct.h" />
     <ClInclude Include="planet_visuals.h" />
     <ClInclude Include="rocky.h" />

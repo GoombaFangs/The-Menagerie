@@ -102,6 +102,9 @@
     <ClCompile Include="alien_zoo.c">
       <Filter>Source Files\Alien</Filter>
     </ClCompile>
+    <ClCompile Include="planet_save_load.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="manager.h">
@@ -184,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="zoo_struct.h">
       <Filter>Header Files\Alien</Filter>
+    </ClInclude>
+    <ClInclude Include="planet_save_load.h">
+      <Filter>Header Files\Planet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -226,6 +226,8 @@ void app_start()
     reset_console();
     title();
 
+    load_planet_visits_from_file();
+
     Zoo zoo = { NULL, 0, 0 };
     load_data("zoo_count.txt", &zoo.count, sizeof(int), 1);
     load_data("zoo_capacity.txt", &zoo.capacity, sizeof(int), 1);
@@ -246,6 +248,7 @@ void app_start()
 
         case 0:// Map
             do_next = explore_planet(&zoo);
+            save_planet_visits_to_file();
             break;
 
 		case 1: // Zoo

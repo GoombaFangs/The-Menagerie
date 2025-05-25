@@ -29,22 +29,21 @@ Planet map_screen()
         exit(1);
     }
 
-    const char* terrain_ptrs[NUM_PLANETS];
-
+    const char* planet_names[NUM_PLANETS];
     for (int i = 0; i < NUM_PLANETS; i++)
     {
-        terrain_ptrs[i] = planets[i].name;
+        planet_names[i] = planets[i].name;
     }
 
-	int selected_planet = input_text(terrain_ptrs, NUM_PLANETS, 3, "");//3 = Star map style
-    if (selected_planet == -1)
+    int selected = input_text(planet_names, NUM_PLANETS, 3, ""); // 3 = star map style
+    if (selected == -1)
     {
         free(planets);
         return (Planet) { 0 };
     }
 
-    Planet chosen = planets[selected_planet];
-    travel_to_planet(chosen);
+    Planet chosen;
+    memcpy(&chosen, &planets[selected], sizeof(Planet)); // Create a proper copy
 
     free(planets);
     return chosen;
@@ -128,7 +127,7 @@ int ship_log_screen(const Zoo* zoo)
         return -1;
 
     case 0: // Planet
-        //display_planet_log();
+        planet_log();
 		return 2;
         break;
 
@@ -141,7 +140,7 @@ int ship_log_screen(const Zoo* zoo)
         reset_console();
         return -1;
     default:
-		return 0;
+        return -1;
     }
 }
 
@@ -211,6 +210,8 @@ int explore_planet(Zoo* zoo)
         save_data("zoo_capacity.txt", &zoo->capacity, sizeof(int), 1);
         save_data("zoo_count.txt", &zoo->count, sizeof(int), 1);
         save_data("zoo_array.txt", zoo->list, sizeof(Alien), zoo->count);
+
+        add_planet_visit(planet, alien_list[selected_alien_index]);
     }
 
     free(alien_list);

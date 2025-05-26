@@ -191,8 +191,9 @@ int reset_ship_log(Zoo* zoo, PlanetLog* planet_log)
         load_aliens_from_file(zoo);
         load_planet_from_file(planet_log);
 
-		hold_seconds(0.5);
-        printg(0.05, "\n Ship log has been successfully reset.\n");
+		print_ship_log(2);
+        printg(0.025, "\n                   Ship log has been successfully reset.\n");
+        hold_seconds(2);
         return 1;
 
     case 1: // Back

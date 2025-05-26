@@ -620,7 +620,8 @@ void print_ship_log(int console_style)
     printf("\n");
     if (console_style == 5) // reset ship log 
     {
-        printf("\n                          Are you sure you want to reset the ship log?\n\n\n\n");
+        printf("\n\n                          Are you sure you want to reset the ship log?\n");
+        printf("\n                          Warning: All aliens in the zoo will be removed.\n\n\n\n");
     }
 }
 

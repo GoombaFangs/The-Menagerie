@@ -147,7 +147,7 @@ void alien_log(const Zoo* zoo)
     }
 }
 
-int reset_ship_log(const Zoo* zoo) 
+int reset_ship_log( Zoo* zoo)
 {
 	int selected = 0;
     const char* list[] = { "Reset Ship Log","   Back   " };
@@ -160,6 +160,34 @@ int reset_ship_log(const Zoo* zoo)
         remove("zoo_capacity.txt");
         remove("zoo_count.txt");
         remove("zoo_array.txt");
+
+        if (zoo != NULL)
+        {
+            zoo->count = 0;
+            zoo->capacity = 0;
+
+            if (zoo->list != NULL)
+            {
+                free(zoo->list);
+                zoo->list = NULL;
+            }
+        }
+
+        /*if (planet_log != NULL)
+        {
+            planet_log->count = 0;
+            planet_log->capacity = 0;
+
+            if (planet_log->visits != NULL)
+            {
+                free(planet_log->visits);
+                planet_log->visits = NULL;
+            }
+        }*/
+
+        load_aliens_from_file(zoo);
+        load_planet_visits_from_file();
+
 		hold_seconds(0.5);
         printg(0.05, "\n Ship log has been successfully reset.\n");
         return 1;

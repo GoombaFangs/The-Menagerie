@@ -114,7 +114,7 @@ void new_alien_screen(Planet planet, int got_alien)
 	reset_console();
 }
 
-int ship_log_screen(const Zoo* zoo)
+int ship_log_screen(Zoo* zoo)
 {
 	int selected = 0;
 	int running = 1;

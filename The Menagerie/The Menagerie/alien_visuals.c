@@ -19,26 +19,57 @@ void print_species_art(const char* type, int variant)
     else
     {
         printf(
-            "    .-''''-.\n"
-            "   /        \\\n"
-            "  |  UNKNOWN |\n"
-            "   \\________/\n"
+            "                      .-''''-.\n"
+            "                     /        \\\n"
+            "                    |  UNKNOWN |\n"
+            "                     \\________/\n"
         );
     }
 }
 
 void alien_card(Alien* aliens , int index)
 {
-    printf("     +----------------- Alien %d ----------------+   +----------------------------+", index + 1);
-    printf("                                                                                | Species  : %-15s |\n", get_alien_type_name(aliens[index].type));
-    printf("                                                    | Sex      : %-15c |\n", aliens[index].sex);
-    printf("                                                    | Age      : %-15d |\n", aliens[index].age);
-    printf("                                                    | Size     : %-15s |\n", aliens[index].size);
-    printf("                                                    | Diet     : %-15s |\n", aliens[index].diet);
-    printf("                                                    | Nickname : %-15s |\n", aliens[index].nickname[0] ? aliens[index].nickname : "(none)");
-    printf("                                                    +----------------------------+\n");
-    print_alien_art(&aliens[index], index);
-    printf("     +-------------------------------------------+\n\n");
+    if (index < 9)
+    {
+        printf("     +----------------- Alien %d ----------------+   +----------------------------+", index + 1);
+        printf("                                                                                | Species  : %-15s |\n", get_alien_type_name(aliens[index].type));
+        printf("                                                    | Sex      : %-15c |\n", aliens[index].sex);
+        printf("                                                    | Age      : %-15d |\n", aliens[index].age);
+        printf("                                                    | Size     : %-15s |\n", aliens[index].size);
+        printf("                                                    | Diet     : %-15s |\n", aliens[index].diet);
+        printf("                                                    | Nickname : %-15s |\n", aliens[index].nickname[0] ? aliens[index].nickname : "(none)");
+        printf("                                                    +----------------------------+\n");
+        print_alien_art(&aliens[index], index);
+        printf("     +-------------------------------------------+\n\n");
+    }
+    else if(index >= 9 && index < 99)
+    {
+        printf("     +----------------- Alien %d ---------------+   +----------------------------+", index + 1);
+        printf("                                                                                | Species  : %-15s |\n", get_alien_type_name(aliens[index].type));
+        printf("                                                    | Sex      : %-15c |\n", aliens[index].sex);
+        printf("                                                    | Age      : %-15d |\n", aliens[index].age);
+        printf("                                                    | Size     : %-15s |\n", aliens[index].size);
+        printf("                                                    | Diet     : %-15s |\n", aliens[index].diet);
+        printf("                                                    | Nickname : %-15s |\n", aliens[index].nickname[0] ? aliens[index].nickname : "(none)");
+        printf("                                                    +----------------------------+\n");
+        print_alien_art(&aliens[index], index);
+        printf("     +-------------------------------------------+\n\n");
+    }
+    else
+    {
+        printf("     +----------------- Alien %d --------------+   +----------------------------+", index + 1);
+        printf("                                                                                | Species  : %-15s |\n", get_alien_type_name(aliens[index].type));
+        printf("                                                    | Sex      : %-15c |\n", aliens[index].sex);
+        printf("                                                    | Age      : %-15d |\n", aliens[index].age);
+        printf("                                                    | Size     : %-15s |\n", aliens[index].size);
+        printf("                                                    | Diet     : %-15s |\n", aliens[index].diet);
+        printf("                                                    | Nickname : %-15s |\n", aliens[index].nickname[0] ? aliens[index].nickname : "(none)");
+        printf("                                                    +----------------------------+\n");
+        print_alien_art(&aliens[index], index);
+        printf("     +-------------------------------------------+\n\n");
+    }
+
+
 }
 
 void zoo_alien_card(Alien* aliens, int index)

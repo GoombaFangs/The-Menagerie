@@ -100,12 +100,12 @@ void alien_log(const Zoo* zoo)
             Alien found;
             if (find_alien_in_zoo(zoo, type, v, &found))
             {
-                printf("Alien %s-%d: [%s]\n", type_name, v + 1, found.nickname);
+                printf("Alien %s-%d: [%s]\n\n", type_name, v + 1, found.nickname);
                 print_alien_art(&found, v);
             }
             else
             {
-                printf("Alien %s-%d: [UNKNOWN]\n", type_name, v + 1);
+                printf("Alien %s-%d: [UNKNOWN]\n\n", type_name, v + 1);
                 print_species_art("unknown", 0);
             }
             printf("\n");

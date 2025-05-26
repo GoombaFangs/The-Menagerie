@@ -128,6 +128,7 @@ int ship_log_screen(Zoo* zoo , PlanetLog* planet)
         case -1: // Exit
             reset_console();
 			running = 0;
+			break;
 
         case 0: // Planet
             planet_log(planet);

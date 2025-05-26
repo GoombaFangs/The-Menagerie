@@ -1,5 +1,22 @@
 ﻿#include "alien_manager.h"
 
+Alien add_nickname(Alien* aliens, int selected_index, int* backspace)
+{
+    alien_card(aliens, selected_index);
+    printf("English letters only!\n");
+    printf("Enter a nickname for this alien:\n");
+
+    int result = get_alpha_input(aliens[selected_index].nickname, sizeof(aliens[selected_index].nickname));
+
+    if (backspace)
+    {
+        *backspace = result;
+    }
+
+    reset_console();
+    return aliens[selected_index];
+}
+
 int get_alien_types_for_terrain(const char* terrain, AlienType* out_types)
 {
     if (strcmp(terrain, "ocean") == 0)
@@ -75,23 +92,6 @@ const char* get_alien_type_name(AlienType type)
     }
 }
 
-Alien add_nickname(Alien* aliens, int selected_index, int* backspace)
-{
-    alien_card(aliens, selected_index);
-    printf("English letters only!\n");
-    printf("Enter a nickname for this alien:\n");
-
-    int result = get_alpha_input(aliens[selected_index].nickname, sizeof(aliens[selected_index].nickname));
-
-    if (backspace)
-    {
-        *backspace = result;
-    }
- 
-    reset_console();
-    return aliens[selected_index];
-}
-
 Alien* generate_aliens(char* planet_terrain, int count)
 {
     if (count <= 0)
@@ -114,8 +114,10 @@ Alien* generate_aliens(char* planet_terrain, int count)
 
     for (int i = 0; i < count; i++)
     {
-        aliens[i].type = possible_types[rand() % 2];
-        strcpy_s(aliens[i].species, sizeof(aliens[i].species), get_alien_type_name(aliens[i].type));
+        //aliens[i].type = possible_types[rand() % 2];
+        //strcpy_s(aliens[i].species, sizeof(aliens[i].species), get_alien_type_name(aliens[i].type));
+        aliens[i].type = ALIEN_AQUATIC;
+        strcpy_s(aliens[i].species, sizeof(aliens[i].species), "aquatic");
         aliens[i].sex = (rand() % 2 == 0) ? 'M' : 'F';
         aliens[i].age = rand() % 100 + 1;
         strcpy_s(aliens[i].size, sizeof(aliens[i].size), size_list[rand() % num_sizes]);

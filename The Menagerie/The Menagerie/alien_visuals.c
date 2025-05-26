@@ -29,7 +29,7 @@ void print_species_art(const char* type, int variant)
 
 void alien_card(Alien* aliens , int index)
 {
-    printf("     +--------- Alien %d ---------+                  +----------------------------+", index + 1);
+    printf("     +----------------- Alien %d ----------------+   +----------------------------+", index + 1);
     printf("                                                                                | Species  : %-15s |\n", get_alien_type_name(aliens[index].type));
     printf("                                                    | Sex      : %-15c |\n", aliens[index].sex);
     printf("                                                    | Age      : %-15d |\n", aliens[index].age);
@@ -38,7 +38,7 @@ void alien_card(Alien* aliens , int index)
     printf("                                                    | Nickname : %-15s |\n", aliens[index].nickname[0] ? aliens[index].nickname : "(none)");
     printf("                                                    +----------------------------+\n");
     print_alien_art(&aliens[index], index);
-    printf("     +----------------------------+\n\n");
+    printf("     +-------------------------------------------+\n\n");
 }
 
 void zoo_alien_card(Alien* aliens, int index)
@@ -81,8 +81,8 @@ void print_alien_options(Alien* aliens, int count, int selected, int visible_cou
     }
     else
     {
-        printf("   |                                         [^]                                   |\n");
-        printf("   |_______________________________________________________________________________|\n\n");
+        printf("   |                                         [^]                                    |\n");
+        printf("   |________________________________________________________________________________|\n\n");
     }
 
     for (int i = start; i < start + visible_count && i < count; i++)
@@ -101,7 +101,7 @@ void print_alien_options(Alien* aliens, int count, int selected, int visible_cou
     {
         printf("    _________________________________________________________________________________\n");
         printf("   |                                                                                 |\n");
-        printf("   |                                         [v]                                      |\n");
+        printf("   |                                         [v]                                     |\n");
         printf("   |                                                                                 |\n");
     }
 }

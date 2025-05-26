@@ -5,6 +5,6 @@
 #include "planet_folder.h"
 
 void planet_log();
-
+void alien_log(const Zoo* zoo);
 
 #endif 

@@ -17,27 +17,27 @@ void planet_log(const PlanetLog* planet)
         reset_console();
         print_small_window();
 
-        if (num_visited_planets == 0 && planet->count == 0)
+        if (planet->count == 0)
         {
             printf("\n                                     No planets visited yet.\n");
         }
         else
         {
-            int total_pages = (num_visited_planets + VISITS_PER_PAGE - 1) / VISITS_PER_PAGE;
+            int total_pages = (planet->count + VISITS_PER_PAGE - 1) / VISITS_PER_PAGE;
             if (current_page >= total_pages)
                 current_page = total_pages - 1;
 
             int start = current_page * VISITS_PER_PAGE;
             int end = start + VISITS_PER_PAGE;
-            if (end > num_visited_planets) end = num_visited_planets;
+            if (end > planet->count) end = planet->count;
 
             printf("\n                              [<]/[>] Page | [Enter]/[Esc] Exit\n\n");
-            printf("                     Shiplog Update: %d planets explored on your journey.\n", num_visited_planets);
+            printf("                     Shiplog Update: %d planets explored on your journey.\n", planet->count);
             printf("\n\n     Planet Log (Page %d/%d)\n\n", current_page + 1, total_pages);
 
             for (int i = start; i < end; ++i)
             {
-                PlanetVisit visit = visited_planets[i];
+                PlanetVisit visit = planet->visits[i];
                 printf("      %2d. Planet: %s | Terrain: %s | Distance: %.1f ly\n",
                     i + 1, visit.planet.name, visit.planet.terrain, visit.planet.distance / 4);
                 printf("                       Alien: %s | Type: %s\n\n",
@@ -51,7 +51,7 @@ void planet_log(const PlanetLog* planet)
 
         if (key == 75 && current_page > 0) // LEFT
             current_page--;
-        else if (key == 77 && (current_page + 1) * VISITS_PER_PAGE < num_visited_planets) // RIGHT
+        else if (key == 77 && (current_page + 1) * VISITS_PER_PAGE < planet->count) // RIGHT
             current_page++;
         else if (key == 13 || key == 27) // ENTER or ESC
             break;
@@ -155,12 +155,14 @@ int reset_ship_log(Zoo* zoo, PlanetLog* planet_log)
     switch (selected)
     {
     case 0:  // Reset log
+        // Remove saved files
         remove("planet_visits_count.txt");
         remove("planet_visits_array.txt");
         remove("zoo_capacity.txt");
         remove("zoo_count.txt");
         remove("zoo_array.txt");
 
+        // Reset zoo
         if (zoo != NULL)
         {
             zoo->count = 0;
@@ -173,14 +175,13 @@ int reset_ship_log(Zoo* zoo, PlanetLog* planet_log)
             }
         }
 
-       if (planet_log != NULL)
+        // Reset planet log
+        if (planet_log)
         {
-           num_visited_planets = 0;
-           visited_capacity = 0;
-           planet_log->count = 0;
+            planet_log->count = 0;
             planet_log->capacity = 0;
 
-            if (planet_log->visits != NULL)
+            if (planet_log->visits)
             {
                 free(planet_log->visits);
                 planet_log->visits = NULL;
@@ -188,7 +189,7 @@ int reset_ship_log(Zoo* zoo, PlanetLog* planet_log)
         }
 
         load_aliens_from_file(zoo);
-        load_planet_visits_from_file();
+        load_planet_from_file(planet_log);
 
 		hold_seconds(0.5);
         printg(0.05, "\n Ship log has been successfully reset.\n");

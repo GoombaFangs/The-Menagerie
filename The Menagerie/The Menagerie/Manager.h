@@ -17,7 +17,7 @@ int main_menu_screen();
 int story_screen(Planet planet);
 void new_alien_screen(Planet planet, int got_alien);
 int ship_log_screen(Zoo* zoo , PlanetLog* planet_log);
-int explore_planet(Zoo* zoo);
+int explore_planet(Zoo* zoo, PlanetLog* planet_log);
 void app_start();
 
 #endif

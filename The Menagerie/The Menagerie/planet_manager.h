@@ -10,11 +10,7 @@
 #include "planet_folder.h"
 #include "alien_folder.h"
 
-extern PlanetVisit* visited_planets;
-extern int num_visited_planets;
-extern int visited_capacity;
-
-void add_planet_visit(Planet planet, Alien alien);
+void add_planet_visit(PlanetLog* log, Planet planet, Alien alien);
 void generate_random_name(char* name, int max_length);
 Planet* generate_planet(int count);
 

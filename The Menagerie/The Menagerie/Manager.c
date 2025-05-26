@@ -162,7 +162,7 @@ int ship_log_screen(Zoo* zoo , PlanetLog* planet)
     return -1;
 }
 
-int explore_planet(Zoo* zoo)
+int explore_planet(Zoo* zoo, PlanetLog* planet_log)
 {
     Planet planet = map_screen();
     if (planet.name[0] == '\0' || story_screen(planet) == -1)
@@ -227,7 +227,7 @@ int explore_planet(Zoo* zoo)
         add_alien_to_zoo(zoo, alien_list[selected_alien_index]);
         save_aliens_to_file(zoo);
 
-        add_planet_visit(planet, alien_list[selected_alien_index]);
+        add_planet_visit(planet_log, planet, alien_list[selected_alien_index]);
     }
 
     free(alien_list);
@@ -245,7 +245,7 @@ void app_start()
     Zoo zoo = { NULL, 0, 0 };
     PlanetLog planet = { NULL, 0, 0 };
 
-    load_planet_visits_from_file(&planet);
+    load_planet_from_file(&planet);
     load_aliens_from_file(&zoo);
 
     int running = 1;
@@ -260,8 +260,8 @@ void app_start()
             break;
 
         case 0:// Map
-            do_next = explore_planet(&zoo);
-            save_planet_visits_to_file();
+            do_next = explore_planet(&zoo, &planet);
+            save_planet_to_file(&planet);
             break;
 
 		case 1: // Zoo
@@ -275,6 +275,7 @@ void app_start()
 
 		case 3: //Exit
             free_zoo(&zoo);
+            free_planet(&planet);
             running = 0;
             break;
 

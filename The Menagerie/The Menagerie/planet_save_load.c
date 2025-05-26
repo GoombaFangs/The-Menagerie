@@ -1,18 +1,44 @@
 #include "planet_save_load.h"
 
-void save_planet_visits_to_file()
+void save_planet_to_file(const PlanetLog* log)
 {
-    save_data("planet_visits_count.txt", &num_visited_planets, sizeof(int), 1);
-    save_data("planet_visits_array.txt", visited_planets, sizeof(PlanetVisit), num_visited_planets);
+    if (!log || !log->visits || log->count == 0)
+        return;
+
+    save_data("planet_visits_count.txt", &log->count, sizeof(int), 1);
+    save_data("planet_visits_array.txt", log->visits, sizeof(PlanetVisit), log->count);
 }
 
-void load_planet_visits_from_file()
+void load_planet_from_file(PlanetLog* log)
 {
-    load_data("planet_visits_count.txt", &num_visited_planets, sizeof(int), 1);
-    visited_capacity = num_visited_planets > 0 ? num_visited_planets : 10;
-    visited_planets = malloc(visited_capacity * sizeof(PlanetVisit));
-    if (visited_planets)
+    if (!log)
+        return;
+
+    int count = 0;
+    load_data("planet_visits_count.txt", &count, sizeof(int), 1);
+
+    int capacity = (count > 0) ? count : 10;
+    PlanetVisit* buffer = malloc(capacity * sizeof(PlanetVisit));
+    if (!buffer)
     {
-        load_data("planet_visits_array.txt", visited_planets, sizeof(PlanetVisit), num_visited_planets);
+        printf("Failed to allocate memory for planet visits.\n");
+        exit(1);
+    }
+
+    int success = load_data("planet_visits_array.txt", buffer, sizeof(PlanetVisit), count);
+
+    log->visits = buffer;
+    log->count = success ? count : 0;
+    log->capacity = capacity;
+}
+
+void free_planet(PlanetLog* log)
+{
+    if (log && log->visits)
+    {
+        free(log->visits);
+        log->visits = NULL;
+        log->count = 0;
+        log->capacity = 0;
     }
 }

@@ -7,7 +7,7 @@
 #define VARIANTS_PER_TYPE 10
 #define ALIENS_PER_PAGE 2
 
-void planet_log()
+void planet_log(const PlanetLog* planet)
 {
     int selected = 0;
     int current_page = 0;
@@ -17,7 +17,7 @@ void planet_log()
         reset_console();
         print_small_window();
 
-        if (num_visited_planets == 0)
+        if (num_visited_planets == 0 && planet->count == 0)
         {
             printf("\n                                     No planets visited yet.\n");
         }
@@ -147,7 +147,7 @@ void alien_log(const Zoo* zoo)
     }
 }
 
-int reset_ship_log( Zoo* zoo)
+int reset_ship_log(Zoo* zoo, PlanetLog* planet_log)
 {
 	int selected = 0;
     const char* list[] = { "Reset Ship Log","   Back   " };
@@ -173,9 +173,11 @@ int reset_ship_log( Zoo* zoo)
             }
         }
 
-        /*if (planet_log != NULL)
+       if (planet_log != NULL)
         {
-            planet_log->count = 0;
+           num_visited_planets = 0;
+           visited_capacity = 0;
+           planet_log->count = 0;
             planet_log->capacity = 0;
 
             if (planet_log->visits != NULL)
@@ -183,7 +185,7 @@ int reset_ship_log( Zoo* zoo)
                 free(planet_log->visits);
                 planet_log->visits = NULL;
             }
-        }*/
+        }
 
         load_aliens_from_file(zoo);
         load_planet_visits_from_file();

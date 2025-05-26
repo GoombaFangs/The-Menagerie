@@ -114,7 +114,7 @@ void new_alien_screen(Planet planet, int got_alien)
 	reset_console();
 }
 
-int ship_log_screen(Zoo* zoo)
+int ship_log_screen(Zoo* zoo , PlanetLog* planet)
 {
 	int selected = 0;
 	int running = 1;
@@ -130,7 +130,7 @@ int ship_log_screen(Zoo* zoo)
 			running = 0;
 
         case 0: // Planet
-            planet_log();
+            planet_log(planet);
             running = 0;
             return 2;
 
@@ -140,7 +140,7 @@ int ship_log_screen(Zoo* zoo)
             return 2;
 
         case 2: // reset ship log
-            selected = reset_ship_log(zoo);
+            selected = reset_ship_log(zoo , planet);
             if (selected == 1)
             {
                 reset_console();
@@ -243,7 +243,9 @@ void app_start()
     title();
 
     Zoo zoo = { NULL, 0, 0 };
-    load_planet_visits_from_file();
+    PlanetLog planet = { NULL, 0, 0 };
+
+    load_planet_visits_from_file(&planet);
     load_aliens_from_file(&zoo);
 
     int running = 1;
@@ -268,7 +270,7 @@ void app_start()
             break;
 
 		case 2: //Ship log
-            do_next = ship_log_screen(&zoo);
+            do_next = ship_log_screen(&zoo, &planet);
             break;
 
 		case 3: //Exit

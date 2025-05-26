@@ -16,4 +16,11 @@ typedef struct
     Alien alien;
 } PlanetVisit;
 
+typedef struct
+{
+    PlanetVisit* visits;
+    int count;
+    int capacity;
+} PlanetLog;
+
 #endif

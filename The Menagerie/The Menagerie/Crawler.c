@@ -58,7 +58,7 @@ void print_crawler(int variant)
             "                          \\\n"
             "                      .-''''-.\n"
             "                     / o    o \\\n"
-            "                    |    ∆     |\n"
+            "                    |    ^     |\n"
             "                     \\  '--'  /\n"
             "                      `------`\n"
         );
@@ -70,7 +70,7 @@ void print_crawler(int variant)
             "                      @@@       @@@\n"
             "                    @@   .----.   @@\n"
             "                    |   / o  o \\   |\n"
-            "                    |   \\_ ∆ _/   |\n"
+            "                    |   \\_ ^ _/   |\n"
             "                    |    -----    |\n"
             "                     \\___________/\n"
         );
@@ -106,7 +106,7 @@ void print_crawler(int variant)
         printf(
             "                      ______\n"
             "                    /  o  o  \\\n"
-            "                   |    ∆     |\n"
+            "                   |    ^     |\n"
             "                    \\__===__/~~~\n"
             "                         @@@@\n"
             "                        @    @\n"

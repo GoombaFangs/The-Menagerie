@@ -613,10 +613,15 @@ void print_captain_seat()
     }
 }
 
-void print_ship_log()
+void print_ship_log(int console_style)
 {
     print_big_window();
     print_screen_panel();
+    printf("\n");
+    if (console_style == 5) // reset ship log 
+    {
+        printf("\n                          Are you sure you want to reset the ship log?\n\n\n\n");
+    }
 }
 
 void stars()

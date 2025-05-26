@@ -117,31 +117,49 @@ void new_alien_screen(Planet planet, int got_alien)
 int ship_log_screen(const Zoo* zoo)
 {
 	int selected = 0;
+	int running = 1;
     reset_console();
-    const char* list[] = { "  Planet  ","  Alien   ","  Back   " };
-    selected = input_text(list, 3, 4, ""); // 4 = ship log style
-    switch (selected)
+    const char* list[] = { " Planet   ","  Alien   ","Reset Ship Log","   Back   " };
+    selected = input_text(list, 4, 4, ""); // 4 = ship log style
+    while (running)
     {
-    case -1: // Exit
-        reset_console();
-        return -1;
+        switch (selected)
+        {
+        case -1: // Exit
+            reset_console();
+			running = 0;
 
-    case 0: // Planet
-        planet_log();
-		return 2;
-        break;
+        case 0: // Planet
+            planet_log();
+            running = 0;
+            return 2;
 
-    case 1: // Alien
-        alien_log(zoo);
-        return 2;
-        break;
+        case 1: // Alien
+            alien_log(zoo);
+            running = 0;
+            return 2;
 
-    case 2: // Exit
-        reset_console();
-        return -1;
-    default:
-        return -1;
+        case 2: // reset ship log
+            selected = reset_ship_log(zoo);
+            if (selected == 1)
+            {
+                reset_console();
+                return -1;
+            }
+            else if (selected == 2)
+            {
+                return 2;
+            }
+
+        case 3: // Exit
+            reset_console();
+            return -1;
+
+        default:
+            return -1;
+        }
     }
+    return -1;
 }
 
 int explore_planet(Zoo* zoo)

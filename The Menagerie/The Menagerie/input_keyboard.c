@@ -42,7 +42,8 @@ void print_text_options(int selected, const char* menu_list[], int amount, int c
         {
             printf("\n");
             if (console_style == 3) printf("              ");
-            printf("                %s\n", text);
+            if (text != "Reset Ship Log")printf("                %s\n", text);
+            else  printf("              %s\n", text);
             printf("\n");
         }
         printf("\n");
@@ -56,20 +57,16 @@ void print_text_options(int selected, const char* menu_list[], int amount, int c
         {
            
 			stop_holding = 0;
-            if (strcmp(text, "  Exit   ") != 0 && strcmp(text, "  Back   ") != 0)
+            if (text != NULL && strcmp(text, "  Exit   ") != 0 && strcmp(text, "   Back   ") != 0)
             {
                 printf("\n\n                                                                   Choose a planet to explore..\n");
                 printf("                                                                        [ Enter ] Confirm \n");
             } 
         }
-        else
-        {
-           
-        }
     }
 }
 
-int input_text(const char* menu_list[], int amount, int console_style, char* planet_terrain)// console 0 to reset console
+int input_text(const char* menu_list[], int amount, int console_style, char* planet_terrain)
 {
     int selected = 0;
 	switch (console_style)
@@ -82,8 +79,10 @@ int input_text(const char* menu_list[], int amount, int console_style, char* pla
 		break;
 	case 3:  reset_console(); stars(); // map style style
 		break;
-    case 4:  reset_console(); print_ship_log(); printf("\n"); // ship log style
+    case 4:  reset_console(); print_ship_log(console_style); // ship log style
 		break;
+    case 5: reset_console(); print_ship_log(console_style); //reset ship log style
+        break;
     }
 
     print_text_options(selected, menu_list, amount , console_style);
@@ -122,7 +121,9 @@ int input_text(const char* menu_list[], int amount, int console_style, char* pla
             break;
         case 3:  reset_console(); stars();   // stars style
             break;
-        case 4:  reset_console(); print_ship_log(); printf("\n"); // ship log style
+        case 4:  reset_console(); print_ship_log(console_style); // ship log style
+            break;
+        case 5: reset_console(); print_ship_log(console_style);  //reset ship log style
             break;
         }
 

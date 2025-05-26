@@ -6,5 +6,6 @@
 
 void planet_log();
 void alien_log(const Zoo* zoo);
+int reset_ship_log(const Zoo* zoo);
 
 #endif 

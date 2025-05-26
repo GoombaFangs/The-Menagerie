@@ -146,3 +146,26 @@ void alien_log(const Zoo* zoo)
         }
     }
 }
+
+int reset_ship_log(const Zoo* zoo) 
+{
+	int selected = 0;
+    const char* list[] = { "Reset Ship Log","   Back   " };
+    selected = input_text(list, 2, 5, ""); // 5 =reset ship log style
+    switch (selected)
+    {
+    case 0:  // Reset log
+        remove("planet_visits_count.txt");
+        remove("planet_visits_array.txt");
+        remove("zoo_capacity.txt");
+        remove("zoo_count.txt");
+        remove("zoo_array.txt");
+		hold_seconds(0.5);
+        printg(0.05, "\n Ship log has been successfully reset.\n");
+        return 1;
+
+    case 1: // Back
+        return 2;
+    }
+	return -1; // Back
+}

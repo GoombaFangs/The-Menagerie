@@ -18,7 +18,7 @@ void print_small_window();
 void print_control_panel();
 void print_screen_panel();
 void print_captain_seat();
-void print_ship_log();
+void print_ship_log(int console_style);
 void stars();
 
 #endif 

@@ -29,7 +29,7 @@ void print_text_options(int selected, const char* menu_list[], int amount, int c
 
             for (int j = 0; j < padding_right; j++) printf(" ");
 
-            if (console_style == 3) printf("|       [^]/[v]\n");
+            if (console_style == 3) printf("|\n");
             else printf("|\n");
             
 

@@ -19,62 +19,78 @@ Alien add_nickname(Alien* aliens, int selected_index, int* backspace)
 
 int get_alien_types_for_terrain(const char* terrain, AlienType* out_types)
 {
-    if (strcmp(terrain, "ocean") == 0)
     {
-        out_types[0] = ALIEN_AQUATIC;
-        out_types[1] = ALIEN_GLOWING;
+        if (strcmp(terrain, "ocean") == 0)
+        {
+            out_types[0] = ALIEN_AQUATIC;
+            out_types[1] = ALIEN_GLOWING;
+            return 2;
+        }
+        else if (strcmp(terrain, "desert") == 0)
+        {
+            out_types[0] = ALIEN_CRAWLER;
+            out_types[1] = ALIEN_CAMOUFLAGED;
+            return 2;
+        }
+        else if (strcmp(terrain, "forest") == 0)
+        {
+            out_types[0] = ALIEN_FLYING;
+            out_types[1] = ALIEN_CAMOUFLAGED;
+            return 2;
+        }
+        else if (strcmp(terrain, "swamp") == 0)
+        {
+            out_types[0] = ALIEN_GAS_BASED;
+            out_types[1] = ALIEN_CRAWLER;
+            return 2;
+        }
+        else if (strcmp(terrain, "mountain") == 0)
+        {
+            out_types[0] = ALIEN_ROCKY;
+            out_types[1] = ALIEN_FLYING;
+            return 2;
+        }
+        else if (strcmp(terrain, "volcanic") == 0)
+        {
+            out_types[0] = ALIEN_ROCKY;
+            out_types[1] = ALIEN_AQUATIC;
+            return 2;
+        }
+        else if (strcmp(terrain, "icy") == 0)
+        {
+            out_types[0] = ALIEN_AQUATIC;
+            out_types[1] = ALIEN_CRAWLER;
+            return 2;
+        }
+        else if (strcmp(terrain, "gas") == 0)
+        {
+            out_types[0] = ALIEN_GAS_BASED;
+            out_types[1] = ALIEN_GLOWING;
+            return 2;
+        }
+        else if (strcmp(terrain, "urban ruins") == 0)
+        {
+            out_types[0] = ALIEN_CAMOUFLAGED;
+            out_types[1] = ALIEN_ROCKY;
+            return 2;
+        }
+        else if (strcmp(terrain, "crystal plains") == 0)
+        {
+            out_types[0] = ALIEN_GLOWING;
+            out_types[1] = ALIEN_FLYING;
+            return 2;
+        }
+        else if (strcmp(terrain, "sky island") == 0)
+        {
+            out_types[0] = ALIEN_FLYING;
+            out_types[1] = ALIEN_CAMOUFLAGED;
+            return 2;
+        }
+        else
+        {
+            return 0;
+        }
     }
-    else if (strcmp(terrain, "desert") == 0)
-    {
-        out_types[0] = ALIEN_CRAWLER;
-        out_types[1] = ALIEN_CAMOUFLAGED;
-    }
-    else if (strcmp(terrain, "forest") == 0)
-    {
-        out_types[0] = ALIEN_CAMOUFLAGED;
-        out_types[1] = ALIEN_FLYING;
-    }
-    else if (strcmp(terrain, "swamp") == 0)
-    {
-        out_types[0] = ALIEN_CRAWLER;
-        out_types[1] = ALIEN_GLOWING;
-    }
-    else if (strcmp(terrain, "mountain") == 0)
-    {
-        out_types[0] = ALIEN_FLYING;
-        out_types[1] = ALIEN_ROCKY;
-    }
-    else if (strcmp(terrain, "volcanic") == 0)
-    {
-        out_types[0] = ALIEN_ROCKY;
-        out_types[1] = ALIEN_GLOWING;
-    }
-    else if (strcmp(terrain, "icy") == 0)
-    {
-        out_types[0] = ALIEN_GLOWING;
-        out_types[1] = ALIEN_CRAWLER;
-    }
-    else if (strcmp(terrain, "gas") == 0)
-    {
-        out_types[0] = ALIEN_GAS_BASED;
-        out_types[1] = ALIEN_GLOWING;
-    }
-    else if (strcmp(terrain, "urban ruins") == 0)
-    {
-        out_types[0] = ALIEN_CAMOUFLAGED;
-        out_types[1] = ALIEN_CRAWLER;
-    }
-    else if (strcmp(terrain, "crystal plains") == 0)
-    {
-        out_types[0] = ALIEN_GLOWING;
-        out_types[1] = ALIEN_FLYING;
-    }
-    else
-    {
-        return 0;
-    }
-
-    return 1;
 }
 
 const char* get_alien_type_name(AlienType type)
@@ -105,7 +121,8 @@ Alien* generate_aliens(char* planet_terrain, int count)
     }
 
     AlienType possible_types[2];
-    if (!get_alien_types_for_terrain(planet_terrain, possible_types))
+    int type_count = get_alien_types_for_terrain(planet_terrain, possible_types);
+    if (type_count <= 0)
     {
         printf("Unknown terrain type: %s\n", planet_terrain);
         free(aliens);
@@ -114,10 +131,8 @@ Alien* generate_aliens(char* planet_terrain, int count)
 
     for (int i = 0; i < count; i++)
     {
-        //aliens[i].type = possible_types[rand() % 2];
-        //strcpy_s(aliens[i].species, sizeof(aliens[i].species), get_alien_type_name(aliens[i].type));
-        aliens[i].type = ALIEN_AQUATIC;
-        strcpy_s(aliens[i].species, sizeof(aliens[i].species), "aquatic");
+        aliens[i].type = possible_types[rand() % type_count];
+        strcpy_s(aliens[i].species, sizeof(aliens[i].species), get_alien_type_name(aliens[i].type));
         aliens[i].sex = (rand() % 2 == 0) ? 'M' : 'F';
         aliens[i].age = rand() % 100 + 1;
         strcpy_s(aliens[i].size, sizeof(aliens[i].size), size_list[rand() % num_sizes]);

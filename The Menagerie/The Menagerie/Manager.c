@@ -190,7 +190,7 @@ int explore_planet(Zoo* zoo, PlanetLog* planet_log)
             {
                 alien_list[selected_alien_index].nickname[0] = '\0';
                 const char* list[] = { "  Continue  ", "  Back   ", "  Exit   " };
-                menu_choice = input_text(list, 3, 1, planet.terrain);
+                menu_choice = input_text(list, 3, 1, planet.terrain); // 1 = story style ( ship with planet terrain)
 
                 switch (menu_choice)
                 {
